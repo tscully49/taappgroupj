@@ -1,4 +1,4 @@
 class TaappController < ApplicationController
-  def index
+  def form
   end
 end
