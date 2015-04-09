@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'taapp#form'
+  root 'taapp#index'
+  get  'taapp/form'
+  get  'taapp/register'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
