@@ -29,18 +29,19 @@ INSERT INTO professors VALUES (1256791,'Melinda Swofford','twelve_jazz46','MSwof
 CREATE TYPE stutype AS ENUM ('undergrad' 'Masters' 'PHD');
 CREATE TABLE students(
 stu_id integer,
-stu_name varchar(60) NOT NULL, 
+stu_first_name varchar(60) NOT NULL,
+stu_last_name varchar(60) NOT NULL, 
 password varchar(40) NOT NULL,
 miz_email varchar(100) NOT NULL,
-avg_rating smallint,
+avg_rating smallint, -------------------might not need this in the end ----------
 student_type stutype NOT NULL,  --grad_phd field in ERD
 PRIMARY KEY(stu_id)
 );
 
-INSERT INTO students VALUES (1632562,'Carthy Williams', 'Carthy34','Cwilliams@mail.missouri.edu',7,'undergrad');
-INSERT INTO students VALUES (1632563,'Benedict Cumberbatch', 'IAmSherlockHolmes','btc3d2@mail.missouri.edu',NULL,'PHD');
-INSERT INTO students VALUES (1632564,'Cooper Collins', 'stoptryingtoguessmypassword','cac4yf@mail.missouri.edu',4,'Masters');
-INSERT INTO students VALUES (1632565,'Anthony Tilley', 'srtdnabswwn4809#','alt55g@mail.missouri.edu',9,'undergrad');
+INSERT INTO students VALUES (1632562,'Carthy', 'Williams', 'Carthy34','Cwilliams@mail.missouri.edu',7,'undergrad');
+INSERT INTO students VALUES (1632563,'Benedict', 'Cumberbatch', 'IAmSherlockHolmes','btc3d2@mail.missouri.edu',NULL,'PHD');
+INSERT INTO students VALUES (1632564,'Cooper', 'Collins', 'stoptryingtoguessmypassword','cac4yf@mail.missouri.edu',4,'Masters');
+INSERT INTO students VALUES (1632565,'Anthony', 'Tilley', 'srtdnabswwn4809#','alt55g@mail.missouri.edu',9,'undergrad');
 
 CREATE TABLE courses(
 co_id integer,
@@ -71,11 +72,12 @@ INSERT INTO ratings VALUES (1256790,1632565,2050,9);
 CREATE TYPE stutype AS ENUM ('undergrad' 'Masters' 'PHD');
 CREATE TABLE applications(
 app_id integer,
-name varchar(60) REFERENCES students(stu_name),
+first_name varchar(60) REFERENCES students(stu_first_name),
+last_name varchar(60) REFERENCES students(stu_last_name),
 stu_id integer REFERENCES students(stu_id),
 gpa decimal(4, 3) NOT NULL,
 phone_num integer NOT NULL,
-miz_email var char (100) REFERENCES students(miz_email),
+miz_email var varchar (100) REFERENCES students(miz_email),
 time_stamp timestamp NOT NULL,
 date_of_app date NOT NULL,
 ant_grad_date date NOT NULL,
@@ -90,12 +92,12 @@ phd_grade_app stutype REFERENCES students(student_type),
 PRIMARY KEY(app_id)
 );
 
-INSERT INTO applications VALUES (2345678, 'Carthy Williams',1632562,3.34,7735592456, 'Cwilliams@mail.missouri.edu','9:30','4-6-2015','May 16 2016',80,'Fall 14', 1,1,1,1,1,'undergrad');
-INSERT INTO applications VALUES (2345679, 'Benedict Cumberbatch',1632563,4.0,6184973215, 'btc3d2@mail.missouri.edu','12:45','3-21-2015','May 24 2018',NULL,NULL, 1,0,0,0,NULL,'PHD');
-INSERT INTO applications VALUES (2345680, 'Anthony Tilley',1632565,3.792,3145978215, 'alt55g@mail.missouri.edu','11:11','4-1-2015','December 18 2016',NULL,NULL, 1,0,0,0,NULL,'undergrad');
+INSERT INTO applications VALUES (2345678, 'Carthy', 'Williams',1632562,3.34,7735592456, 'Cwilliams@mail.missouri.edu','9:30','4-6-2015','May 16 2016',80,'Fall 14', 1,1,1,1,1,'undergrad');
+INSERT INTO applications VALUES (2345679, 'Benedict', 'Cumberbatch',1632563,4.0,6184973215, 'btc3d2@mail.missouri.edu','12:45','3-21-2015','May 24 2018',NULL,NULL, 1,0,0,0,NULL,'PHD');
+INSERT INTO applications VALUES (2345680, 'Anthony', 'Tilley',1632565,3.792,3145978215, 'alt55g@mail.missouri.edu','11:11','4-1-2015','December 18 2016',NULL,NULL, 1,0,0,0,NULL,'undergrad');
 
 
-CREATE TYPE gradetype AS ENUM ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F');
+CREATE TYPE gradetype AS ENUM ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F', 'W', 'N/A');
 CREATE TABLE course_want_prof(
 course_id integer REFERENCES courses(co_id),
 app_id integer REFERENCES applications (app_id),
