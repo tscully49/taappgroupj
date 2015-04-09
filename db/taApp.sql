@@ -2,7 +2,7 @@ DROP SCHEMA IF EXISTS TaAPP CASCADE;
 CREATE SCHEMA TaAPP;
 SET search_path = TaAPP;
 
-CREATE TABLE 'admin'(
+CREATE TABLE admin(
 admin_id integer,
 admin_name varchar(60) NOT NULL,
 password varchar(40) NOT NULL,
@@ -10,9 +10,9 @@ miz_email varchar(100) NOT NULL,
 PRIMARY KEY(admin_id)
 );
 
-INSERT INTO 'admin' VALUES (1234567,'Charles Johnson','Mizzou1234','CJohnson@mizzou.edu');
-INSERT INTO 'admin' VALUES (1234568,'James Rooney','password','JRooney@missouri.edu');
-INSERT INTO 'admin' VALUES (1234569,'Sarah Clarke','k23NOLA','SClarke@missouri.edu');
+INSERT INTO admin VALUES (1234567,'Charles Johnson','Mizzou1234','CJohnson@mizzou.edu');
+INSERT INTO admin VALUES (1234568,'James Rooney','password','JRooney@missouri.edu');
+INSERT INTO admin VALUES (1234569,'Sarah Clarke','k23NOLA','SClarke@missouri.edu');
 
 CREATE TABLE professors(
 prof_id integer,
@@ -26,7 +26,7 @@ INSERT INTO professors VALUES (1256789,'Grant Scott','GS4320','GScott@mizzou.edu
 INSERT INTO professors VALUES (1256790,'Hugo Ferdinand','correcthorsebatterystaple','HFerdinand@missouri.edu');
 INSERT INTO professors VALUES (1256791,'Melinda Swofford','twelve_jazz46','MSwofford@missouri.edu');
 
-CREATE TYPE stutype AS ENUM ('undergrad' 'Masters' 'PHD');
+CREATE TYPE stutype AS ENUM ('undergrad', 'Masters', 'PHD');
 CREATE TABLE students(
 stu_id integer,
 stu_first_name varchar(60) NOT NULL,
@@ -45,7 +45,7 @@ INSERT INTO students VALUES (1632565,'Anthony', 'Tilley', 'srtdnabswwn4809#','al
 
 CREATE TABLE courses(
 co_id integer,
-prof_id varchar(60) REFERENCES professors(prof_id), 
+prof_id integer REFERENCES professors(prof_id), 
 course_name varchar(60) NOT NULL,
 PRIMARY KEY(co_id)
 );
@@ -69,15 +69,15 @@ INSERT INTO ratings VALUES (1256789,1632562,4320,7);
 INSERT INTO ratings VALUES (1256789,1632564,4320,4);
 INSERT INTO ratings VALUES (1256790,1632565,2050,9);
 
-CREATE TYPE stutype AS ENUM ('undergrad' 'Masters' 'PHD');
+--CREATE TYPE stutype AS ENUM ('undergrad', 'Masters', 'PHD');
 CREATE TABLE applications(
 app_id integer,
-first_name varchar(60) REFERENCES students(stu_first_name),
-last_name varchar(60) REFERENCES students(stu_last_name),
+first_name varchar(60), --CHECK students(stu_first_name),
+last_name varchar(60), --CHECK students(stu_last_name),
 stu_id integer REFERENCES students(stu_id),
 gpa decimal(4, 3) NOT NULL,
 phone_num integer NOT NULL,
-miz_email var varchar (100) REFERENCES students(miz_email),
+miz_email varchar (100), --CHECK students(miz_email),
 time_stamp timestamp NOT NULL,
 date_of_app date NOT NULL,
 ant_grad_date date NOT NULL,
@@ -88,32 +88,32 @@ international1 boolean,
 international2 boolean, --?what are these data types
 international3 boolean,
 accepted boolean,
-phd_grade_app stutype REFERENCES students(student_type), 
+phd_grade_app stutype, --CHECK students(student_type), 
 PRIMARY KEY(app_id)
 );
 
-INSERT INTO applications VALUES (2345678, 'Carthy', 'Williams',1632562,3.34,7735592456, 'Cwilliams@mail.missouri.edu','9:30','4-6-2015','May 16 2016',80,'Fall 14', 1,1,1,1,1,'undergrad');
-INSERT INTO applications VALUES (2345679, 'Benedict', 'Cumberbatch',1632563,4.0,6184973215, 'btc3d2@mail.missouri.edu','12:45','3-21-2015','May 24 2018',NULL,NULL, 1,0,0,0,NULL,'PHD');
-INSERT INTO applications VALUES (2345680, 'Anthony', 'Tilley',1632565,3.792,3145978215, 'alt55g@mail.missouri.edu','11:11','4-1-2015','December 18 2016',NULL,NULL, 1,0,0,0,NULL,'undergrad');
+INSERT INTO applications VALUES (2345678, 'Carthy', 'Williams',1632562,3.34,77355, 'Cwilliams@mail.missouri.edu','2015-04-06 9:30:00','2015-4-6','May 16 2016',80,'Fall 14', true,true,true,true,true,'undergrad');
+INSERT INTO applications VALUES (2345679, 'Benedict', 'Cumberbatch',1632563,4.0,61849, 'btc3d2@mail.missouri.edu','2015-03-21 12:45:00','2015-3-21','May 24 2018',NULL,NULL, true,false,false,false,NULL,'PHD');
+INSERT INTO applications VALUES (2345680, 'Anthony', 'Tilley',1632565,3.792,31459, 'alt55g@mail.missouri.edu','2015-4-1 11:11:00','2015-4-1','December 18 2016',NULL,NULL, true,false,false,false,NULL,'undergrad');
 
 
-CREATE TYPE gradetype AS ENUM ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F', 'W', 'N/A');
+CREATE TYPE gradetype AS ENUM('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F', 'W', 'N/A');
 CREATE TABLE course_want_prof(
 course_id integer REFERENCES courses(co_id),
-app_id integer REFERENCES applications (app_id),
+app_id integer REFERENCES applications(app_id),
 grade gradetype NOT NULL,
-PRIMARY KEY(course_id, app_id),
+PRIMARY KEY(course_id, app_id)
 );
 
-INSERT INTO course_want_prof (4320,2345678, 'A');
-INSERT INTO course_want_prof (4520,2345679, 'A');
-INSERT INTO course_want_prof (4430,2345679, 'A+');
-INSERT INTO course_want_prof (1050,2345680, 'A');
-INSERT INTO course_want_prof (2050,2345680, 'B+');
+INSERT INTO course_want_prof VALUES(4320,2345678, 'A');
+INSERT INTO course_want_prof VALUES(4520,2345679, 'A');
+INSERT INTO course_want_prof VALUES(4430,2345679, 'A+');
+INSERT INTO course_want_prof VALUES(1050,2345680, 'A');
+INSERT INTO course_want_prof VALUES(2050,2345680, 'B+');
 
 
 
-CREATE TYPE taughtorteach AS ENUM ('taught', 'teach')
+CREATE TYPE taughtorteach AS ENUM ('taught', 'teach');
 CREATE TABLE course_teach(
 course_id integer REFERENCES courses(co_id),
 app_id integer REFERENCES applications (app_id),
@@ -125,15 +125,15 @@ INSERT INTO course_teach VALUES (4320,2345678,'taught');
 INSERT INTO course_teach VALUES (2050,2345680,'teach');
 
 CREATE TABLE comments(
-c_id integer --comment, not
+c_id integer, --comment, not
 stu_id integer REFERENCES students(stu_id),
-prof_id integer REFERENCES professor(prof_id),
-'comment' text,
+prof_id integer REFERENCES professors(prof_id),
+comment varchar(500),
 time_stamp timestamp NOT NULL,
 date_commented date NOT NULL,
 rating integer, --Should this reference rating? And if we have rating here, do we even need a separate rating table?
-PRIMARY(c_id, student_id, p_id)
+PRIMARY KEY(c_id, stu_id, prof_id)
 );
 
-INSERT INTO comments VALUES (3678243,1632562,1256789,' Great Student','4:30','4-7-2015', 7);
-INSERT INTO comments VALUES (3678244,1632565,1256791,"Best TA I've ever had!",'10:17','4-7-2015', 9);
+INSERT INTO comments VALUES (3678243,1632562,1256789, 'Great Student','2015-4-7 4:30:00','2015-4-7', 7);
+INSERT INTO comments VALUES (3678244,1632565,1256791, 'Best TA I''ve ever had!','2015-4-7 10:17:00','2015-4-7', 9);
