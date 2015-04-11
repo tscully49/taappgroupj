@@ -2,6 +2,14 @@ DROP SCHEMA IF EXISTS TaAPP CASCADE;
 CREATE SCHEMA TaAPP;
 SET search_path = TaAPP;
 
+CREATE TABLE user_auth(
+    miz_email varchar(100) NOT NULL,
+    encrypted_password varchar(40) NOT NULL,
+    salt varchar(40) NOT NULL,
+    isProf boolean NOT NULL DEFAULT FALSE, /*... if email fits professor format, changed to true */
+    registration_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+)
+
 CREATE TABLE admin(
 admin_id integer,
 admin_name varchar(60) NOT NULL,
