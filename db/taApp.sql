@@ -7,8 +7,8 @@ CREATE TABLE user_auth(
     encrypted_password varchar(40) NOT NULL,
     salt varchar(40) NOT NULL,
     isProf boolean NOT NULL DEFAULT FALSE, /*... if email fits professor format, changed to true */
-    registration_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-)
+    registration_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE admin(
 admin_id integer,
