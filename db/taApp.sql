@@ -2,11 +2,12 @@ DROP SCHEMA IF EXISTS TaAPP CASCADE;
 CREATE SCHEMA TaAPP;
 SET search_path = TaAPP;
 
+/*This table is mainly used for testing, although it may be a good idea to implement this
+table and have the other tables reference it, as the first place data will be entered will be through registration" */
 CREATE TABLE user_auth(
     miz_email varchar(100) NOT NULL,
     encrypted_password varchar(40) NOT NULL,
     salt varchar(40) NOT NULL,
-    isProf boolean NOT NULL DEFAULT FALSE, /*... if email fits professor format, changed to true */
     registration_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
