@@ -19,4 +19,63 @@ ActiveRecord::Schema.define(version: 20150412224837) do
     t.datetime "updated_at"
   end
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "admin", id: false, force: true do |t|
+    t.integer "admin_id",               null: false
+    t.string  "admin_name", limit: 60,  null: false
+    t.string  "password",   limit: 40,  null: false
+    t.string  "miz_email",  limit: 100, null: false
+  end
+
+# Could not dump table "applications" because of following StandardError
+#   Unknown type 'stutype' for column 'phd_grade_app'
+
+  create_table "comments", id: false, force: true do |t|
+    t.integer  "c_id",                       null: false
+    t.integer  "stu_id",                     null: false
+    t.integer  "prof_id",                    null: false
+    t.string   "comment",        limit: 500
+    t.datetime "time_stamp",                 null: false
+    t.date     "date_commented",             null: false
+    t.integer  "rating"
+  end
+
+# Could not dump table "course_teach" because of following StandardError
+#   Unknown type 'taughtorteach' for column 'taught_teaching'
+
+# Could not dump table "course_want_prof" because of following StandardError
+#   Unknown type 'gradetype' for column 'grade'
+
+  create_table "courses", id: false, force: true do |t|
+    t.integer "co_id",                  null: false
+    t.integer "prof_id"
+    t.string  "course_name", limit: 60, null: false
+  end
+
+  create_table "professors", id: false, force: true do |t|
+    t.integer "prof_id",               null: false
+    t.string  "prof_name", limit: 60,  null: false
+    t.string  "password",  limit: 40,  null: false
+    t.string  "miz_email", limit: 100, null: false
+  end
+
+  create_table "ratings", id: false, force: true do |t|
+    t.integer "prof_id",           null: false
+    t.integer "stu_id",            null: false
+    t.integer "co_id",             null: false
+    t.integer "rating",  limit: 2, null: false
+  end
+
+# Could not dump table "students" because of following StandardError
+#   Unknown type 'stutype' for column 'student_type'
+
+  create_table "user_auth", id: false, force: true do |t|
+    t.string   "miz_email",          limit: 100,                   null: false
+    t.string   "encrypted_password", limit: 40,                    null: false
+    t.string   "salt",               limit: 40,                    null: false
+    t.datetime "registration_date",              default: "now()", null: false
+  end
+
 end
