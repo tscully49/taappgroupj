@@ -1,6 +1,6 @@
-#DROP SCHEMA IF EXISTS TaAPP CASCADE;
-##CREATE SCHEMA TaAPP;
-##SET search_path = TaAPP;
+--DROP SCHEMA IF EXISTS TaAPP CASCADE;
+--CREATE SCHEMA TaAPP;
+--SET search_path = TaAPP;
 
 /*This table is mainly used for testing, although it may be a good idea to implement this
 table and have the other tables reference it, as the first place data will be entered will be through registration" */
