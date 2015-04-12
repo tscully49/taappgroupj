@@ -28,20 +28,21 @@ defaults: &defaults
 
 development:
   #Default development 
-  #pool: 5
-  #timeout: 5000
-  #encoding: utf8
-  #<<: *<%= ENV['RAILS_DB'] || "sqlite" %>
+  pool: 5
+  timeout: 5000
+  encoding: utf8
+  <<: *<%= ENV['RAILS_DB'] || "sqlite" %>
   # END Default development 
+
   
-  adapter: postgresql
-  database: "taappgroupj"
-  username: "adminjflmxq2"
-  password: "GyDyyH6--bZq"
-  host: 127.0.0.1
-  port: 5433
-  min_messages: ERROR
-  reconnect: false
+  #adapter: postgresql
+  #database: "taappgroupj"
+  #username: "adminjflmxq2"
+  #password: "GyDyyH6--bZq"
+  #host: 127.0.0.1
+  #port: 5433
+  #min_messages: ERROR
+  #reconnect: false
 
 test: &test
   <<: *defaults
