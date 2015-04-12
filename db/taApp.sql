@@ -43,7 +43,7 @@ stu_last_name varchar(60) NOT NULL,
 password varchar(40) NOT NULL,
 miz_email varchar(100) NOT NULL,
 avg_rating smallint, -------------------might not need this in the end ----------
-student_type stutype NOT NULL,  --grad_phd field in ERD
+student_type varchar(10) NOT NULL,  --grad_phd field in ERD
 PRIMARY KEY(stu_id)
 );
 
@@ -97,7 +97,7 @@ international1 boolean,
 international2 boolean, --?what are these data types
 international3 boolean,
 accepted boolean,
-phd_grade_app stutype, --CHECK students(student_type), 
+phd_grade_app varchar(10), --CHECK students(student_type), 
 PRIMARY KEY(app_id)
 );
 
@@ -110,7 +110,7 @@ CREATE TYPE gradetype AS ENUM('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-',
 CREATE TABLE course_want_prof(
 course_id integer REFERENCES courses(co_id),
 app_id integer REFERENCES applications(app_id),
-grade gradetype NOT NULL,
+grade varchar(5) NOT NULL,
 PRIMARY KEY(course_id, app_id)
 );
 
@@ -126,7 +126,7 @@ CREATE TYPE taughtorteach AS ENUM ('taught', 'teach');
 CREATE TABLE course_teach(
 course_id integer REFERENCES courses(co_id),
 app_id integer REFERENCES applications (app_id),
-taught_teaching taughtorteach NOT NULL,
+taught_teaching varchar(10) NOT NULL,
 PRIMARY KEY(course_id, app_id)
 );
 
