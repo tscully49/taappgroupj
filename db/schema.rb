@@ -13,4 +13,14 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "user_auth", id: false, force: true do |t|
+    t.string   "miz_email",          limit: 100,                   null: false
+    t.string   "encrypted_password", limit: 40,                    null: false
+    t.string   "salt",               limit: 40,                    null: false
+    t.datetime "registration_date",              default: "now()", null: false
+  end
+
 end
