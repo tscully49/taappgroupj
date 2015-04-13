@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150413000434) do
 
-  create_table "admin", id: false, force: true do |t|
+  create_table "admins", id: false, force: true do |t|
     t.integer "admin_id",               null: false
     t.string  "admin_name", limit: 60,  null: false
     t.string  "password",   limit: 40,  null: false
@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(version: 20150413000434) do
     t.integer  "rating"
   end
 
-  create_table "course_teach", id: false, force: true do |t|
+  create_table "course_teaches", id: false, force: true do |t|
     t.integer "course_id",                  null: false
     t.integer "app_id",                     null: false
     t.string  "taught_teaching", limit: 10, null: false
   end
 
-  create_table "course_want_prof", id: false, force: true do |t|
+  create_table "course_want_profs", id: false, force: true do |t|
     t.integer "course_id",           null: false
     t.integer "app_id",              null: false
     t.string  "grade",     limit: 5, null: false
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20150413000434) do
     t.string  "student_type",   limit: 10,  null: false
   end
 
-  create_table "user_auth", id: false, force: true do |t|
+  create_table "user_auths", id: false, force: true do |t|
     t.string   "miz_email",          limit: 100, null: false
     t.string   "encrypted_password", limit: 40,  null: false
     t.string   "salt",               limit: 40,  null: false
