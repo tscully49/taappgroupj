@@ -23,8 +23,26 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "miz_email",  limit: 100, null: false
   end
 
-# Could not dump table "applications" because of following StandardError
-#   Unknown type 'stutype' for column 'phd_grade_app'
+  create_table "applications", id: false, force: true do |t|
+    t.integer  "app_id",                                               null: false
+    t.string   "first_name",       limit: 60
+    t.string   "last_name",        limit: 60
+    t.integer  "stu_id"
+    t.decimal  "gpa",                          precision: 4, scale: 3, null: false
+    t.integer  "phone_num",                                            null: false
+    t.string   "miz_email",        limit: 100
+    t.datetime "time_stamp",                                           null: false
+    t.date     "date_of_app",                                          null: false
+    t.date     "ant_grad_date",                                        null: false
+    t.integer  "speak_score"
+    t.string   "semester_of_test", limit: 60
+    t.boolean  "orientation_met",                                      null: false
+    t.boolean  "international1"
+    t.boolean  "international2"
+    t.boolean  "international3"
+    t.boolean  "accepted"
+    t.string   "phd_grade_app",    limit: 10
+  end
 
   create_table "comments", id: false, force: true do |t|
     t.integer  "c_id",                       null: false
@@ -36,11 +54,17 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer  "rating"
   end
 
-# Could not dump table "course_teach" because of following StandardError
-#   Unknown type 'taughtorteach' for column 'taught_teaching'
+  create_table "course_teach", id: false, force: true do |t|
+    t.integer "course_id",                  null: false
+    t.integer "app_id",                     null: false
+    t.string  "taught_teaching", limit: 10, null: false
+  end
 
-# Could not dump table "course_want_prof" because of following StandardError
-#   Unknown type 'gradetype' for column 'grade'
+  create_table "course_want_prof", id: false, force: true do |t|
+    t.integer "course_id",           null: false
+    t.integer "app_id",              null: false
+    t.string  "grade",     limit: 5, null: false
+  end
 
   create_table "courses", id: false, force: true do |t|
     t.integer "co_id",                  null: false
@@ -62,8 +86,15 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "rating",  limit: 2, null: false
   end
 
-# Could not dump table "students" because of following StandardError
-#   Unknown type 'stutype' for column 'student_type'
+  create_table "students", id: false, force: true do |t|
+    t.integer "stu_id",                     null: false
+    t.string  "stu_first_name", limit: 60,  null: false
+    t.string  "stu_last_name",  limit: 60,  null: false
+    t.string  "password",       limit: 40,  null: false
+    t.string  "miz_email",      limit: 100, null: false
+    t.integer "avg_rating",     limit: 2
+    t.string  "student_type",   limit: 10,  null: false
+  end
 
   create_table "user_auth", id: false, force: true do |t|
     t.string   "miz_email",          limit: 100,                   null: false
