@@ -1,4 +1,6 @@
-# encoding: UTF-8
+class OriginalDatabase < ActiveRecord::Migration
+  def change
+  	# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +13,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413000434) do
+ActiveRecord::Schema.define(version: 0) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admin", id: false, force: true do |t|
     t.integer "admin_id",               null: false
@@ -94,10 +99,13 @@ ActiveRecord::Schema.define(version: 20150413000434) do
   end
 
   create_table "user_auth", id: false, force: true do |t|
-    t.string   "miz_email",          limit: 100, null: false
-    t.string   "encrypted_password", limit: 40,  null: false
-    t.string   "salt",               limit: 40,  null: false
-    t.datetime "registration_date",              null: false
+    t.string   "miz_email",          limit: 100,                   null: false
+    t.string   "encrypted_password", limit: 40,                    null: false
+    t.string   "salt",               limit: 40,                    null: false
+    t.datetime "registration_date",              default: "now()", null: false
   end
 
+end
+
+  end
 end
