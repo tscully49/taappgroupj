@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.4' #orig : 4.1.4
+gem 'rails', '4.1.4'
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
+
 ### OpenShift Online changes:
 
 # Fix the conflict with the system 'rake':
@@ -59,9 +62,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'

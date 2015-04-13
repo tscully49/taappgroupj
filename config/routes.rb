@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   root 'taapp#index'
   get  'taapp/form'
   get  'taapp/register'
+  get  'taapp/formerror'
+  get  'taapp/professor'
+  get  'taapp/proferror'
+  get  'taapp/admin'
+  get  'taapp/adminerror'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
