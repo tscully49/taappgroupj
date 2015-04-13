@@ -100,4 +100,13 @@ ActiveRecord::Schema.define(version: 20150413000434) do
     t.datetime "registration_date",              null: false
   end
 
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "password_digest"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+
 end
