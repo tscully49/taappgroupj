@@ -20,6 +20,8 @@ group :development, :test do
   gem 'sqlite3'
   gem 'minitest'
   gem 'thor'
+  # Use Byebug (recommended online since debugger doesn't work well with Ruby 2.0)
+	gem 'byebug'
 end
 
 # Add support for the MySQL
@@ -31,6 +33,11 @@ group :production, :postgresql do
   gem 'pg'
 end
 
+group :test do
+  gem 'minitest-reporters', '1.0.5'
+  gem 'mini_backtrace',     '0.1.3'
+  gem 'guard-minitest',     '2.3.1'
+end
 ### / OpenShift changes
 
 # Use SCSS for stylesheets
@@ -66,7 +73,5 @@ gem 'spring',        group: :development
 # Use debugger
 #gem 'debugger', group: [:development, :test]
 
-# Use Byebug (recommended online since debugger doesn't work well with Ruby 2.0)
-gem 'byebug', group: [:development, :test]
 
 
