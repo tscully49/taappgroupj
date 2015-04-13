@@ -1,4 +1,5 @@
 class UserAuth < ActiveRecord::Base
+     attr_accessor :password
      before_save {self.miz_email = email.downcase }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :miz_email, presence: true, length: { maximum: 255 }, 
