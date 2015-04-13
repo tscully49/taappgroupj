@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-
-
   get 'sessions/new'
-
   get 'users/new'
 
   # get 'taapp/form'
@@ -18,6 +15,7 @@ Rails.application.routes.draw do
   get  'taapp/proferror'
   get  'taapp/admin'
   get  'taapp/adminerror'
+
   resources :users
   resources :taapp
   get    'login'   => 'sessions#new'
