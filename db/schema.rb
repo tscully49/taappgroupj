@@ -13,6 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20150413000434) do
 
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+>>>>>>> racn88_Sprint2
+
   create_table "admins", id: false, force: true do |t|
     t.integer "admin_id",               null: false
     t.string  "admin_name", limit: 60,  null: false
