@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'users/new'
 
-
-  get 'users/new', to:'taapp#register'
-  
   # get 'taapp/form'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -16,8 +15,12 @@ Rails.application.routes.draw do
   get  'taapp/proferror'
   get  'taapp/admin'
   get  'taapp/adminerror'
-  
-  resources:user
+
+  resources :users
+  resources :taapp
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
