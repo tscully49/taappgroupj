@@ -108,3 +108,4 @@ class OriginalDatabase < ActiveRecord::Migration
   end
 
 end
+end 

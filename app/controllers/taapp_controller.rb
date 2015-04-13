@@ -21,6 +21,7 @@ class TaappController < ApplicationController
   end
 
   def register
+    @users = User.new
   end
   
   def professor
