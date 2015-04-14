@@ -23,7 +23,7 @@
     <% if @users.errors.any? %>
 	<ul class="Signup_Errors">
 		<% for message_error in @users.errors.full_messages %>
-			<li>* <%= message_error %></li>
+			<li><%= message_error %></li>
 	  	<% end %>
 	</ul>
 	  	<% end %>
