@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413233327) do
+ActiveRecord::Schema.define(version: 20150414192746) do
 
   create_table "admins", id: false, force: true do |t|
     t.integer "admin_id",               null: false
     t.string  "admin_name", limit: 60,  null: false
     t.string  "password",   limit: 40,  null: false
     t.string  "miz_email",  limit: 100, null: false
+  end
+
+  create_table "app_courses", force: true do |t|
+    t.integer  "app_id"
+    t.integer  "co_id"
+    t.integer  "taught_teach_take_want"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "applications", id: false, force: true do |t|
@@ -39,6 +47,10 @@ ActiveRecord::Schema.define(version: 20150413233327) do
     t.boolean  "international3"
     t.boolean  "accepted"
     t.string   "phd_grade_app",    limit: 10
+    t.string   "undergrad_status"
+    t.string   "grad_status"
+    t.string   "advisor"
+    t.string   "other_work"
   end
 
   create_table "comments", id: false, force: true do |t|

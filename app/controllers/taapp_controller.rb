@@ -14,6 +14,7 @@ class TaappController < ApplicationController
 
   def form
   	@application = Application.new
+    @course = Course.new
     if session[:accounttype].present? && session[:accounttype] == "student"
       render "form"
     else

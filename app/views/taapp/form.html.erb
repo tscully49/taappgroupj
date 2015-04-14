@@ -7,8 +7,6 @@
 
 <link rel="stylesheets" type="text/css" href="form.css.scss" media="all">
 
-
-
 <script type="text/javascript" src="view.js"></script>
 <script type="text/javascript" src="calendar.js"></script>
 </head>
@@ -18,13 +16,161 @@
 	<div id="form_container">
 	
 		<h1><a>COMPUTER SCIENCE DEPARTMENT</a></h1>
-		<%= form_for @application, :url => url_for(:controller => 'taapp', :action => 'form') do |f| %>
-		<div class="form_description">
-			<h2>COMPUTER SCIENCE DEPARTMENT</h2>
-			<p>GRADUATE TEACHING ASSISTANT APPLICATION</p>
-		</div>						
+
+		<%= form_for @application, :html => {:id => "form_993262", :class => "appnitro"}, :url => url_for(:controller => 'taapp', :action => 'form') do |f| %>
+			<div class="form_description">
+				<h2>COMPUTER SCIENCE DEPARTMENT</h2>
+				<p>GRADUATE TEACHING ASSISTANT APPLICATION</p>
+			</div>
+
+			<div class="form-group">
+	          	<%= f.label :phd_grade_app, "Position Applying For", :class => 'control-label' %>
+	          	<!--<%= f.text_field :phd_grade_app, :class => "form-control"%>-->
+	          	<%= f.select :phd_grade_app, options_for_select(%w[ (select\ one)  TA\ (grad\ student) PLA\ (undergrad\ student)]) %>
+	        </div>
+
+			<div id="form-inlinee" class="form-inline">
+	          	<%= f.label :first_name, :class => 'control-label' %>
+	          	<%= f.text_field :first_name, :class => "form-control"%>
+	          	<%= f.label :last_name, :id => "name", :class => 'control-label' %>
+	          	<%= f.text_field :last_name, :class => "form-control"%>
+	        </div>
+
+	        <div class="form-group"></div>
+
+	        <div id="form-inlinee" class="form-inline">
+	          	<%= f.label :stu_id, "Student ID", :class => 'control-label' %>
+	          	<%= f.text_field :stu_id, :class => "form-control"%>
+	          	<%= f.label :gpa, "GPA", :id => "name", :class => 'control-label' %>
+	          	<%= f.text_field :gpa, :class => "form-control"%>
+	        </div>
+
+	        <div class="form-group"></div>
+
+	        <div class="form-group">
+	        	<%= f.label :undergrad_status, "* If undergraduate applying for PLA, indicate program and level:" %>
+	        	<%= f.select :undergrad_status, options_for_select(%w[(N/A) CS\ BA\ Freshman CS\ BA\ Sophmore CS\ BA\ Junior CS\ BA\ Senior CS\ BS\ Freshman CS\ BS\ Sophmore CS\ BS\ Junior CS\ BS\ Senior CS/IT\ BS\ Freshman CS/IT\ BS\ Sophmore CS/IT\ BS\ Junior CS/IT\ BS\ Senior]) %>
+	        </div>
+
+	        <div class="form-group">
+	        	<%= f.label :grad_status, "* If undergraduate applying for TA, indicate program:" %>
+	        	<%= f.select :grad_status, options_for_select(%w[(N/A) Masters PHD]) %>
+	        </div>
+
+	        <div class="form-inline">
+	        <div class="form-group">
+	        	<%= f.label :advisor, "Advisor's Name" %>
+	        	<%= f.text_field :advisor, :id => "dual", :class => "form-control"%>
+	        </div>
+	        <div class="form-group">
+	        	<%= f.label :phone_num, "Phone Number ex. (###-###-####)" %>
+	        	<%= f.text_field :phone_num, :id => "dual", :class => "form-control"%>
+	        </div>
+	        </div>
+
+	        <div class="form-inline">
+	        <div class="form-group">
+	        	<%= f.label :miz_email, "Mizzou Email" %>
+	        	<%= f.text_field :miz_email, :id => "dual", :class => "form-control"%>
+	        </div>
+	        <div class="form-group">
+	        	<%= f.label :ant_grad_date, "Est Graduation Date (year-mo-date) ex.(2012-02-21)" %>
+	        	<%= f.text_field :ant_grad_date, :id => "dual", :class => "form-control"%>
+	        </div>
+	        </div>
+
+	        <hr />
+
+	        <div id="courses">
+		        <%= fields_for @course, :html => {:id => "courses"}, :url => url_for(:controller => 'taapp', :action => 'form') do |c| %>
+
+					<div class="form-group">
+			        	<%= c.label :co_id, "Select course(s) that you are currently teaching" %>
+			        <div class="form-group">
+			        	<%= c.collection_select :course_name, Course.order(:course_name), :co_id, :course_name, :prompt => true %>
+			        </div>
+			        </div>
+
+			        <div class="form-group">
+			        	<%= f.label :co_id, "Select course(s) that you have already taught" %>
+			        <div class="form-group">
+			        	<%= c.collection_select :course_name, Course.order(:course_name), :co_id, :course_name, :prompt => true %>
+			        </div>
+			        </div>
+
+			        <div class="form-group">
+			        	<%= f.label :co_id, "Select course(s) that you would like to teach (must have already taken class before)" %>
+			        <div class="form-group">
+			        	<%= c.collection_select :course_name, Course.order(:course_name), :co_id, :course_name, :prompt => true %>
+			        </div>
+			        </div>
+
+		        <% end %>
+	        </div>
+
+	        <div class="form-group">
+	        	<%= f.label :other_work, "Explain other jobs you've had or other work experience (very briefly under 250 words)" %>
+	        	<%= f.text_area :other_work, :class => "form-control"%>
+	        </div>
+
+	        <div class="form-group">
+	        	<%= f.label :speak_score, "SPEAK/OPT Score (If applicable)" %>
+	        	<%= f.select :speak_score, options_for_select(%w[N/A 1 2 3 4 5]), {:include_blank => true} %>
+	        </div>
+
+	        <div class="form-group">
+	        	<%= f.label :semester_of_test, "Semester of last test (leave blank if not applicable)" %>
+	        	<%= f.text_field :semester_of_test, :class => "form-control", :placeholder => "Example (Fall-2014) or (Spring-2013)"%>
+	        </div>
+
+	        <div class="form-group">
+	        	<%= f.label :accepted, "Upload a PDF copy of resume (must be a .pdf file)" %>
+	        	<%= f.text_field :accepted, :class => "form-control"%>
+	        </div>
+
+	        <div class="form-group">
+		        <p>Please note the following:</p>
+		        <p>1. Please list the courses that you'd like to be a TA for.</p>
+		        <p>2. Per CS Dept. policy, GTA’s must not exceed half-time total employment within the University system including, but not limited to, the CS department.</p>
+		        <p>3. New TAs, ITAs, and PLAs who have received an appointment, are required to participate in the GATO (Graduate Assistant Teaching Orientation), which is offered just prior to the start of fall and winter terms. (You do not need to attend more than once.)</p>
+		        <p>4. INTERNATIONAL STUDENTS, PLEASE BE AWARE OF THE FOLLOWING:</p>
+		        <p>A. Prior to becoming a TA, any ITA (International Teaching Assistant) who received their primary and secondary education in a country where English is not the principal language are required by law to be assessed for English proficiency (SPEAK test).</p>
+		        <p>B. If you do not register for and satisfy applicable language assessment requirements, you will not be eligible to accept a TA appointment. Arrangements for language assessments must be made before the end of the semester prior to accepting a TA position.</p>
+		        <div class="form-group">
+		        	<%= radio_button_tag(:international1, "1") %>
+					<%= label_tag(:international1, "Requirement met") %>
+					<%= radio_button_tag(:international1, "2") %>
+					<%= label_tag(:international1, "Registered for SPEAK (date)") %>
+					<%= radio_button_tag(:international1, "0") %>
+					<%= label_tag(:international1, "N/A") %>
+		        </div>
+		        <p>C. A potential ITA is required to have satisfactorily completed at least one semester as a student at the University of Missouri before being considered for a TA position.</p>
+	        	<p>D. New TAs, ITAs, and PLAs who have received an appointment, are required to participate in the GATO (Graduate Assistant Teaching Orientation), which is offered just prior to the start of fall and winter terms. (You do not need to attend more than once.)</p>
+	        	<div class="form-group">
+		        	<%= radio_button_tag(:international2, "1") %>
+					<%= label_tag(:international2, "Requirement met") %>
+					<%= radio_button_tag(:international2, "2") %>
+					<%= label_tag(:international2, "Will attend in Aug/Jan (if selected)") %>
+				</div>
+				<p>E. ONITA, is a requirement for all international TAs and PLAs who have not previously attended this orientation.</p>
+				<p>F. You cannot have a TA/PLA appointment until this requirement has been met. (You do not need to attend more than once.)</p>
+				<div class="form-group">
+		        	<%= radio_button_tag(:international3, "1") %>
+					<%= label_tag(:international3, "Requirement met") %>
+					<%= radio_button_tag(:international3, "2") %>
+					<%= label_tag(:international3, "Will attend in Aug/Jan (if selected)") %>
+				</div>
+	        </div>
+	        <hr />
+	        <div id="this_row" class="row"></div>
+	        <div class="button clearfix">
+	        	<%= f.submit "Submit my form", id: "submission", class: "pull-right btn btn-primary" %>
+			</div>
 		<% end %>
-	</div>
+
+	</div> <!-- CLOSE DIV form_container -->
+
 	<%= image_tag("bottom.png")%>
+	<%= debug(params) if Rails.env.development? %>
 	</body>
 </html>

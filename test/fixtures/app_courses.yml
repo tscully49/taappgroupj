@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  app_id: 1
+  co_id: 1
+  taught_teach_take_want: 1
+
+two:
+  app_id: 1
+  co_id: 1
+  taught_teach_take_want: 1
