@@ -14,9 +14,10 @@
      
 
       <%= f.submit "Log in", class: "btn btn-primary" %>
-      <%# <p>New user? <%= link_to "Sign up now!", signup_path %>
-      <%#</p> %>
+      <%#<p>New user? <%= link_to "Sign up now!", signup_path %>
+      </p>
     <% end %>
+
     
     <% if @user.errors.any? %>
 	<ul class="Signup_Errors">
@@ -24,6 +25,8 @@
 			<li>* <%= message_error %></li>
 	  	<% end %>
 	</ul>
-	
+
+    <%= button_to "New User", "taapp/register", :class => "button", :method => :get %>
+
   </div>
 </div>
