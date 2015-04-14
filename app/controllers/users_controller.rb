@@ -7,11 +7,14 @@ class UsersController < ApplicationController
     @user=User.new(params[:user])
     if @user.save
       flash[:notice] = "You Signed up successfully"
+      flash[:color]= "valid"
       redirect to @user
       
     else
-      render 'new'
+      flash[:notice] = "Form is invalid"
+      flash[:color]= "invalid"
     end
+      render'new'
 end
 
 def show
