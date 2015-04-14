@@ -8,13 +8,13 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = "You Signed up successfully"
       flash[:color]= "valid"
-      redirect to @user
+      redirect_to @user
       
     else
       flash[:notice] = "Form is invalid"
       flash[:color]= "invalid"
+      render 'taapp/index'
     end
-      render'new'
 end
 
 def show
@@ -24,8 +24,7 @@ end
 private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
 
