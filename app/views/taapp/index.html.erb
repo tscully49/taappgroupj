@@ -18,13 +18,6 @@
       </p>
     <% end %>
 
-    
-    <% if @user.errors.any? %>
-	<ul class="Signup_Errors">
-		<% for message_error in @user.errors.full_messages %>
-			<li>* <%= message_error %></li>
-	  	<% end %>
-	</ul>
 
     <%= button_to "New User", "taapp/register", :class => "button", :method => :get %>
 

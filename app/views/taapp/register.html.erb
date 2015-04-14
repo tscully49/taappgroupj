@@ -19,5 +19,13 @@
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
     <%= button_to "Go Back", "/", :class => "button", :method => :get %>
+    
+    <% if @users.errors.any? %>
+	<ul class="Signup_Errors">
+		<% for message_error in @users.errors.full_messages %>
+			<li>* <%= message_error %></li>
+	  	<% end %>
+	</ul>
+	  	<% end %>
   </div>
 </div>
