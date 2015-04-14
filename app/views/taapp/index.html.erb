@@ -17,6 +17,7 @@
       <%#<p>New user? <%= link_to "Sign up now!", signup_path %>
       </p>
     <% end %>
+    <%= button_to "Go Back", "/", :class => "button", :method => :get %>
     <%= button_to "New User", "taapp/register", :class => "button", :method => :get %>
   </div>
 </div>
