@@ -8,12 +8,12 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = "You Signed up successfully"
       flash[:color]= "valid"
-      redirect_to 'taapp/index'
+      redirect_to '/'
       
     else
       flash[:notice] = "Form is invalid"
       flash[:color]= "invalid"
-      render 'taapp/index'
+      render '/taapp/registration'
     end
 end
 
