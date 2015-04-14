@@ -18,8 +18,7 @@
 	<div id="form_container">
 	
 		<h1><a>COMPUTER SCIENCE DEPARTMENT</a></h1>
-		<%= form_for(@application) do |f| %>
-		<!--<form id="form_993262" class="appnitro"  method="post" action="">-->
+		<%= form_for @application, :url => url_for(:controller => 'taapp', :action => 'form') do |f| %>
 		<div class="form_description">
 			<h2>COMPUTER SCIENCE DEPARTMENT</h2>
 			<p>GRADUATE TEACHING ASSISTANT APPLICATION</p>
