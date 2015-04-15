@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414192746) do
+ActiveRecord::Schema.define(version: 20150415030236) do
 
-  create_table "admins", id: false, force: true do |t|
-    t.integer "admin_id",               null: false
-    t.string  "admin_name", limit: 60,  null: false
-    t.string  "password",   limit: 40,  null: false
-    t.string  "miz_email",  limit: 100, null: false
+  create_table "admins", force: true do |t|
+    t.string "admin_name", limit: 60,  null: false
+    t.string "password",   limit: 40,  null: false
+    t.string "miz_email",  limit: 100, null: false
   end
 
   create_table "app_courses", force: true do |t|
@@ -28,8 +27,7 @@ ActiveRecord::Schema.define(version: 20150414192746) do
     t.datetime "updated_at"
   end
 
-  create_table "applications", id: false, force: true do |t|
-    t.integer  "app_id",                                               null: false
+  create_table "applications", force: true do |t|
     t.string   "first_name",       limit: 60
     t.string   "last_name",        limit: 60
     t.integer  "stu_id"
@@ -75,17 +73,15 @@ ActiveRecord::Schema.define(version: 20150414192746) do
     t.string  "grade",     limit: 5, null: false
   end
 
-  create_table "courses", id: false, force: true do |t|
-    t.integer "co_id",                  null: false
+  create_table "courses", force: true do |t|
     t.integer "prof_id"
     t.string  "course_name", limit: 60, null: false
   end
 
-  create_table "professors", id: false, force: true do |t|
-    t.integer "prof_id",               null: false
-    t.string  "prof_name", limit: 60,  null: false
-    t.string  "password",  limit: 40,  null: false
-    t.string  "miz_email", limit: 100, null: false
+  create_table "professors", force: true do |t|
+    t.string "prof_name", limit: 60,  null: false
+    t.string "password",  limit: 40,  null: false
+    t.string "miz_email", limit: 100, null: false
   end
 
   create_table "ratings", id: false, force: true do |t|
@@ -103,13 +99,6 @@ ActiveRecord::Schema.define(version: 20150414192746) do
     t.string  "miz_email",      limit: 100, null: false
     t.integer "avg_rating",     limit: 2
     t.string  "student_type",   limit: 10,  null: false
-  end
-
-  create_table "user_auths", id: false, force: true do |t|
-    t.string   "miz_email",          limit: 100, null: false
-    t.string   "encrypted_password", limit: 40,  null: false
-    t.string   "salt",               limit: 40,  null: false
-    t.datetime "registration_date",              null: false
   end
 
   create_table "users", force: true do |t|
