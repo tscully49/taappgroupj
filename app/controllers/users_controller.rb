@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "Form is invalid"
       flash[:color]= "invalid"
-      render '/taapp/registration'
+      redirect_to '/taapp/register'
     end
 end
 
@@ -24,7 +24,7 @@ end
 private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :student_id, :email, :password, :password_confirmation)
     end
 end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415030236) do
+ActiveRecord::Schema.define(version: 20150415032420) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name", limit: 60,  null: false
@@ -51,8 +51,7 @@ ActiveRecord::Schema.define(version: 20150415030236) do
     t.string   "other_work"
   end
 
-  create_table "comments", id: false, force: true do |t|
-    t.integer  "c_id",                       null: false
+  create_table "comments", force: true do |t|
     t.integer  "stu_id",                     null: false
     t.integer  "prof_id",                    null: false
     t.string   "comment",        limit: 500
@@ -91,25 +90,19 @@ ActiveRecord::Schema.define(version: 20150415030236) do
     t.integer "rating",  limit: 2, null: false
   end
 
-  create_table "students", id: false, force: true do |t|
-    t.integer "stu_id",                     null: false
-    t.string  "stu_first_name", limit: 60,  null: false
-    t.string  "stu_last_name",  limit: 60,  null: false
-    t.string  "password",       limit: 40,  null: false
-    t.string  "miz_email",      limit: 100, null: false
-    t.integer "avg_rating",     limit: 2
-    t.string  "student_type",   limit: 10,  null: false
-  end
-
   create_table "users", force: true do |t|
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
-    t.string   "name"
     t.string   "password_confirmation"
+    t.string   "student_id"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["first_name"], name: "index_users_on_first_name"
+  add_index "users", ["last_name"], name: "index_users_on_last_name"
+  add_index "users", ["student_id"], name: "index_users_on_student_id", unique: true
 
 end
