@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :taapp
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
+  post   'logout'  => 'sessions#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

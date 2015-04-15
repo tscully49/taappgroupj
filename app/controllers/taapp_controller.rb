@@ -1,25 +1,25 @@
 class TaappController < ApplicationController
   
   def index
-    #if session[:accounttype].present?
-      #if session[:accounttype] == "student"
-       # redirect_to action: 'form'
-      #elsif session[:accounttype] == "professor"
-      #  redirect_to action: 'professor'
-      #elsif session[:accounttype] == "admin"
-      #  redirect_to action: 'admin'
-      #end
-    #end
+    if session[:accounttype].present?
+      if session[:accounttype] == "student"
+        redirect_to action: 'form'
+      elsif session[:accounttype] == "professor"
+        redirect_to action: 'professor'
+      elsif session[:accounttype] == "admin"
+        redirect_to action: 'admin'
+      end
+    end
   end
 
   def form
   	@application = Application.new
     @course = Course.new
-    #if session[:accounttype].present? && session[:accounttype] == "student"
+    if session[:accounttype].present? && session[:accounttype] == "student"
       render "form"
-    #else
-      #render "formerror"
-    #end
+    else
+      render "formerror"
+    end
   end
 
   def register
