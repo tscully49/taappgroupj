@@ -19,7 +19,7 @@ class TaappController < ApplicationController
       render "form"
     #else
       #render "formerror"
-    end
+    #end
   end
 
   def register
