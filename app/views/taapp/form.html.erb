@@ -14,75 +14,79 @@
 	
 	<%= image_tag("top.png")%>
 	<div id="form_container">
-	
+		
 		<h1><a>COMPUTER SCIENCE DEPARTMENT</a></h1>
 
-		<%= form_for @application, :html => {:id => "form_993262", :class => "appnitro"}, :url => url_for(:controller => 'taapp', :action => 'form') do |f| %>
+		<%= form_for @application, :html => {:id => "form_993262", :class => "appnitro"}, :url => url_for(:controller => 'taapp', :action => 'create') do |f| %>
+			<%=render 'shared/error_messages' %>
+
 			<div class="form_description">
 				<h2>COMPUTER SCIENCE DEPARTMENT</h2>
 				<p>GRADUATE TEACHING ASSISTANT APPLICATION</p>
 			</div>
 
 			<div class="form-group">
-	          	<%= f.label :phd_grade_app, "Position Applying For", :class => 'control-label' %>
-	          	<!--<%= f.text_field :phd_grade_app, :class => "form-control"%>-->
-	          	<%= f.select :phd_grade_app, options_for_select(%w[ (select\ one)  TA\ (grad\ student) PLA\ (undergrad\ student)]) %>
+	          	<%= f.label :position_applying_for, "* Position Applying For", :class => 'control-label' %>
+	          	<!--<%= f.text_field :position_applying_for, :class => "form-control"%>-->
+	          	<%= f.select :position_applying_for, options_for_select(%w[ (select\ one)  TA\ (grad\ student) PLA\ (undergrad\ student)]) %>
 	        </div>
 
 			<div id="form-inlinee" class="form-inline">
-	          	<%= f.label :first_name, :class => 'control-label' %>
+	          	<%= f.label :first_name, "* First Name", :class => 'control-label' %>
 	          	<%= f.text_field :first_name, :class => "form-control"%>
-	          	<%= f.label :last_name, :id => "name", :class => 'control-label' %>
+	          	<%= f.label :last_name, "* Last Name", :id => "name", :class => 'control-label' %>
 	          	<%= f.text_field :last_name, :class => "form-control"%>
 	        </div>
 
 	        <div class="form-group"></div>
 
 	        <div id="form-inlinee" class="form-inline">
-	          	<%= f.label :stu_id, "Student ID", :class => 'control-label' %>
-	          	<%= f.text_field :stu_id, :class => "form-control"%>
-	          	<%= f.label :gpa, "GPA", :id => "name", :class => 'control-label' %>
+	          	<%= f.label :student_id, "* Student ID", :class => 'control-label' %>
+	          	<%= f.text_field :student_id, :class => "form-control"%>
+	          	<%= f.label :gpa, "* GPA", :id => "name", :class => 'control-label' %>
 	          	<%= f.text_field :gpa, :class => "form-control"%>
 	        </div>
 
 	        <div class="form-group"></div>
 
 	        <div class="form-group">
-	        	<%= f.label :undergrad_status, "* If undergraduate applying for PLA, indicate program and level:" %>
+	        	<%= f.label :undergrad_status, "(warning) If undergraduate applying for PLA, indicate program and level:" %>
 	        	<%= f.select :undergrad_status, options_for_select(%w[(N/A) CS\ BA\ Freshman CS\ BA\ Sophmore CS\ BA\ Junior CS\ BA\ Senior CS\ BS\ Freshman CS\ BS\ Sophmore CS\ BS\ Junior CS\ BS\ Senior CS/IT\ BS\ Freshman CS/IT\ BS\ Sophmore CS/IT\ BS\ Junior CS/IT\ BS\ Senior]) %>
 	        </div>
 
 	        <div class="form-group">
-	        	<%= f.label :grad_status, "* If undergraduate applying for TA, indicate program:" %>
+	        	<%= f.label :grad_status, "(warning) If undergraduate applying for TA, indicate program:" %>
+	        	<div class="form-group">
 	        	<%= f.select :grad_status, options_for_select(%w[(N/A) Masters PHD]) %>
+	        	</div>
 	        </div>
 
 	        <div class="form-inline">
 	        <div class="form-group">
-	        	<%= f.label :advisor, "Advisor's Name" %>
+	        	<%= f.label :advisor, "* Advisor's Name" %>
 	        	<%= f.text_field :advisor, :id => "dual", :class => "form-control"%>
 	        </div>
 	        <div class="form-group">
-	        	<%= f.label :phone_num, "Phone Number ex. (###-###-####)" %>
+	        	<%= f.label :phone_num, "* Phone Number ex. (###-###-####)" %>
 	        	<%= f.text_field :phone_num, :id => "dual", :class => "form-control"%>
 	        </div>
 	        </div>
 
 	        <div class="form-inline">
 	        <div class="form-group">
-	        	<%= f.label :miz_email, "Mizzou Email" %>
-	        	<%= f.text_field :miz_email, :id => "dual", :class => "form-control"%>
+	        	<%= f.label :mizzou_email, "* Mizzou Email" %>
+	        	<%= f.text_field :mizzou_email, :id => "dual", :class => "form-control"%>
 	        </div>
 	        <div class="form-group">
-	        	<%= f.label :ant_grad_date, "Est Graduation Date (year-mo-date) ex.(2012-02-21)" %>
-	        	<%= f.text_field :ant_grad_date, :id => "dual", :class => "form-control"%>
+	        	<%= f.label :anticipated_graduation_date, "* Est Graduation Date (year-mo-date) ex.(2012-02-21)" %>
+	        	<%= f.text_field :anticipated_graduation_date, :id => "dual", :class => "form-control"%>
 	        </div>
 	        </div>
 
 	        <hr />
 
 	        <div id="courses">
-		        <%= fields_for @course, :html => {:id => "courses"}, :url => url_for(:controller => 'taapp', :action => 'form') do |c| %>
+		        <%= fields_for @course, :html => {:id => "courses"}, :url => url_for(:controller => 'taapp', :action => 'create') do |c| %>
 
 					<div class="form-group">
 			        	<%= c.label :co_id, "Select course(s) that you are currently teaching" %>

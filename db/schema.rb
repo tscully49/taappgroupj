@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415043104) do
+ActiveRecord::Schema.define(version: 20150416041618) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name", limit: 60,  null: false
@@ -28,20 +28,19 @@ ActiveRecord::Schema.define(version: 20150415043104) do
   end
 
   create_table "applications", force: true do |t|
-    t.string   "first_name",       limit: 60
-    t.string   "last_name",        limit: 60
-    t.integer  "stu_id"
-    t.decimal  "gpa",                          precision: 4, scale: 3, null: false
-    t.integer  "phone_num",                                            null: false
-    t.string   "miz_email",        limit: 100
-    t.datetime "time_stamp",                                           null: false
-    t.date     "date_of_app",                                          null: false
-    t.date     "ant_grad_date",                                        null: false
+    t.string   "first_name",                  limit: 60
+    t.string   "last_name",                   limit: 60
+    t.integer  "student_id"
+    t.decimal  "gpa",                                     precision: 4, scale: 3, null: false
+    t.integer  "phone_num",                                                       null: false
+    t.string   "mizzou_email",                limit: 100
+    t.date     "date_of_app"
+    t.date     "anticipated_graduation_date",                                     null: false
     t.integer  "speak_score"
-    t.string   "semester_of_test", limit: 60
-    t.boolean  "orientation_met",                                      null: false
+    t.string   "semester_of_test",            limit: 60
+    t.boolean  "orientation_met"
     t.boolean  "accepted"
-    t.string   "phd_grade_app",    limit: 10
+    t.string   "position_applying_for",       limit: 10
     t.string   "undergrad_status"
     t.string   "grad_status"
     t.string   "advisor"
@@ -49,6 +48,8 @@ ActiveRecord::Schema.define(version: 20150415043104) do
     t.integer  "international1"
     t.integer  "international2"
     t.integer  "international3"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "comments", force: true do |t|

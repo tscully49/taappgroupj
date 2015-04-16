@@ -16,14 +16,25 @@ class TaappController < ApplicationController
   	@application = Application.new
     @course = Course.new
     #if session[:accounttype].present? && session[:accounttype] == "student"
-      render "form"
     #else
       #render "formerror"
     #end
   end
 
-  def register
-    @users = User.new
+  def create
+    @application = Application.new(application_params)
+    @course = Course.new()
+
+    if @application.position_applying_for == "(select one)"
+      @application.position_applying_for = nil
+    end
+    #tidying up the data so that it can insert into the DB correctly 
+    if @application.save 
+      redirect_to "/"
+    else 
+      render 'form'
+      #flash[:notice] = @application.errors.full_messages
+    end 
   end
   
   def professor
@@ -41,5 +52,16 @@ class TaappController < ApplicationController
       render "adminerror"
     end
   end
+
+  private
+
+    def application_params
+      params.require(:application).permit(:postition_applying_for, :first_name, :last_name, :student_id, :gpa, :undergrad_status, 
+        :grad_status, :advisor, :phone_num, :mizzou_email, :anticipated_graduation_date, :other_work, :speak_score, :semester_of_test, 
+        :international1, :international2, :international3)
+    end
+    def course_params
+      params.require(:course).permit(:co_id)
+    end
   
 end
