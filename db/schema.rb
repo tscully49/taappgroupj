@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416041618) do
+ActiveRecord::Schema.define(version: 20150416052248) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name", limit: 60,  null: false
@@ -82,6 +82,24 @@ ActiveRecord::Schema.define(version: 20150416041618) do
     t.string "prof_name", limit: 60,  null: false
     t.string "password",  limit: 40,  null: false
     t.string "miz_email", limit: 100, null: false
+  end
+
+  create_table "ratings", id: false, force: true do |t|
+    t.integer "prof_id",           null: false
+    t.integer "stu_id",            null: false
+    t.integer "co_id",             null: false
+    t.integer "rating",  limit: 2, null: false
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "password_digest"
+    t.string   "password_confirmation"
+    t.string   "student_id"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["first_name"], name: "index_users_on_first_name"
