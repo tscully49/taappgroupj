@@ -1,4 +1,7 @@
 class Application < ActiveRecord::Base
+  belongs_to :user
+  has_many :application_courses
+  has_many :courses, through: :application_courses
 	before_save { self.mizzou_email = mizzou_email.downcase }
 	validates :first_name,  presence: true, length: { maximum: 50 }
   	validates :last_name,  presence: true, length: { maximum: 50 }

@@ -25,7 +25,7 @@ class TaappController < ApplicationController
 
   def create
     @application = Application.new(application_params)
-    @course = Course.new()
+    @course = ApplicationCourse.new()
 
     if @application.position_applying_for == "(select one)"
       @application.position_applying_for = nil

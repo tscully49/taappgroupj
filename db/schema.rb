@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416131218) do
+ActiveRecord::Schema.define(version: 20150416173053) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name", limit: 60,  null: false
@@ -19,13 +19,16 @@ ActiveRecord::Schema.define(version: 20150416131218) do
     t.string "miz_email",  limit: 100, null: false
   end
 
-  create_table "app_courses", force: true do |t|
-    t.integer  "app_id"
-    t.integer  "co_id"
+  create_table "application_courses", force: true do |t|
+    t.integer  "application_id"
+    t.integer  "course_id"
     t.integer  "taught_teach_take_want"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "application_courses", ["application_id"], name: "index_application_courses_on_application_id"
+  add_index "application_courses", ["course_id"], name: "index_application_courses_on_course_id"
 
   create_table "applications", force: true do |t|
     t.string   "first_name",                  limit: 60
@@ -51,6 +54,8 @@ ActiveRecord::Schema.define(version: 20150416131218) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "applications", ["student_id"], name: "index_applications_on_student_id"
 
   create_table "comments", force: true do |t|
     t.integer  "stu_id",                     null: false
