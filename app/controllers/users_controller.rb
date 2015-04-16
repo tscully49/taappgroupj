@@ -12,9 +12,7 @@ class UsersController < ApplicationController
       redirect_to '/'
       
     else
-      flash[:notice] = "Form is invalid"
-      flash[:color]= "invalid"
-      redirect_to '/taapp/register'
+      render '/taapp/register'
     end
 end
 

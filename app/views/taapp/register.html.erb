@@ -15,10 +15,11 @@
 
 <div class="container">
 
-    <%= form_for @user, :html => {:id => "signup"}, :url => url_for(:controller => 'users', :action => 'new') do |f| %>
+    <%= form_for @user, :url => users_path(@user), :html => {:id => "signup"} do |f| %>
       <div class="header">
         <h3>Sign up</h3>
       </div>
+      <%=render 'shared/user_error_messages' %>
       <div class="sep"></div>
 
       <div class="form-horizontal center">
@@ -75,7 +76,7 @@
       </div> <!-- END form-horizontal center DIV -->
     <% end %>
 
-  <!-- This is an error test for a bad signup -->
+  <!-- This is an error test for a bad signup
     <% if @user.errors.any? %>
 	<ul class="Signup_Errors">
 		<% for message_error in @user.errors.full_messages %>
