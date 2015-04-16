@@ -1,24 +1,26 @@
 class TaappController < ApplicationController
   
   def index
-    #if session[:accounttype].present?
-      #if session[:accounttype] == "student"
-       # redirect_to action: 'form'
-      #elsif session[:accounttype] == "professor"
-      #  redirect_to action: 'professor'
-      #elsif session[:accounttype] == "admin"
-      #  redirect_to action: 'admin'
-      #end
-    #end
+    if session[:accounttype].present?
+      if session[:accounttype] == "student"
+        redirect_to action: 'form'
+      elsif session[:accounttype] == "professor"
+        redirect_to action: 'professor'
+      elsif session[:accounttype] == "admin"
+        redirect_to action: 'admin'
+      end
+    end
   end
 
   def form
   	@application = Application.new
     @course = Course.new
-    #if session[:accounttype].present? && session[:accounttype] == "student"
-    #else
-      #render "formerror"
-    #end
+
+    if session[:accounttype].present? && session[:accounttype] == "student"
+      render "form"
+    else
+      render "formerror"
+    end
   end
 
   def create
@@ -27,6 +29,10 @@ class TaappController < ApplicationController
 
     if @application.position_applying_for == "(select one)"
       @application.position_applying_for = nil
+    end
+
+    if @application.speak_score == "  "
+      @application.speak_score = "N/A"
     end
     #tidying up the data so that it can insert into the DB correctly 
     if @application.save 

@@ -8,6 +8,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
+	<%= if session[:accounttype].present?
+		    form_for(:session, :url => url_for(controller: 'sessions', action: 'destroy')) do |f|
+		    	f.submit "Log Out", class: "btn btn-primary"
+		    end
+		  end %>
   
   <% if flash[:color]== "valid" %>
 		<div class="valid_notice">
