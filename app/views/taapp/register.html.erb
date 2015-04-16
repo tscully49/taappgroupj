@@ -15,7 +15,7 @@
 
 <div class="container">
 
-    <%= form_for @user, :html => {:id => "signup"} do |f| %>
+    <%= form_for @user, :html => {:id => "signup"}, :url => url_for(:controller => 'users', :action => 'new') do |f| %>
       <div class="header">
         <h3>Sign up</h3>
       </div>
@@ -76,9 +76,9 @@
     <% end %>
 
   <!-- This is an error test for a bad signup -->
-    <% if @users.errors.any? %>
+    <% if @user.errors.any? %>
 	<ul class="Signup_Errors">
-		<% for message_error in @users.errors.full_messages %>
+		<% for message_error in @user.errors.full_messages %>
 			<li><%= message_error %></li>
 	  	<% end %>
 	</ul>
