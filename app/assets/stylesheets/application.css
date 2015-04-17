@@ -947,6 +947,6 @@ hr {
 	color: black;
 }
 
-.form-group label{
-	display: block;
+.check_boxes{
+	margin-left: 2em;
 }

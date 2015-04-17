@@ -14,7 +14,7 @@ class TaappController < ApplicationController
 
   def form
   	@application = Application.new
-    @course = Course.new
+    @course = ApplicationCourse.new
 
     if session[:accounttype].present? && session[:accounttype] == "student"
       render "form"
@@ -25,7 +25,7 @@ class TaappController < ApplicationController
 
   def create
     @application = Application.new(application_params)
-    @course = ApplicationCourse.new()
+    @course = ApplicationCourse.new(course_params)
 
     if @application.position_applying_for == "(select one)"
       @application.position_applying_for = nil
@@ -35,6 +35,9 @@ class TaappController < ApplicationController
       @application.speak_score = "N/A"
     end
     #tidying up the data so that it can insert into the DB correctly 
+    
+    
+
     if @application.save 
       redirect_to "/"
     else 
@@ -67,7 +70,7 @@ class TaappController < ApplicationController
         :international1, :international2, :international3)
     end
     def course_params
-      params.require(:course).permit(:co_id)
+      #params.require(:application_course).permit(:course_id)
     end
   
 end
