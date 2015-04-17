@@ -92,7 +92,9 @@
 			        	<%= c.label :co_id, "Select course(s) that you are currently teaching" %>
 			        <div class="form-group">
 			        	<%= c.collection_check_boxes(:course_id, Course.all, :id, :course_name) do |b| %>
-			        		<%= b.label(:"data-value" => b.value) {b.check_box + b.text} %>
+			        		<%= b.label(class:"checkbox check_boxes") do%>
+			        		<%=b.check_box + b.text%>
+			        		<%end%>
 			        	<% end %>
 			        </div>
 			        </div>
@@ -101,7 +103,9 @@
 			        	<%= f.label :co_id, "Select course(s) that you have already taught" %>
 			        <div class="form-group">
 			        	<%= c.collection_check_boxes(:course_id, Course.all, :id, :course_name) do |b| %>
-			        		<%= b.label(:"data-value" => b.value) {b.check_box + b.text} %>
+			        		<%= b.label(class:"checkbox check_boxes") do%>
+			        		<%=b.check_box + b.text%>
+			        		<%end%>
 			        	<% end %>
 			        </div>
 			        </div>
@@ -110,8 +114,11 @@
 			        	<%= f.label :co_id, "Select course(s) that you would like to teach (must have already taken class before)" %>
 			        <div class="form-group">
 			        	<%= c.collection_check_boxes(:course_id, Course.all, :id, :course_name) do |b| %>
-			        		<%= b.label(:"data-value" => b.value) {b.check_box + b.text} %>
+			        		<%= b.label(class:"checkbox check_boxes") do%>
+			        		<%=b.check_box + b.text%>
+			        		<%end%>
 			        	<% end %>
+			        	<!--<%= c.collection_select :course_id, Course.order(:course_name), :id, :course_name, :prompt => true %>-->
 			        </div>
 			        </div>
 
