@@ -14,6 +14,9 @@ class TaappController < ApplicationController
 
   def form
   	@application = Application.new
+    @appcourse = ApplicationCourse.new
+    @appcourse2 = ApplicationCourse.new
+    @appcourse3 = ApplicationCourse.new
     @course = Course.new
 
     if session[:accounttype].present? && session[:accounttype] == "student"
@@ -25,7 +28,10 @@ class TaappController < ApplicationController
 
   def create
     @application = Application.new(application_params)
-    @course = ApplicationCourse.new()
+    @appcourse = ApplicationCourse.new
+    @appcourse2 = ApplicationCourse.new
+    @appcourse3 = ApplicationCourse.new
+    @course = Course.new()
 
     if @application.position_applying_for == "(select one)"
       @application.position_applying_for = nil
