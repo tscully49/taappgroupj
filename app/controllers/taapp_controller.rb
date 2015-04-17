@@ -14,14 +14,9 @@ class TaappController < ApplicationController
 
   def form
   	@application = Application.new
-<<<<<<< HEAD
     @appcourse = ApplicationCourse.new
     @appcourse2 = ApplicationCourse.new
     @appcourse3 = ApplicationCourse.new
-    @course = Course.new
-=======
-    @course = ApplicationCourse.new
->>>>>>> 281367834ee99d70c4a762b8f9e3ef7af6a87d71
 
     if session[:accounttype].present? && session[:accounttype] == "student"
       render "form"
@@ -32,14 +27,9 @@ class TaappController < ApplicationController
 
   def create
     @application = Application.new(application_params)
-<<<<<<< HEAD
-    @appcourse = ApplicationCourse.new
-    @appcourse2 = ApplicationCourse.new
-    @appcourse3 = ApplicationCourse.new
-    @course = Course.new()
-=======
-    @course = ApplicationCourse.new(course_params)
->>>>>>> 281367834ee99d70c4a762b8f9e3ef7af6a87d71
+    @appcourse = ApplicationCourse.new(course_params)
+    @appcourse2 = ApplicationCourse.new(course_params)
+    @appcourse3 = ApplicationCourse.new(course_params)
 
     if @application.position_applying_for == "(select one)"
       @application.position_applying_for = nil
