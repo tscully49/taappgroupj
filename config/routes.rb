@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get  'taapp/admin'
   get  'taapp/adminerror'
   get   '/form', to: 'taapp#form'
+  get   'taapp/show_applicants'
 
   resources :users
   resources :taapp

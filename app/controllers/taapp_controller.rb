@@ -58,6 +58,11 @@ class TaappController < ApplicationController
       render "adminerror"
     end
   end
+  
+  def show_applicants
+    @users = User.all
+    #@users = User.paginate(page: params[:page])
+  end
 
   private
 
