@@ -23,6 +23,11 @@ class TaappController < ApplicationController
     end
   end
 
+  def show
+  @user=User.find(params[:id])
+  end
+
+
   def create
     @application = Application.new(application_params)
     @course = Course.new()
