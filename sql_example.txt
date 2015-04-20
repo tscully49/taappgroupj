@@ -1,0 +1,3 @@
+#sql example
+
+Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct
