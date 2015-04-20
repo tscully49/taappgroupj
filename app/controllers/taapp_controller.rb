@@ -14,7 +14,10 @@ class TaappController < ApplicationController
 
   def form
   	@application = Application.new
-    @course = Course.new
+    @appcourse = ApplicationCourse.new
+    @appcourse2 = ApplicationCourse.new
+    @appcourse3 = ApplicationCourse.new
+    @courses = Course.all
 
     if session[:accounttype].present? && session[:accounttype] == "student"
       render "form"
@@ -25,7 +28,8 @@ class TaappController < ApplicationController
 
   def create
     @application = Application.new(application_params)
-    @course = Course.new()
+    @courses = Course.all
+    @test = params[:app_courses]
 
     if @application.position_applying_for == "(select one)"
       @application.position_applying_for = nil
@@ -34,13 +38,43 @@ class TaappController < ApplicationController
     if @application.speak_score == "  "
       @application.speak_score = "N/A"
     end
-    #tidying up the data so that it can insert into the DB correctly 
-    if @application.save 
-      redirect_to "/"
-    else 
+
+    if @application.semester_of_test == ""
+      @application.semester_of_test = "N/A"
+    end
+
+    @application.accepted = false
+
+    @application.date_of_app = Date.today.to_s
+
+    if @application.language_assessment == "(select one)"
+      @application.language_assessment = nil
+    end
+
+    if @application.GATO_requirement == "(select one)"
+      @application.GATO_requirement = nil
+    end
+
+    if @application.orientation_met == "(select one)"
+      @application.orientation_met = nil
+    end
+
+    if @application.save
+      if @test != nil 
+        params[:app_courses].each do |i|
+          course = i
+          @appcourse = ApplicationCourse.new(:course_id => course, :application_id => (Application.count), :taught_teach_take_want => "teaching now")
+          @appcourse.save
+        end
+      end
+      redirect_to '/taapp/successpage'
+    else
       render 'form'
-      #flash[:notice] = @application.errors.full_messages
-    end 
+    end
+  end
+
+  def successpage
+
   end
   
   def professor
@@ -62,12 +96,8 @@ class TaappController < ApplicationController
   private
 
     def application_params
-      params.require(:application).permit(:postition_applying_for, :first_name, :last_name, :student_id, :gpa, :undergrad_status, 
+      params.require(:application).permit(:position_applying_for, :first_name, :last_name, :student_id, :gpa, :undergrad_status, 
         :grad_status, :advisor, :phone_num, :mizzou_email, :anticipated_graduation_date, :other_work, :speak_score, :semester_of_test, 
-        :international1, :international2, :international3)
+        :language_assessment, :GATO_requirement, :orientation_met)
     end
-    def course_params
-      params.require(:course).permit(:co_id)
-    end
-  
 end
