@@ -61,7 +61,6 @@ class TaappController < ApplicationController
   
   def show_applicants
     @users = User.all
-    #@users = User.paginate(page: params[:page])
   end
 
   private
