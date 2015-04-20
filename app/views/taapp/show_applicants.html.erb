@@ -47,7 +47,7 @@ table#t01 th	{
    
     </tr>
       <% @users.each do |user| %>
-     
+      <%#Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct>
       <tr>
       <td><%= link_to user.first_name %></td>
       <td><%= link_to user.last_name %></td>
