@@ -11,7 +11,19 @@ class AdminController < ApplicationController
   end
   
   def create
-    @admins = Admin.new(addmin_params)
+    @admins = Professors.new(addmin_params)
+    if @admins.save
+      log_in @admins
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to @user
+    else
+      render '/admin/new'
+    end
+  end
+
+
+  def edit
+    @admins = Professors.find(params[:id])
   end
 
 
