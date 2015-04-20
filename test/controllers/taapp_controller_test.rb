@@ -3,7 +3,7 @@ require 'test_helper'
 class TaappControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
-    assert_response :success
+    assert_not :success
   end
 
 end

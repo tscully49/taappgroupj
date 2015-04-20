@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416131218) do
+ActiveRecord::Schema.define(version: 20150420012302) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name", limit: 60,  null: false
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20150416131218) do
     t.datetime "updated_at"
   end
 
+  create_table "application_courses", force: true do |t|
+    t.integer  "application_id"
+    t.integer  "course_id"
+    t.string   "taught_teach_take_want"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "application_courses", ["application_id"], name: "index_application_courses_on_application_id"
+  add_index "application_courses", ["course_id"], name: "index_application_courses_on_course_id"
+
   create_table "applications", force: true do |t|
     t.string   "first_name",                  limit: 60
     t.string   "last_name",                   limit: 60
@@ -38,19 +49,20 @@ ActiveRecord::Schema.define(version: 20150416131218) do
     t.date     "anticipated_graduation_date",                                     null: false
     t.integer  "speak_score"
     t.string   "semester_of_test",            limit: 60
-    t.boolean  "orientation_met"
+    t.string   "orientation_met"
     t.boolean  "accepted"
-    t.string   "position_applying_for",       limit: 10
     t.string   "undergrad_status"
     t.string   "grad_status"
     t.string   "advisor"
     t.string   "other_work"
-    t.integer  "international1"
-    t.integer  "international2"
-    t.integer  "international3"
+    t.string   "language_assessment"
+    t.string   "GATO_requirement"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "position_applying_for"
   end
+
+  add_index "applications", ["student_id"], name: "index_applications_on_student_id"
 
   create_table "comments", force: true do |t|
     t.integer  "stu_id",                     null: false
@@ -79,9 +91,9 @@ ActiveRecord::Schema.define(version: 20150416131218) do
   end
 
   create_table "professors", force: true do |t|
-    t.string "prof_name", limit: 60,  null: false
-    t.string "password",  limit: 40,  null: false
-    t.string "miz_email", limit: 100, null: false
+    t.string "prof_name",       limit: 60,  null: false
+    t.string "password_digest", limit: 40,  null: false
+    t.string "miz_email",       limit: 100, null: false
   end
 
   create_table "ratings", id: false, force: true do |t|
@@ -89,6 +101,23 @@ ActiveRecord::Schema.define(version: 20150416131218) do
     t.integer "stu_id",            null: false
     t.integer "co_id",             null: false
     t.integer "rating",  limit: 2, null: false
+  end
+
+  create_table "students", id: false, force: true do |t|
+    t.integer "stu_id",                     null: false
+    t.string  "stu_first_name", limit: 60,  null: false
+    t.string  "stu_last_name",  limit: 60,  null: false
+    t.string  "password",       limit: 40,  null: false
+    t.string  "miz_email",      limit: 100, null: false
+    t.integer "avg_rating",     limit: 2
+    t.string  "student_type",   limit: 10,  null: false
+  end
+
+  create_table "user_auths", id: false, force: true do |t|
+    t.string   "miz_email",          limit: 100, null: false
+    t.string   "encrypted_password", limit: 40,  null: false
+    t.string   "salt",               limit: 40,  null: false
+    t.datetime "registration_date",              null: false
   end
 
   create_table "users", force: true do |t|

@@ -1,19 +1,7 @@
-class CreateNewTables < ActiveRecord::Migration
+class RootDatabase < ActiveRecord::Migration
   def change
-    # encoding: UTF-8
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
-#
-# It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 20150416052248) do
+  	
+ActiveRecord::Schema.define(version: 20150418003623) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name", limit: 60,  null: false
@@ -21,13 +9,16 @@ ActiveRecord::Schema.define(version: 20150416052248) do
     t.string "miz_email",  limit: 100, null: false
   end
 
-  create_table "app_courses", force: true do |t|
-    t.integer  "app_id"
-    t.integer  "co_id"
-    t.integer  "taught_teach_take_want"
+  create_table "application_courses", force: true do |t|
+    t.integer  "application_id"
+    t.integer  "course_id"
+    t.string   "taught_teach_take_want"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "application_courses", ["application_id"], name: "index_application_courses_on_application_id"
+  add_index "application_courses", ["course_id"], name: "index_application_courses_on_course_id"
 
   create_table "applications", force: true do |t|
     t.string   "first_name",                  limit: 60
@@ -40,19 +31,20 @@ ActiveRecord::Schema.define(version: 20150416052248) do
     t.date     "anticipated_graduation_date",                                     null: false
     t.integer  "speak_score"
     t.string   "semester_of_test",            limit: 60
-    t.boolean  "orientation_met"
+    t.string   "orientation_met"
     t.boolean  "accepted"
-    t.string   "position_applying_for",       limit: 10
     t.string   "undergrad_status"
     t.string   "grad_status"
     t.string   "advisor"
     t.string   "other_work"
-    t.integer  "international1"
-    t.integer  "international2"
-    t.integer  "international3"
+    t.string   "language_assessment"
+    t.string   "GATO_requirement"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "position_applying_for"
   end
+
+  add_index "applications", ["student_id"], name: "index_applications_on_student_id"
 
   create_table "comments", force: true do |t|
     t.integer  "stu_id",                     null: false

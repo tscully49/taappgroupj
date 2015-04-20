@@ -1,3 +1,5 @@
+
+<% provide(:title, "Form Page ") %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -27,8 +29,7 @@
 
 			<div class="form-group">
 	          	<%= f.label :position_applying_for, "* Position Applying For", :class => 'control-label' %>
-	          	<!--<%= f.text_field :position_applying_for, :class => "form-control"%>-->
-	          	<%= f.select :position_applying_for, options_for_select(%w[ (select\ one)  TA\ (grad\ student) PLA\ (undergrad\ student)]) %>
+	          	<%= f.select :position_applying_for, options_for_select(%w[(select\ one) TA\ (grad\ student) PLA\ (undergrad\ student)]) %>
 	        </div>
 
 			<div id="form-inlinee" class="form-inline">
@@ -86,30 +87,22 @@
 	        <hr />
 
 	        <div id="courses">
-		        <%= fields_for @course, :html => {:id => "courses"}, :url => url_for(:controller => 'taapp', :action => 'create') do |c| %>
+		        <%#= form_for @appcourse, :html => {:id => "courses"}, :url => url_for(:controller => 'taapp', :action => 'create') do |c| %>
 
 					<div class="form-group">
-			        	<%= c.label :co_id, "Select course(s) that you are currently teaching" %>
+			        	<%= f.label :course_id, "Select course(s) that you are currently teaching" %>
 			        <div class="form-group">
-			        	<%= c.collection_select :course_name, Course.order(:course_name), :co_id, :course_name, :prompt => true %>
+			        	<%#= form_tag("/taapp#form", :method => "post") do %>
+							<ul style="list-style-type:none;">
+								<% @courses.each do |t| %> 
+							    	<li> <%= check_box_tag  "app_courses[]",t.id %> <%= t.course_name %>  </li>
+								<%end%>
+							</ul>
+						<%#end %>
 			        </div>
 			        </div>
+			    <%# end %>
 
-			        <div class="form-group">
-			        	<%= f.label :co_id, "Select course(s) that you have already taught" %>
-			        <div class="form-group">
-			        	<%= c.collection_select :course_name, Course.order(:course_name), :co_id, :course_name, :prompt => true %>
-			        </div>
-			        </div>
-
-			        <div class="form-group">
-			        	<%= f.label :co_id, "Select course(s) that you would like to teach (must have already taken class before)" %>
-			        <div class="form-group">
-			        	<%= c.collection_select :course_name, Course.order(:course_name), :co_id, :course_name, :prompt => true %>
-			        </div>
-			        </div>
-
-		        <% end %>
 	        </div>
 
 	        <div class="form-group">
@@ -127,10 +120,10 @@
 	        	<%= f.text_field :semester_of_test, :class => "form-control", :placeholder => "Example (Fall-2014) or (Spring-2013)"%>
 	        </div>
 
-	        <div class="form-group">
-	        	<%= f.label :accepted, "Upload a PDF copy of resume (must be a .pdf file)" %>
-	        	<%= f.text_field :accepted, :class => "form-control"%>
-	        </div>
+	        <!--<div class="form-group">
+	        	<#%= f.label :accepted, "Upload a PDF copy of resume (must be a .pdf file)" %>
+	        	<#%= f.text_field :accepted, :class => "form-control"%>
+	        </div>-->
 
 	        <div class="form-group">
 		        <p>Please note the following:</p>
@@ -141,28 +134,17 @@
 		        <p>A. Prior to becoming a TA, any ITA (International Teaching Assistant) who received their primary and secondary education in a country where English is not the principal language are required by law to be assessed for English proficiency (SPEAK test).</p>
 		        <p>B. If you do not register for and satisfy applicable language assessment requirements, you will not be eligible to accept a TA appointment. Arrangements for language assessments must be made before the end of the semester prior to accepting a TA position.</p>
 		        <div class="form-group">
-		        	<%= radio_button_tag(:international1, "1") %>
-					<%= label_tag(:international1, "Requirement met") %>
-					<%= radio_button_tag(:international1, "2") %>
-					<%= label_tag(:international1, "Registered for SPEAK (date)") %>
-					<%= radio_button_tag(:international1, "0") %>
-					<%= label_tag(:international1, "N/A") %>
+					<%= f.select :language_assessment, options_for_select(%w[(select\ one) Language\ Assessments\ met No\ Language\ Assessment N/A]) %>
 		        </div>
 		        <p>C. A potential ITA is required to have satisfactorily completed at least one semester as a student at the University of Missouri before being considered for a TA position.</p>
 	        	<p>D. New TAs, ITAs, and PLAs who have received an appointment, are required to participate in the GATO (Graduate Assistant Teaching Orientation), which is offered just prior to the start of fall and winter terms. (You do not need to attend more than once.)</p>
 	        	<div class="form-group">
-		        	<%= radio_button_tag(:international2, "1") %>
-					<%= label_tag(:international2, "Requirement met") %>
-					<%= radio_button_tag(:international2, "2") %>
-					<%= label_tag(:international2, "Will attend in Aug/Jan (if selected)") %>
+					<%= f.select :GATO_requirement, options_for_select(%w[(select\ one) GATO\ completed GATO\ NOT\ completed]) %>
 				</div>
 				<p>E. ONITA, is a requirement for all international TAs and PLAs who have not previously attended this orientation.</p>
 				<p>F. You cannot have a TA/PLA appointment until this requirement has been met. (You do not need to attend more than once.)</p>
 				<div class="form-group">
-		        	<%= radio_button_tag(:international3, "1") %>
-					<%= label_tag(:international3, "Requirement met") %>
-					<%= radio_button_tag(:international3, "2") %>
-					<%= label_tag(:international3, "Will attend in Aug/Jan (if selected)") %>
+					<%= f.select :orientation_met, options_for_select(%w[(select\ one) Orientation\ Met No\ Orientation]) %>
 				</div>
 	        </div>
 	        <hr />

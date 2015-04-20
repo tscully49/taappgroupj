@@ -946,3 +946,7 @@ hr {
 .field_with_errors select{
 	color: black;
 }
+
+.check_boxes{
+	margin-left: 2em;
+}
