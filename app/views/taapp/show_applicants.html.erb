@@ -4,15 +4,31 @@
 
 
 <ul class="users">
-  <% @users.each do |user| %>
-    <li>
+<<<<<<< HEAD
+ 
+=======
+>>>>>>> rbync_sprint3
+   
+    <table>
+    <tr>                          
+    <th> Fist Name </th>
+    <th> Last Name </th>
+    <th> Student ID </th>
+    </tr>
+      <% @users.each do |user| %>
      
-      <%= link_to user.first_name, :class => "btn btn-default", :method => :get %>
-      <%= link_to user.last_name, :class => "btn btn-default", :method => :get %>
-     
-    </li>
+      <tr>
+      <td><%= link_to user.first_name %></td>
+      <td><%= link_to user.last_name %></td>
+      <td><%= link_to user.student_id %></td>
+      </tr>
+   
   <% end %>
+    </table> 
+<<<<<<< HEAD
+=======
 
+>>>>>>> rbync_sprint3
 
 </ul>
 

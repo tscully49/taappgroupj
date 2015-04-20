@@ -17,7 +17,7 @@ User.create!(first_name:  "Example",
 99.times do |n|
   first_name  = Faker::Name.name
   last_name   = Faker::Name.name
-  student_id  = 12345678,
+  student_id  = 12345687,
   email = "example-#{n+1}@mail.missouri.edu"
   password = "password"
   User.create!(fisrt_name:  name,
