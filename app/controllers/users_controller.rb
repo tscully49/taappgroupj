@@ -16,10 +16,6 @@ class UsersController < ApplicationController
     end
 end
 
-def show_applicants
-    @user=User.all
-    render '/taapp/show_applicants'
-end
 
 def show
   @user=User.find(params[:id])
