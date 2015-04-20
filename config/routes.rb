@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :users
   resources :admin
   resources :taapp
+  resources :courses
   get    'login'   => 'sessions#new'
   get    'signup'  => 'admin#new'
   post   'login'   => 'sessions#create'

@@ -950,3 +950,7 @@ hr {
 .check_boxes{
 	margin-left: 2em;
 }
+
+div #midle_button{
+	margin: 0px auto;
+}
