@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
   
-  before_action :logged_in_admin, only: [:edit, :update]
+  #before_action :logged_in_admin, only: [:edit, :update]
   
   def show
     @admin = Admin.find(params[:id])
@@ -34,23 +34,23 @@ class AdminController < ApplicationController
       else
         render '/admin/edit'
       end
-    end
+  end
   
 
-  private
+    private
   
       def admin_params
         params.require(:admins).permit(:admin_name, :password, :miz_email)
       end
       
-       def professor_params
+      def professor_params
         params.require(:professors).permit(:prof_name, :password_digest, :miz_email)
       end
       
-      def logged_in_admin
-      unless logged_in?
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
+      #def logged_in_admin
+      #unless logged_in?
+        #flash[:danger] = "Please log in."
+        #redirect_to login_url
+      #end
+      #end
   end
