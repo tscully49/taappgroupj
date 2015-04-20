@@ -131,7 +131,7 @@ class TaappController < ApplicationController
   end
   
   def show_applicants
-    @users = User.all
+    @applications = Application.all
   end
 
   private

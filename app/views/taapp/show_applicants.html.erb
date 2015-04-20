@@ -5,7 +5,7 @@
 <head>
 <style>
 table  {
-    width: 100%; 
+    width: 90%; 
     border: 1px solid black;
     border-collapse: collapse;
    
@@ -44,14 +44,20 @@ table#t01 th	{
     
     <th> StudentID </th>
     
+    <th> Score </th>
    
     </tr>
-      <% @users.each do |user| %>
-      <%#Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct>
+
+      <%#Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct>%>
+
+      <% @applications.each do |application| %>
+     
+
       <tr>
-      <td><%= link_to user.first_name %></td>
-      <td><%= link_to user.last_name %></td>
-      <td><%= link_to user.student_id %></td>
+      <td><%= link_to application.first_name %></td>
+      <td><%= link_to application.last_name %></td>
+      <td><%= link_to application.student_id %></td>
+      <td><%#= link_to user.student_id %></td>
       </tr>
    
   <% end %>
