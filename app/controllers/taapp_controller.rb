@@ -20,7 +20,12 @@ class TaappController < ApplicationController
     @courses = Course.all
 
     if session[:accounttype].present? && session[:accounttype] == "student"
-      render "form"
+      user = User.find_by(id: session[:id])
+      if Application.find_by(mizzou_email: user.email)
+        render "successpage"
+      else
+        render "form"
+      end
     else
       render "formerror"
     end
