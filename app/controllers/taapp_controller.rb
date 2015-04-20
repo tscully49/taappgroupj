@@ -18,6 +18,8 @@ class TaappController < ApplicationController
     @appcourse2 = ApplicationCourse.new
     @appcourse3 = ApplicationCourse.new
     @courses = Course.all
+    #@selected = (params[:app_courses].present?(app_courses) ? params[:app_courses] : [])
+
 
     if session[:accounttype].present? && session[:accounttype] == "student"
       user = User.find_by(id: session[:id])
@@ -32,7 +34,7 @@ class TaappController < ApplicationController
   end
 
   def show
-  @user=User.find(params[:id])
+    @user=User.find(params[:id])
   end
 
 
@@ -40,6 +42,10 @@ class TaappController < ApplicationController
     @application = Application.new(application_params)
     @courses = Course.all
     @test = params[:app_courses]
+    @test2 = params[:app_courses2]
+    @test3 = params[:app_courses3]
+    @test4 = params[:app_courses4]
+    @selected = (params[:app_courses].present? ? params[:app_courses] : [])
 
     if @application.position_applying_for == "(select one)"
       @application.position_applying_for = nil
@@ -73,13 +79,34 @@ class TaappController < ApplicationController
       if @test != nil 
         params[:app_courses].each do |i|
           course = i
-          @appcourse = ApplicationCourse.new(:course_id => course, :application_id => (Application.count), :taught_teach_take_want => "teaching now")
+          @appcourse = ApplicationCourse.new(:course_id => course, :application_id => (Application.count), :taught_teach_take_want => "teaching")
           @appcourse.save
         end
       end
-      redirect_to '/taapp/successpage'
+      if @test2 != nil
+        params[:app_courses2].each do |i|
+          course = i
+          @appcourse2 = ApplicationCourse.new(:course_id => course, :application_id => (Application.count), :taught_teach_take_want => "taught")
+          @appcourse2.save
+        end
+      end
+      if @test3 != nil
+        params[:app_courses3].each do |i|
+          course = i
+          @appcourse3 = ApplicationCourse.new(:course_id => course, :application_id => (Application.count), :taught_teach_take_want => "taken")
+          @appcourse3.save
+        end
+      end
+      if @test4 != nil
+        params[:app_courses4].each do |i|
+          course = i
+          @appcourse4 = ApplicationCourse.new(:course_id => course, :application_id => (Application.count), :taught_teach_take_want => "want")
+          @appcourse4.save
+        end
+      end
+        redirect_to '/taapp/successpage'
     else
-      render 'form'
+        render 'form'
     end
   end
 

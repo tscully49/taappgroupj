@@ -95,7 +95,70 @@
 			        	<%#= form_tag("/taapp#form", :method => "post") do %>
 							<ul style="list-style-type:none;">
 								<% @courses.each do |t| %> 
-							    	<li> <%= check_box_tag  "app_courses[]",t.id %> <%= t.course_name %>  </li>
+							    	<!--<li> <#%= check_box_tag  "app_courses[]", t.id %> <%= t.course_name %>  </li>-->
+							    	<li> <%= check_box_tag "app_courses[]", t.id, if params[:app_courses]; params[:app_courses].include?(t.id.to_s()) end%><%= t.course_name %></li>
+								<%end%>
+							</ul>
+						<%#end %>
+			        </div>
+			        </div>
+			    <%# end %>
+
+	        </div>
+
+	        <hr />
+
+	        <div id="courses">
+		        <%#= form_for @appcourse, :html => {:id => "courses"}, :url => url_for(:controller => 'taapp', :action => 'create') do |c| %>
+
+					<div class="form-group">
+			        	<%= f.label :course_id, "Select course(s) that you have already taught" %>
+			        <div class="form-group">
+			        	<%#= form_tag("/taapp#form", :method => "post") do %>
+							<ul style="list-style-type:none;">
+								<% @courses.each do |t| %> 
+							    	<!--<li> <#%= check_box_tag  "app_courses[]", t.id %> <%= t.course_name %>  </li>-->
+							    	<li> <%= check_box_tag "app_courses2[]", t.id, if params[:app_courses2]; params[:app_courses2].include?(t.id.to_s()) end%><%= t.course_name %></li>
+								<%end%>
+							</ul>
+						<%#end %>
+			        </div>
+			        </div>
+			    <%# end %>
+
+	        </div>
+
+	        <div id="courses">
+		        <%#= form_for @appcourse, :html => {:id => "courses"}, :url => url_for(:controller => 'taapp', :action => 'create') do |c| %>
+
+					<div class="form-group">
+			        	<%= f.label :course_id, "Select course(s) that you have taken" %>
+			        <div class="form-group">
+			        	<%#= form_tag("/taapp#form", :method => "post") do %>
+							<ul style="list-style-type:none;">
+								<% @courses.each do |t| %> 
+							    	<!--<li> <#%= check_box_tag  "app_courses[]", t.id %> <%= t.course_name %>  </li>-->
+							    	<li> <%= check_box_tag "app_courses3[]", t.id, if params[:app_courses3]; params[:app_courses3].include?(t.id.to_s()) end%><%= t.course_name %></li>
+								<%end%>
+							</ul>
+						<%#end %>
+			        </div>
+			        </div>
+			    <%# end %>
+
+	        </div>
+
+	        <div id="courses">
+		        <%#= form_for @appcourse, :html => {:id => "courses"}, :url => url_for(:controller => 'taapp', :action => 'create') do |c| %>
+
+					<div class="form-group">
+			        	<%= f.label :course_id, "Select course(s) that you WANT to teach this upcoming semester" %>
+			        <div class="form-group">
+			        	<%#= form_tag("/taapp#form", :method => "post") do %>
+							<ul style="list-style-type:none;">
+								<% @courses.each do |t| %> 
+							    	<!--<li> <#%= check_box_tag  "app_courses[]", t.id %> <%= t.course_name %>  </li>-->
+							    	<li> <%= check_box_tag "app_courses4[]", t.id, if params[:app_courses4]; params[:app_courses4].include?(t.id.to_s()) end%><%= t.course_name %></li>
 								<%end%>
 							</ul>
 						<%#end %>
@@ -129,17 +192,22 @@
 		        <p>A. Prior to becoming a TA, any ITA (International Teaching Assistant) who received their primary and secondary education in a country where English is not the principal language are required by law to be assessed for English proficiency (SPEAK test).</p>
 		        <p>B. If you do not register for and satisfy applicable language assessment requirements, you will not be eligible to accept a TA appointment. Arrangements for language assessments must be made before the end of the semester prior to accepting a TA position.</p>
 		        <div class="form-group">
-					<%= f.select :language_assessment, options_for_select(%w[(select\ one) Language\ Assessments\ met No\ Language\ Assessment N/A], :selected => @application.language_assessment) %>
+			        <%= f.label :language_assessment, "Language Assessment"%>
+					<%= f.select :language_assessment, options_for_select(%w[(select\ one) N/A Language\ Assessments\ Met Language\ Assessment\ NOT\ Met], :selected => @application.language_assessment) %>
 		        </div>
 		        <p>C. A potential ITA is required to have satisfactorily completed at least one semester as a student at the University of Missouri before being considered for a TA position.</p>
 	        	<p>D. New TAs, ITAs, and PLAs who have received an appointment, are required to participate in the GATO (Graduate Assistant Teaching Orientation), which is offered just prior to the start of fall and winter terms. (You do not need to attend more than once.)</p>
 	        	<div class="form-group">
-					<%= f.select :GATO_requirement, options_for_select(%w[(select\ one) GATO\ completed GATO\ NOT\ completed], :selected => @application.GATO_requirement) %>
+	        	<div class="form-inline">
+	        		<%= f.label :GATO_requirement, "GATO Requirement"%>
+					<%= f.select :GATO_requirement, options_for_select(%w[(select\ one) GATO\ Completed GATO\ NOT\ Completed], :selected => @application.GATO_requirement) %>
+				</div>
 				</div>
 				<p>E. ONITA, is a requirement for all international TAs and PLAs who have not previously attended this orientation.</p>
 				<p>F. You cannot have a TA/PLA appointment until this requirement has been met. (You do not need to attend more than once.)</p>
 				<div class="form-group">
-					<%= f.select :orientation_met, options_for_select(%w[(select\ one) Orientation\ Met No\ Orientation], :selected => @application.orientation_met) %>
+					<%= f.label :orientation_met, "Orientation"%>
+					<%= f.select :orientation_met, options_for_select(%w[(select\ one) Orientation\ Met Orientation\ NOT\ Met], :selected => @application.orientation_met) %>
 				</div>
 	        </div>
 	        <hr />

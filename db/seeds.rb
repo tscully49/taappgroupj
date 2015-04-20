@@ -54,12 +54,13 @@ Application.create!(first_name: "Hank", last_name: "Smith", student_id: 22242432
 	speak_score: "0", orientation_met: "yes", accepted: false, 
 	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
 
-Course.create(course_name: "CS 4320", prof_id: 3)
-Course.create(course_name: "CS 1050", prof_id: 2)
-Course.create(course_name: "CS 2050", prof_id: 5)
-Course.create(course_name: "CS 3330", prof_id: 6)
-Course.create(course_name: "CS 3050", prof_id: 2)
-Course.create(course_name: "CS 4050", prof_id: 8)
+Course.create(course_name: "CS 4320", prof_id: 3, open_spots: 4)
+Course.create(course_name: "CS 1050", prof_id: 2, open_spots: 3)
+Course.create(course_name: "CS 2050", prof_id: 5, open_spots: 1)
+Course.create(course_name: "CS 3330", prof_id: 6, open_spots: 3)
+Course.create(course_name: "CS 3050", prof_id: 2, open_spots: 2)
+Course.create(course_name: "CS 4050", prof_id: 8, open_spots: 3)
+Course.create(course_name: "CS 4800", prof_id: 3, open_spots: 2)
 
 ApplicationCourse.create(application_id: 1, course_id: 4, taught_teach_take_want: "teach")
 ApplicationCourse.create(application_id: 1, course_id: 2, taught_teach_take_want: "take")
