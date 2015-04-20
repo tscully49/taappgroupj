@@ -14,7 +14,9 @@ class UsersController < ApplicationController
     else
       render '/taapp/register'
     end
-end
+  end
+
+
 
 def show
   @user=User.find(params[:id])
