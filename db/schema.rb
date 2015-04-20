@@ -19,14 +19,6 @@ ActiveRecord::Schema.define(version: 20150420012302) do
     t.string "miz_email",  limit: 100, null: false
   end
 
-  create_table "app_courses", force: true do |t|
-    t.integer  "app_id"
-    t.integer  "co_id"
-    t.integer  "taught_teach_take_want"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "application_courses", force: true do |t|
     t.integer  "application_id"
     t.integer  "course_id"
@@ -101,23 +93,6 @@ ActiveRecord::Schema.define(version: 20150420012302) do
     t.integer "stu_id",            null: false
     t.integer "co_id",             null: false
     t.integer "rating",  limit: 2, null: false
-  end
-
-  create_table "students", id: false, force: true do |t|
-    t.integer "stu_id",                     null: false
-    t.string  "stu_first_name", limit: 60,  null: false
-    t.string  "stu_last_name",  limit: 60,  null: false
-    t.string  "password",       limit: 40,  null: false
-    t.string  "miz_email",      limit: 100, null: false
-    t.integer "avg_rating",     limit: 2
-    t.string  "student_type",   limit: 10,  null: false
-  end
-
-  create_table "user_auths", id: false, force: true do |t|
-    t.string   "miz_email",          limit: 100, null: false
-    t.string   "encrypted_password", limit: 40,  null: false
-    t.string   "salt",               limit: 40,  null: false
-    t.datetime "registration_date",              null: false
   end
 
   create_table "users", force: true do |t|
