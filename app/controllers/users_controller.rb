@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     else
       render '/taapp/register'
     end
-end
+ end
 
 
 
