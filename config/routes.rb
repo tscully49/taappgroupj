@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   get 'courses/new'
+  get 'admin/new'
+
+  get 'addmin/home'
+
+  get 'addmin/help'
 
   get 'sessions/new'
   get 'users/new'
@@ -21,8 +26,10 @@ Rails.application.routes.draw do
   get   '/form', to: 'taapp#form'
 
   resources :users
+  resources :admin
   resources :taapp
   get    'login'   => 'sessions#new'
+  get    'signup'  => 'admin#new'
   post   'login'   => 'sessions#create'
   post   'logout'  => 'sessions#destroy'
 
