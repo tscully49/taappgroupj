@@ -24,10 +24,12 @@ Rails.application.routes.draw do
   get  'taapp/adminerror'
   get  'taapp/successpage'
   get   '/form', to: 'taapp#form'
+  get   'taapp/show_applicants'
 
   resources :users
   resources :admin
   resources :taapp
+  resources :courses
   get    'login'   => 'sessions#new'
   get    'signup'  => 'admin#new'
   post   'login'   => 'sessions#create'

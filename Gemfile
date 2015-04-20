@@ -4,6 +4,10 @@ gem 'rails', '4.1.4'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass',  '3.2.0.2'
+gem 'faker', '1.4.2'
+gem 'will_paginate',           '3.0.7'
+gem 'bootstrap-will_paginate', '0.0.10'
+
 ### OpenShift Online changes:
 
 # Fix the conflict with the system 'rake':

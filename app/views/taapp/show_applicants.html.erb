@@ -1,0 +1,27 @@
+<% provide(:title, 'All applications') %>
+
+<h2>All Applicants</h2>
+
+
+<ul class="users">
+
+   
+    <table>
+    <tr>                          
+    <th> Fist Name </th>
+    <th> Last Name </th>
+    <th> Student ID </th>
+    </tr>
+      <% @users.each do |user| %>
+     
+      <tr>
+      <td><%= link_to user.first_name %></td>
+      <td><%= link_to user.last_name %></td>
+      <td><%= link_to user.student_id %></td>
+      </tr>
+   
+  <% end %>
+    </table> 
+
+</ul>
+

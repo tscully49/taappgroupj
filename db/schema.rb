@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20150420015342) do
   create_table "courses", force: true do |t|
     t.integer "prof_id"
     t.string  "course_name", limit: 60, null: false
+    t.integer "open_spots"
   end
 
   create_table "professors", force: true do |t|

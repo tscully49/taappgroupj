@@ -31,6 +31,11 @@ class TaappController < ApplicationController
     end
   end
 
+  def show
+  @user=User.find(params[:id])
+  end
+
+
   def create
     @application = Application.new(application_params)
     @courses = Course.all
@@ -96,6 +101,10 @@ class TaappController < ApplicationController
     else
       render "adminerror"
     end
+  end
+  
+  def show_applicants
+    @users = User.all
   end
 
   private
