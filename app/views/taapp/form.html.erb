@@ -27,7 +27,7 @@
 
 			<div class="form-group">
 	          	<%= f.label :position_applying_for, "* Position Applying For", :class => 'control-label' %>
-	          	<%= f.select :position_applying_for, options_for_select(%w[(select\ one) TA\ (grad\ student) PLA\ (undergrad\ student)]) %>
+	          	<%= f.select :position_applying_for, options_for_select(%w[(select\ one) TA\ (grad\ student) PLA\ (undergrad\ student)], :selected => @application.position_applying_for) %>
 	        </div>
 
 			<div id="form-inlinee" class="form-inline">
@@ -110,7 +110,7 @@
 
 	        <div class="form-group">
 	        	<%= f.label :speak_score, "SPEAK/OPT Score (If applicable)" %>
-	        	<%= f.select :speak_score, options_for_select(%w[N/A 1 2 3 4 5]), {:include_blank => true} %>
+	        	<%= f.select :speak_score, options_for_select(%w[N/A 1 2 3 4 5], :selected => @application.speak_score), {:include_blank => true}%>
 	        </div>
 
 	        <div class="form-group">
@@ -132,17 +132,17 @@
 		        <p>A. Prior to becoming a TA, any ITA (International Teaching Assistant) who received their primary and secondary education in a country where English is not the principal language are required by law to be assessed for English proficiency (SPEAK test).</p>
 		        <p>B. If you do not register for and satisfy applicable language assessment requirements, you will not be eligible to accept a TA appointment. Arrangements for language assessments must be made before the end of the semester prior to accepting a TA position.</p>
 		        <div class="form-group">
-					<%= f.select :language_assessment, options_for_select(%w[(select\ one) Language\ Assessments\ met No\ Language\ Assessment N/A]) %>
+					<%= f.select :language_assessment, options_for_select(%w[(select\ one) Language\ Assessments\ met No\ Language\ Assessment N/A], :selected => @application.language_assessment) %>
 		        </div>
 		        <p>C. A potential ITA is required to have satisfactorily completed at least one semester as a student at the University of Missouri before being considered for a TA position.</p>
 	        	<p>D. New TAs, ITAs, and PLAs who have received an appointment, are required to participate in the GATO (Graduate Assistant Teaching Orientation), which is offered just prior to the start of fall and winter terms. (You do not need to attend more than once.)</p>
 	        	<div class="form-group">
-					<%= f.select :GATO_requirement, options_for_select(%w[(select\ one) GATO\ completed GATO\ NOT\ completed]) %>
+					<%= f.select :GATO_requirement, options_for_select(%w[(select\ one) GATO\ completed GATO\ NOT\ completed], :selected => @application.GATO_requirement) %>
 				</div>
 				<p>E. ONITA, is a requirement for all international TAs and PLAs who have not previously attended this orientation.</p>
 				<p>F. You cannot have a TA/PLA appointment until this requirement has been met. (You do not need to attend more than once.)</p>
 				<div class="form-group">
-					<%= f.select :orientation_met, options_for_select(%w[(select\ one) Orientation\ Met No\ Orientation]) %>
+					<%= f.select :orientation_met, options_for_select(%w[(select\ one) Orientation\ Met No\ Orientation], :selected => @application.orientation_met) %>
 				</div>
 	        </div>
 	        <hr />
