@@ -10,6 +10,34 @@
 
 <script type="text/javascript" src="view.js"></script>
 <script type="text/javascript" src="calendar.js"></script>
+
+<style>
+table #t01 {
+    
+    border: 1px solid black;
+    border-collapse: collapse;
+     ; 
+   
+}
+th,td {
+    padding: 10px;
+}
+
+
+table#t01 tr:nth-child(even) {
+   
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+    
+   background-color:#fff;
+}
+table#t01 th	{
+    
+    background-color: black;
+    color: white;
+}
+</style>
 </head>
 <body id ="main_body">
 
@@ -44,9 +72,31 @@
           <%= f.submit "Create course", class: "btn btn-primary"  %>
         </div>
         </div>
-      </div> <!-- END form-horizontal center DIV -->
+        
+       <!-- END form-horizontal center DIV -->
+      <% end %>
+      
+      <table id="this_table"> 
+      <tr>
+      <th> Professor Name </th>
+      <th> Course Name </th>
+      <th> Open Spots for TA position </th>
+      <th> Delete Course</th>
+      </tr>
+      
+      <% @courses.each do |course| %>
+    
+      <tr>
+      <td><%= course.prof_id %></td>
+      <td><%= course.course_name %></td>
+      <td><%= course.open_spots %></td>
+      <td> <%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => course.id }, :method => :delete, class: "btn btn-primary" %> </td>
+      </tr>
+      
+       <% end %>
+      </table>
       <%= debug(params) if Rails.env.development? %>
-    <% end %>
+    </div>
 
 </body>
 </html>

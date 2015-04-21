@@ -957,3 +957,7 @@ hr {
 div #midle_button{
 	margin: 0px auto;
 }
+
+#this_table{
+	clear:both;
+}
