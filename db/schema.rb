@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150421023043) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name",      limit: 60,  null: false
-    t.string "password_digest", limit: 40,  null: false
+    t.string "password_digest", limit: 100,  null: false
     t.string "miz_email",       limit: 100, null: false
   end
 
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150421023043) do
 
   create_table "professors", force: true do |t|
     t.string "prof_name",       limit: 60,  null: false
-    t.string "password_digest", limit: 40,  null: false
+    t.string "password_digest", limit: 100,  null: false
     t.string "miz_email",       limit: 100, null: false
   end
 
