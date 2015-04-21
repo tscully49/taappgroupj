@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
+  
   def new
   end
+
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
     professor = Professor.find_by(miz_email: params[:session][:email].downcase)
@@ -14,9 +16,12 @@ class SessionsController < ApplicationController
     elsif admin && admin.authenticate(params[:session][:password])
       session[:accounttype] = "admin"
       session[:id] = admin.id
+    else
+      flash.now[:notice] = 'Invalid email/password combination'
+      render "taapp/index"
     end
-    redirect_to ""
   end
+  
   def destroy
     reset_session
     redirect_to ''
