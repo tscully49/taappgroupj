@@ -25,6 +25,12 @@ Rails.application.routes.draw do
   get  'taapp/successpage'
   get   '/form', to: 'taapp#form'
   get   'taapp/show_applicants'
+  get   'admin/index'
+  get   'admin/edit'
+  get   'admin/_admin'
+  get   'admin/show'
+  get   'admin/successpage'
+  
 
   resources :users
   resources :admin
@@ -34,6 +40,9 @@ Rails.application.routes.draw do
   get    'signup'  => 'admin#new'
   post   'login'   => 'sessions#create'
   post   'logout'  => 'sessions#destroy'
+ # get    'edit'    =>  'admin#edit'
+ 
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
