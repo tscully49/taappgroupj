@@ -57,7 +57,7 @@ table#t01 th	{
       <td><%= link_to application.first_name %></td>
       <td><%= link_to application.last_name %></td>
       <td><%= link_to application.student_id %></td>
-      <td><%#= link_to ratings.find_or_create_by(first_name: 'application.first_name') %></td>
+      <td><%= link_to application.course_id%></td>
       </tr>
    
   <% end %>
