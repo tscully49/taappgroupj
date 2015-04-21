@@ -133,7 +133,9 @@ class TaappController < ApplicationController
   def show_applicants
     @applications = Application.all
   end
-
+  def test_applicant
+    @test_apps=Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct
+  end
   private
 
     def application_params
