@@ -38,7 +38,7 @@ table#t01 th	{
   
     <table id="t01">
     <tr>                          
-    <th> FisrtName </th>
+    <th> FistName </th>
     
     <th> LastName </th>
     
@@ -50,14 +50,14 @@ table#t01 th	{
 
       <%#Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct>%>
 
-      <% @applications.each do |application| %>
+      <% @test_apps.each do |application| %>
      
 
       <tr>
       <td><%= link_to application.first_name %></td>
       <td><%= link_to application.last_name %></td>
       <td><%= link_to application.student_id %></td>
-      <td><%#= link_to ratings.find_or_create_by(first_name: 'application.first_name') %></td>
+      <td><%= link_to application.course_id%></td>
       </tr>
    
   <% end %>
