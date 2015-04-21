@@ -2,21 +2,17 @@ class AdminController < ApplicationController
   
   #before_action :logged_in_admin, only: [:edit, :update]
   
-  def show
-    @admin = Admin.find(params[:id])
-  end
-
   def new
-    @admins = Admin.new
-    render '/admin/new'
+    @admins = Professor.new
+  
   end
   
   def create
-    @admins = Admin.new(addmin_params)
+    @admins = Professor.new(professor_params)
     if @admins.save
-      log_in @admins
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      redirect_to '/admin/successpage'
+      flash[:notice] = "Professor account is created successfully"
+      flash[:color]= "valid"
     else
       render '/admin/new'
     end
@@ -24,19 +20,35 @@ class AdminController < ApplicationController
 
 
   def edit
-    @admins = Admin.find(params[:id])
+    @admins = Professor.find(params[:id])
+    if @admins.save
+        
+      flash[:notice] = "Professor account is edited successfully"
+      flash[:color]= "valid"
+      redirect_to '/admin/successpage'
+    else
+      render '/admin/edit'
+    end
   end
 
   def update
-      @admins= Admin.find(params[:id])
+      @admins= Professor.find(params[:id])
       if @admins.update_attributes(user_params)
-        # Handle a successful update.
+        redirect_to '/taapp/successpage'
       else
         render '/admin/edit'
       end
   end
   
 
+    def index
+      @admins = Professor.all
+    end
+    
+    def show
+    @admin = Professor.find(params[:id])
+    end
+    
     private
   
       def admin_params

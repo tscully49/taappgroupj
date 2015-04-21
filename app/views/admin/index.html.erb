@@ -1,0 +1,62 @@
+<% provide(:title, 'All Professor Account') %>
+
+
+<h2>All Professors Account</h2>
+<head>
+<style>
+table  {
+    width: 90%; 
+    border: 1px solid black;
+    border-collapse: collapse;
+   
+}
+th,td {
+    
+    padding: 10px;
+}
+
+
+
+table#t01 tr:nth-child(even) {
+   
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+    
+   background-color:#fff;
+}
+table#t01 th	{
+    
+    background-color: black;
+    color: white;
+    text-align:center;
+}
+</style>
+</head>
+
+<ul class="container">
+  
+  <table id="t01">
+    
+  <tr>                          
+    <th> Professor Name </th>
+    <th> Professor Email </th>
+  </tr>
+  
+  <% @admins.each do |professor| %>
+  
+     <tr>
+      <td><%= link_to professor.prof_name %></td>
+      <td><%= link_to professor.miz_email %></td>
+    </tr>
+    
+  <% end %>
+  
+  </table>
+  
+</ul>
+
+
+
+
+
