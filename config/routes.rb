@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'courses/new'
   get 'admin/new'
 
-  get 'addmin/home'
+  get 'admin/home'
 
   get 'addmin/help'
 

@@ -7,6 +7,9 @@ class AdminController < ApplicationController
   
   end
   
+  def home
+  end
+
   def create
     @admins = Professor.new(professor_params)
     if @admins.save

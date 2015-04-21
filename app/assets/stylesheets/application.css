@@ -966,6 +966,15 @@ hr {
 	margin-top: 2em;
 }
 
-div .btn{
+.row .col-md-12 .btn, #logout{
 	margin-top: 1em;
+	color: black;
+	background-color: #F1B82D;
+	border: outset rgb(142, 142, 142) 1px;
+	box-shadow: 5em, 5em, 5em;
 }
+
+.row .col-md-12 .btn:hover, #logout:hover {
+	background-color: #EDC666;
+}
+

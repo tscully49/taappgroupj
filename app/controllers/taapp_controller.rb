@@ -7,7 +7,7 @@ class TaappController < ApplicationController
       elsif session[:accounttype] == "professor"
         redirect_to action: 'professor'
       elsif session[:accounttype] == "admin"
-        redirect_to action: 'admin'
+        redirect_to "/admin/home"
       end
     end
   end
