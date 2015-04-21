@@ -4,7 +4,7 @@ class AdminController < ApplicationController
   
   def new
     @admins = Professor.new
-  
+    @profs = Professor.all
   end
   
   def home
@@ -13,11 +13,11 @@ class AdminController < ApplicationController
   def create
     @admins = Professor.new(professor_params)
     if @admins.save
-      redirect_to '/admin/successpage'
       flash[:notice] = "Professor account is created successfully"
-      flash[:color]= "valid"
+      redirect_to(:back)
     else
-      render '/admin/new'
+      flash[:notice] = 'Error with adding professor account'
+      redirect_to(:back)
     end
   end
 
@@ -49,17 +49,29 @@ class AdminController < ApplicationController
     end
     
     def show
-    @admin = Professor.find(params[:id])
+      @admin = Professor.find(params[:id])
     end
-    
+
+    def destroy
+      @profs=Professor.all
+      @prof= Professor.find(params[:id])
+      if @prof.destroy
+        flash[:notice] = "Course has been deleted"
+        redirect_to(:back)
+      else 
+        flash[:notice] = "Error with deleting course"
+        redirect_to(:back)
+      end
+    end
+
     private
   
       def admin_params
-        params.require(:admins).permit(:admin_name, :password, :miz_email)
+        params.require(:admin).permit(:admin_name, :password, :miz_email)
       end
       
       def professor_params
-        params.require(:professors).permit(:prof_name, :password_digest, :miz_email)
+        params.require(:professor).permit(:prof_name, :password, :miz_email, :password_confirmation)
       end
       
       #def logged_in_admin

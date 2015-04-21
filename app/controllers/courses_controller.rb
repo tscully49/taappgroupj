@@ -7,14 +7,15 @@ class CoursesController < ApplicationController
   def create
     @courses=Course.all
     @course = Course.new(course_params)
-    @course.prof_id = params[:professor][:prof_id]
+    @course.professor_id = params[:professor][:professor_id]
     if @course.save
-      render 'courses/new'
       flash[:notice] = "Course created successfully"
       flash[:color]= "valid"
+      redirect_to(:back)
       #redirect_to 'taapp/successpage'
     else 
-      render 'courses/new'
+      flash[:notice] = "ERROR Course Failed to Create"
+      redirect_to(:back)
     end
   end
   
@@ -23,14 +24,14 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-  @courses = Course.all
-  @course= Course.find(params[:id])
+    @courses = Course.all
+    @course= Course.find(params[:id])
   if @course.destroy
-  flash[:notice] = "Course has been deleted"
-  render 'courses/new'
+    flash[:notice] = "Course has been deleted"
+    redirect_to(:back)
   else 
-      flash.now[:notice] = "Error with deleting course"
-      render 'courses/new'
+    flash.now[:notice] = "Error with deleting course"
+    redirect_to(:back)
   end
   end
 

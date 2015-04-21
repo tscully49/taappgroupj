@@ -18,6 +18,7 @@
     <div class="container">
   
     <%= form_for @admins, :url => url_for(:controller => 'admin', :action => 'create') , :html => {:id => "signup"} do |f| %>
+      <%=render 'shared/professor_error_messages' %>
         <div class="header">
         <h3>Create Professors Account</h3>
       </div>
@@ -26,26 +27,32 @@
     
       <div class="form-horizontal center">
         <div class="form-group">
-          <%= f.label :professor_Name, :class => 'control-label' %>
+          <%= f.label :prof_name, :class => 'control-label' %>
           <!--<div class="col-md-12">-->
           <%= f.text_field :prof_name , :class => "form-control"%>
          <!--</div>-->
         </div>
       
       <div class="form-group">
-          <%= f.label :mizzou_Email, :class => 'control-label' %>
+          <%= f.label :miz_email, :class => 'control-label' %>
           <!--<div class="col-md-12">-->
           <%= f.text_field :miz_email , :class => "form-control"%>
          <!--</div>-->
         </div>
 
         <div class="form-group">
-          <%= f.label :Password, :class => 'control-label' %>
+          <%= f.label :password, :class => 'control-label' %>
           <!--<div class="col-md-12">-->
-          <%= f.text_field :password_digest , :class => "form-control"%>
+          <%= f.password_field :password, :class => "form-control" %>
          <!--</div>-->
         </div>
-        
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Confirmation", :class => 'control-label' %>
+          
+          <%= f.password_field :password_confirmation, :class => "form-control" %>
+          
+        </div>
       
         <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-4 col-sm-12 col-xs-12">
@@ -54,9 +61,32 @@
                 <div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-2 col-xs-4 col-xs-offset-2">
                   <%= f.submit "Create Professor account", class: "btn btn-primary" %>
                 </div>
-                </div>
+        </div>
+
+        <div id="sepp"></div>
+
+      <% end %>
+
+        <h3 id="remove_prof">Remove a Professor</h3>
+
+        <table id="this_table"> 
+          <tr>
+          <th> Professor Name </th>
+          <th> Email </th>
+          <th> Delete Professor</th>
+          </tr>
+          
+          <% @profs.each do |prof| %>
+        
+          <tr>
+          <td><%= prof.prof_name %></td>
+          <td><%= prof.miz_email %></td>
+          <td> <%= button_to "Delete", {:controller => :admin, :action => 'destroy', :id => prof.id }, :method => :delete, class: "btn btn-default" %> </td>
+          </tr>
+          
+           <% end %>
+        </table>
               </div> <!-- END form-horizontal center DIV -->
-            <% end %>
         </div>
         
         

@@ -54,7 +54,7 @@ table#t01 th	{
         <div class="form-group">
           <%= f.label :course_name, :class => 'control-label' %>
           <!--<div class="col-md-12">-->
-          <%= f.text_field :course_name, :class => "form-control"%>
+          <%= f.text_field :course_name, :class => "form-control", :value => ""%>
           <!--</div>-->
         </div>
 
@@ -81,6 +81,8 @@ table#t01 th	{
        <!-- END form-horizontal center DIV -->
       <% end %>
       
+      <h3>Remove a Course</h>
+
       <table id="this_table"> 
       <tr>
       <th> Professor Name </th>
