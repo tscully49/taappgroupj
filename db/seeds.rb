@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+case Rails.env
+when "development"
 Admin.create(admin_name: "John", password: "test", miz_email: "test1@missouri.edu")
 Admin.create(admin_name: "Johnn", password: "test", miz_email: "test2@missouri.edu")
 
@@ -77,3 +79,10 @@ ApplicationCourse.create(application_id: 3, course_id: 1, taught_teach_take_want
 ApplicationCourse.create(application_id: 1, course_id: 3, taught_teach_take_want: "take")
 ApplicationCourse.create(application_id: 1, course_id: 4, taught_teach_take_want: "take")
 ApplicationCourse.create(application_id: 1, course_id: 1, taught_teach_take_want: "take")
+
+when "production"
+
+Admin.create(admin_name: "Thomas Scully", password: "test", miz_email: "thomas@missouri.edu")
+Admin.create(admin_name: "Test", password: "test", miz_email: "admin@missouri.edu")
+
+end 
