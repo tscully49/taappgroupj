@@ -14,13 +14,14 @@ class SessionsController < ApplicationController
     elsif @professor && @professor.authenticate(params[:session][:password])
       session[:accounttype] = "professor"
       session[:id] = @professor.id
+      redirect_to "/taapp/successpage"
     elsif @admin && @admin.authenticate(params[:session][:password])
       session[:accounttype] = "admin"
       session[:id] = @admin.id
       redirect_to "/admin/home"
     else
       flash.now[:notice] = 'Invalid email/password combination'
-      render "taapp/index"
+      render "/taapp/index"
     end
   end
   
