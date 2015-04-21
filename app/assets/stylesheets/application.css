@@ -954,10 +954,18 @@ hr {
 	margin-left: 2em;
 }
 
-div #midle_button{
-	margin: 0px auto;
+#midle_button{
+	margin: 0em auto;
 }
 
 #this_table{
 	clear:both;
+}
+
+#signup .row{
+	margin-top: 2em;
+}
+
+div .btn{
+	margin-top: 1em;
 }

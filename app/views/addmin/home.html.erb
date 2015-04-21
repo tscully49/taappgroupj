@@ -3,20 +3,24 @@
 
 <% provide(:title, "Admin Home Page ") %>
 
-<div class="center jumbotron">
+<div class="container" id="signup">
 <h2> Admin Home Page</h2>
-
+<h4> Logged in as ...... </h4>
 <%#<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+
+	<div class = "row">	
+		<div class = "col-md-12 ">
+			<%= link_to '<button type="button" class="btn btn-default">Create Professor Account</button>'.html_safe, controller: "courses", action: "new" %>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col-md-12">
+			<%= link_to '<button type="button" class="btn btn-default">Create/Remove Course</button>'.html_safe, controller: "courses", action: "new" %>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col-md-12">
+			<%= link_to '<button type="button" class="btn btn-default">Assign TA\'s to courses</button>'.html_safe, controller: "courses", action: "new" %>
+		</div>
+	</div>
 </div>
-
-
-<%= button_to "Create a professor account" %>
-<%= button_to "Edit a professor account" %>
-<%= button_to "Delete a professor account" %>
-
-
-
-
-<%= button_to "Create a course" %>
-<%= button_to "Delete a course" %>
-<%= button_to "Assign a TA to a course" %>
