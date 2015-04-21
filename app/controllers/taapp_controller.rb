@@ -23,13 +23,13 @@ class TaappController < ApplicationController
 
     if session[:accounttype].present? && session[:accounttype] == "student"
       user = User.find_by(id: session[:id])
-      if Application.find_by(mizzou_email: user.email)
-        render "successpage"
+      if Application.find_by(mizzou_email: user.email) != nil
+        redirect_to "successpage"
       else
         render "form"
       end
     else
-      render "formerror"
+      redirect_to "formerror"
     end
   end
 
