@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
     flash[:notice] = "Course has been deleted"
     redirect_to(:back)
   else 
-    flash.now[:notice] = "Error with deleting course"
+    flash[:notice] = "Error with deleting course"
     redirect_to(:back)
   end
   end

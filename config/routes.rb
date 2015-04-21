@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'courses/new'
-  get 'admin/new'
 
   get 'admin/home'
 

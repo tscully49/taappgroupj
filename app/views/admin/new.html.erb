@@ -81,7 +81,7 @@
           <tr>
           <td><%= prof.prof_name %></td>
           <td><%= prof.miz_email %></td>
-          <td> <%= button_to "Delete", {:controller => :admin, :action => 'destroy', :id => prof.id }, :method => :delete, class: "btn btn-default" %> </td>
+          <td> <%= button_to "Delete", {:controller => :admin, :action => 'destroy', :id => prof.id }, method: :delete, class: "btn btn-default" %> </td>
           </tr>
           
            <% end %>

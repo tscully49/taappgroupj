@@ -97,7 +97,7 @@ table#t01 th	{
       <td><%= course.professor_id %></td>
       <td><%= course.course_name %></td>
       <td><%= course.open_spots %></td>
-      <td> <%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => course.id }, :method => :delete, class: "btn btn-primary" %> </td>
+      <td> <%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => course.id }, method: :delete, class: "btn btn-primary" %> </td>
       </tr>
       
        <% end %>
