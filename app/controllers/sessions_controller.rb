@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:accounttype] = "student"
       session[:id] = @user.id
-      redirect_to "/taapp/successpage"
+      redirect_to "/taapp/form"
     elsif @professor && @professor.authenticate(params[:session][:password])
       session[:accounttype] = "professor"
       session[:id] = @professor.id
-      redirect_to "/taapp/successpage"
+      redirect_to "/taapp/professor"
     elsif @admin && @admin.authenticate(params[:session][:password])
       session[:accounttype] = "admin"
       session[:id] = @admin.id
