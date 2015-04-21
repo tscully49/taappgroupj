@@ -28,6 +28,7 @@ group :development, :test do
   gem 'thor'
   # Use Byebug (recommended online since debugger doesn't work well with Ruby 2.0)
 	gem 'byebug'
+	gem 'spring'
 end
 
 # Add support for the MySQL
@@ -67,7 +68,7 @@ gem 'jbuilder', '~> 2.0'
 #gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+#gem 'spring',        group: :development
 
 # Use unicorn as the app server
 # gem 'unicorn'
