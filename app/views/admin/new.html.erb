@@ -18,7 +18,7 @@
     <div class="container">
   
     <%= form_for @admins, :url => url_for(:controller => 'admin', :action => 'create') , :html => {:id => "signup"} do |f| %>
-      <%=render 'shared/professor_error_messages' %>
+      <%#<%=render 'shared/professor_error_messages' %>
         <div class="header">
         <h3>Create Professors Account</h3>
       </div>
@@ -66,10 +66,45 @@
         <div id="sepp"></div>
 
       <% end %>
+      
+      
 
         <h3 id="remove_prof">Remove a Professor</h3>
 
-        <table id="this_table"> 
+        <%#<table id="this_table"> %>
+        <head>
+        <style>
+        table  {
+            width: 90%; 
+            border: 1px solid black;
+            border-collapse: collapse;
+           
+        }
+        th,td {
+            
+            padding: 10px;
+        }
+        
+        
+        
+        table#t01 tr:nth-child(even) {
+           
+            background-color: #eee;
+        }
+        table#t01 tr:nth-child(odd) {
+            
+           background-color:#fff;
+        }
+        table#t01 th	{
+            
+            background-color: black;
+            color: white;
+            text-align:center;
+        }
+        </style>
+        </head>
+        
+         <table id="t01">
           <tr>
           <th> Professor Name </th>
           <th> Email </th>
@@ -79,12 +114,13 @@
           <% @profs.each do |prof| %>
         
           <tr>
-          <td><%= prof.prof_name %></td>
-          <td><%= prof.miz_email %></td>
-          <td> <%= button_to "Delete", {:controller => :admin, :action => 'destroy', :id => prof.id }, method: :delete, class: "btn btn-default" %> </td>
+          <td><%= link_to prof.prof_name %></td>
+          <td><%= link_to prof.miz_email %></td>
+          <td> <%= button_to "Delete", {:controller => :admin, :action => 'destroy', :id => prof.id }, method: :delete, class: "btn btn-primary" %> </td>
           </tr>
           
            <% end %>
+      
         </table>
               </div> <!-- END form-horizontal center DIV -->
         </div>
