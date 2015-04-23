@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get  'taapp/adminerror'
   get  'taapp/successpage'
   get   '/form', to: 'taapp#form'
+  get   'admin/refresh', to: 'courses#show'
   get   'taapp/show_applicants'
   get   'admin/index'
   get   'admin/edit'
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
   get   'admin/successpage'
   get   'admin/assign'
   post  'admin/select'
+  get   'admin/success'
   
 
   resources :users

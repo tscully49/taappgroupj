@@ -21,6 +21,9 @@ class AdminController < ApplicationController
     end
   end
 
+  def success
+  end
+
 
   def edit
     @admins = Professor.find(params[:id])
@@ -56,7 +59,42 @@ class AdminController < ApplicationController
     end
 
     def select
-      @selection = Application.new()
+      @test = params[:select_tas]
+
+      if @test != nil
+        @open_spots_in_class = Course.find(params[:course_id])
+        if @open_spots_in_class != 0
+          params[:select_tas].each do |ta|
+            @name = Application.select(:first_name, :last_name).where(:id => ta)
+            @selection = SelectTa.new(:student_id => ta, :course_id => params[:course_id])
+            if @selection.save
+              @remove_app = Application.find_by(:id => ta, accepted: false)
+              @remove_app.update(accepted: true)
+              @remove_column = ApplicationCourse.where(:application_id => ta, :taught_teach_take_want => 'want')
+              @remove_column.each do |remove|
+                remove.destroy
+                @open_spots_in_class.decrement!(:open_spots)
+                if @open_spots_in_class == 0
+                  redirect_to :back
+                end
+              end
+              flash[:notice] = "TA's Added Successfully"
+            else 
+              flash[:notice] = "TA... FIX THIS " + @name.first.first_name + "  "+@name.first.last_name+" could NOT be added"
+              #flash[:notice] = params
+            end
+          end
+          redirect_to :back
+        else
+          flash[:notice] = "There are no more available spots in this class"
+          redirect_to :back
+        end
+      else 
+        flash[:notice] = "No Ta's were selected"
+        redirect_to :back
+      end
+
+
     end
 
     def destroy
