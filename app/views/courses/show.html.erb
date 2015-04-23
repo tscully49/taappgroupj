@@ -1,0 +1,44 @@
+<% provide(:title, @course.course_name) %>
+
+<div class = "container" id = "fixed_container">
+	<div id = "signup">
+		<h3><%= link_to "Go Back", "/admin/assign", :class => "btn btn-default", :method => :get %></h3>
+		<% if @course.open_spots == 0 %>
+			<h3 style="color: red;" = "red"> This class is full </h3>
+		<% end %>
+		<!--<h3>ID: <%= @course.id%></h3> -->
+		<h3><u>Title: <%= @course.course_name %></u></h3>
+		<h7>Open Spots: <%= @course.open_spots%></h7>
+		<%=render 'shared/selection_error_messages' %>
+
+		<br /><br /><br />
+
+		<% @apps=ApplicationCourse.joins(:application).select(:application_id).where(:course_id => @course.id, :taught_teach_take_want => 'want')%>
+
+		<% if @course.open_spots != 0 %>
+			<h4> Students who applied for this course:</h4>
+			<%= form_for @selection, :html => {:class => "appnitro"}, :url => url_for(:controller => 'admin', :action => 'select') do |f| %>
+			<% @apps.each do |person| %>
+				<% @this=Application.select(:first_name, :last_name).where(:id => person.application_id, :accepted => false)%>
+				<h5><%= @this.first.first_name %>  <%= @this.first.last_name %> <%#= person.application_id %>    <%= check_box_tag "select_tas[]", person.application_id %></h5>
+				<%= hidden_field_tag :course_id, @course.id%>
+			<% end %>
+			<div id="this_row" class="row"></div>
+		    <div class="button clearfix">
+	    		<%= f.submit "Add TA's to "+@course.course_name, id: "submission", class: "btn btn-primary" %>
+			</div>
+			<% end %>
+		<% else %>
+			<h4> Students who didn't make the cut:</h4>
+			<% @apps.each do |person| %>
+				<% @this=Application.select(:first_name, :last_name).where(:id => person.application_id, :accepted => false)%>
+				<h5 style="color: red;"><u><%= @this.first.first_name %>  <%= @this.first.last_name %> </u><%#= person.application_id %></h5>
+			<% end %>
+			<div id="this_row" class="row"></div>
+		    <div class="button clearfix">
+				<%= link_to "No Spots left", "#", class: "btn btn-primary", method: :get, :disabled => true %>
+			</div>
+			<% end %>
+	</div>
+</div>
+<%= debug(params) if Rails.env.development? %>

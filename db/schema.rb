@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421175033) do
+ActiveRecord::Schema.define(version: 20150423035646) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name",      limit: 60,  null: false
@@ -84,9 +84,10 @@ ActiveRecord::Schema.define(version: 20150421175033) do
   end
 
   create_table "professors", force: true do |t|
-    t.string "prof_name",       limit: 60,  null: false
-    t.string "password_digest",             null: false
-    t.string "miz_email",       limit: 100, null: false
+    t.string "prof_name",             limit: 60,  null: false
+    t.string "password_digest",                   null: false
+    t.string "miz_email",             limit: 100, null: false
+    t.string "password_confirmation"
   end
 
   create_table "ratings", id: false, force: true do |t|
@@ -94,6 +95,13 @@ ActiveRecord::Schema.define(version: 20150421175033) do
     t.integer "stu_id",            null: false
     t.integer "co_id",             null: false
     t.integer "rating",  limit: 2, null: false
+  end
+
+  create_table "select_ta", force: true do |t|
+    t.string   "student_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
