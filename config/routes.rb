@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get   'admin/_admin'
   get   'admin/show'
   get   'admin/successpage'
+  get   'admin/assign'
+  post  'admin/select'
   
 
   resources :users

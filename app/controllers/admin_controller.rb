@@ -49,7 +49,14 @@ class AdminController < ApplicationController
     end
     
     def show
-      @admin = Professor.find(params[:id])
+        @admin = Professor.find(params[:id])
+    end
+
+    def error
+    end
+
+    def select
+      @selection = Application.new()
     end
 
     def destroy
@@ -63,6 +70,10 @@ class AdminController < ApplicationController
         redirect_to(:back)
       end
     end
+
+    def assign
+      @courses = Course.all
+    end 
 
     private
   

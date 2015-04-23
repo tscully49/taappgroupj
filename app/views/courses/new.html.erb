@@ -41,7 +41,7 @@ table#t01 th	{
 </head>
 <body id ="main_body">
 
-<div class="container">
+<div class="container" id="fixed_container">
 
     <%= form_for @course, :url => url_for(:controller => 'courses', :action => 'create'), :html => {:id => "signup"} do |f| %>
       
@@ -81,7 +81,7 @@ table#t01 th	{
        <!-- END form-horizontal center DIV -->
       <% end %>
       
-      <h3>Remove a Course</h>
+      <h3>Remove a Course</h3>
 
       <table id="this_table"> 
       <tr>

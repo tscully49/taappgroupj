@@ -20,7 +20,19 @@ class CoursesController < ApplicationController
   end
   
   def show
-    @course= Course.find(params[:id])
+    if session[:accounttype] == "admin"
+      @course= Course.find(params[:id]) 
+      @selection = Application.new     
+    else 
+      render "/courses/error"
+    end
+  end
+
+  def error
+  end
+
+  def select
+    @selection = Application.new()
   end
 
   def destroy
