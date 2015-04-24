@@ -5,8 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-case Rails.env
-when "development"
+
 Admin.create(admin_name: "Thomas Scully", password: "test", miz_email: "thomas@missouri.edu")
 Admin.create(admin_name: "Test", password: "test", miz_email: "admin@missouri.edu")
 
@@ -19,7 +18,7 @@ User.create(first_name: "Dillon", last_name: "Byrne", email: "dillon@mail.missou
 User.create(first_name: "Miley", last_name: "Tucker", email: "Tucker@mail.missouri.edu", password: "test", student_id: 98765432)
 User.create(first_name: "Earl", last_name: "Jonson", email: "Jonson@mail.missouri.edu", password: "test", student_id: 99999988)
 
-Professor.create(prof_name: "Joe Guillams", miz_email: "joe@missouri.edu", password: "test")
+Professor.create(prof_name: "Joe Guillams", miz_email: "joee@missouri.edu", password: "test")
 Professor.create(prof_name: "Grant Scott", miz_email: "Scott@missouri.edu", password: "test")
 Professor.create(prof_name: "Justin Schuyler", miz_email: "schuyler@missouri.edu", password: "test")
 Professor.create(prof_name: "Test Tester", miz_email: "test@missouri.edu", password: "test")
@@ -32,25 +31,25 @@ Professor.create(prof_name: "Bob Bobberstein", miz_email: "bob@missouri.edu", pa
 Professor.create(prof_name: "Jim Jimbo", miz_email: "jim@missouri.edu", password: "test")
 
 
-Application.create!(first_name: "Thomas", last_name: "Scully", student_id: 13242432, 
+Application.create(first_name: "Thomas", last_name: "Scully", student_id: 13242432, 
 	gpa: 4.0, phone_num: '324-523-4423', mizzou_email: "tps9tb@mail.missouri.edu", 
 	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
 	speak_score: "0", orientation_met: "yes", accepted: false, 
 	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
 
-Application.create!(first_name: "Tim", last_name: "Burton", student_id: 13342432, 
+Application.create(first_name: "Tim", last_name: "Burton", student_id: 13342432, 
 	gpa: 3.0, phone_num: '355-523-4423', mizzou_email: "burton@mail.missouri.edu", 
 	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
 	speak_score: "0", orientation_met: "yes", accepted: false, 
 	language_assessment: "no", GATO_requirement: "done", position_applying_for: "PLA")
 
-Application.create!(first_name: "Joe", last_name: "Toe", student_id: 13245532, 
+Application.create(first_name: "Joe", last_name: "Toe", student_id: 13245532, 
 	gpa: 3.9, phone_num: '324-523-4455', mizzou_email: "jer4ro@mail.missouri.edu", 
 	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
 	speak_score: "0", orientation_met: "yes", accepted: false, 
 	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
 
-Application.create!(first_name: "Hank", last_name: "Smith", student_id: 22242432, 
+Application.create(first_name: "Hank", last_name: "Smith", student_id: 22242432, 
 	gpa: 4.0, phone_num: '324-523-4423', mizzou_email: "js4fb@mail.missouri.edu", 
 	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
 	speak_score: "0", orientation_met: "yes", accepted: false, 
@@ -80,7 +79,3 @@ ApplicationCourse.create(application_id: 3, course_id: 2, taught_teach_take_want
 ApplicationCourse.create(application_id: 1, course_id: 3, taught_teach_take_want: "take")
 ApplicationCourse.create(application_id: 1, course_id: 4, taught_teach_take_want: "take")
 ApplicationCourse.create(application_id: 1, course_id: 1, taught_teach_take_want: "take")
-
-when "production"
-
-end 
