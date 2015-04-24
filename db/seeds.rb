@@ -85,4 +85,39 @@ when "production"
 Admin.create(admin_name: "Thomas Scully", password: "test", miz_email: "thomas@missouri.edu")
 Admin.create(admin_name: "Test", password: "test", miz_email: "admin@missouri.edu")
 
+Professor.create(prof_name: "Joe Guillams", miz_email: "joe@missouri.edu", password: "test")
+Professor.create(prof_name: "Grant Scott", miz_email: "Scott@missouri.edu", password: "test")
+Professor.create(prof_name: "Justin Schuyler", miz_email: "schuyler@missouri.edu", password: "test")
+
+Course.create(course_name: "CS 4320", professor_id: 3, open_spots: 4)
+Course.create(course_name: "CS 1050", professor_id: 2, open_spots: 3)
+Course.create(course_name: "CS 2050", professor_id: 5, open_spots: 1)
+Course.create(course_name: "CS 3330", professor_id: 6, open_spots: 3)
+Course.create(course_name: "CS 3050", professor_id: 2, open_spots: 2)
+Course.create(course_name: "CS 4050", professor_id: 8, open_spots: 3)
+Course.create(course_name: "CS 4800", professor_id: 3, open_spots: 2)
+
+Application.create!(first_name: "Thomas", last_name: "Scully", student_id: 13242432, 
+	gpa: 4.0, phone_num: 3245234423, mizzou_email: "tps9tb@mail.missouri.edu", 
+	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
+	speak_score: "0", orientation_met: "yes", accepted: false, 
+	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
+
+Application.create!(first_name: "Tim", last_name: "Burton", student_id: 13342432, 
+	gpa: 3.0, phone_num: 3555234423, mizzou_email: "burton@mail.missouri.edu", 
+	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
+	speak_score: "0", orientation_met: "yes", accepted: false, 
+	language_assessment: "no", GATO_requirement: "done", position_applying_for: "PLA")
+
+Application.create!(first_name: "Joe", last_name: "Toe", student_id: 13245532, 
+	gpa: 3.9, phone_num: 3245234455, mizzou_email: "jer4ro@mail.missouri.edu", 
+	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
+	speak_score: "0", orientation_met: "yes", accepted: false, 
+	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
+
+Application.create!(first_name: "Hank", last_name: "Smith", student_id: 22242432, 
+	gpa: 4.0, phone_num: 3245234423, mizzou_email: "js4fb@mail.missouri.edu", 
+	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
+	speak_score: "0", orientation_met: "yes", accepted: false, 
+	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
 end 

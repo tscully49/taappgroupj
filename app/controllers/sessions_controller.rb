@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
     elsif @admin && @admin.authenticate(params[:session][:password])
       session[:accounttype] = "admin"
       session[:id] = @admin.id
+      session[:first_name] = @admin.admin_name
       redirect_to "/admin/home"
     else
       flash.now[:notice] = 'Invalid email/password combination'

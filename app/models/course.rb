@@ -4,4 +4,5 @@ class Course < ActiveRecord::Base
 	has_many :users, through: :select_ta
 	has_many :applications, through: :application_courses
 	has_one :professor
+	has_many :applications
 end

@@ -1,5 +1,6 @@
 class Application < ActiveRecord::Base
   belongs_to :user
+  has_one :course
   has_many :application_courses
   has_many :courses, through: :application_courses
 	before_save { self.mizzou_email = mizzou_email.downcase }

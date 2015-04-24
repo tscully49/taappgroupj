@@ -66,8 +66,8 @@ class AdminController < ApplicationController
         if @open_spots_in_class != 0
           params[:select_tas].each do |ta|
             @name = Application.select(:first_name, :last_name).where(:id => ta)
-            @selection = SelectTa.new(:student_id => ta, :course_id => params[:course_id])
-            if @selection.save
+            @selection = Application.find_by(:id => ta)
+            if @selection.update(:course_id => params[:course_id])
               @remove_app = Application.find_by(:id => ta, accepted: false)
               @remove_app.update(accepted: true)
               @remove_column = ApplicationCourse.where(:application_id => ta, :taught_teach_take_want => 'want')
