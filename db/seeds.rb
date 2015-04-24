@@ -33,25 +33,25 @@ Professor.create(prof_name: "Jim Jimbo", miz_email: "jim@missouri.edu", password
 
 
 Application.create!(first_name: "Thomas", last_name: "Scully", student_id: 13242432, 
-	gpa: 4.0, phone_num: 3245234423, mizzou_email: "tps9tb@mail.missouri.edu", 
+	gpa: 4.0, phone_num: '324-523-4423', mizzou_email: "tps9tb@mail.missouri.edu", 
 	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
 	speak_score: "0", orientation_met: "yes", accepted: false, 
 	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
 
 Application.create!(first_name: "Tim", last_name: "Burton", student_id: 13342432, 
-	gpa: 3.0, phone_num: 3555234423, mizzou_email: "burton@mail.missouri.edu", 
+	gpa: 3.0, phone_num: '355-523-4423', mizzou_email: "burton@mail.missouri.edu", 
 	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
 	speak_score: "0", orientation_met: "yes", accepted: false, 
 	language_assessment: "no", GATO_requirement: "done", position_applying_for: "PLA")
 
 Application.create!(first_name: "Joe", last_name: "Toe", student_id: 13245532, 
-	gpa: 3.9, phone_num: 3245234455, mizzou_email: "jer4ro@mail.missouri.edu", 
+	gpa: 3.9, phone_num: '324-523-4455', mizzou_email: "jer4ro@mail.missouri.edu", 
 	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
 	speak_score: "0", orientation_met: "yes", accepted: false, 
 	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
 
 Application.create!(first_name: "Hank", last_name: "Smith", student_id: 22242432, 
-	gpa: 4.0, phone_num: 3245234423, mizzou_email: "js4fb@mail.missouri.edu", 
+	gpa: 4.0, phone_num: '324-523-4423', mizzou_email: "js4fb@mail.missouri.edu", 
 	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
 	speak_score: "0", orientation_met: "yes", accepted: false, 
 	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
