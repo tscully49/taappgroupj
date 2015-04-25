@@ -110,7 +110,7 @@ class AdminController < ApplicationController
     end
 
     def assign
-      @courses = Course.all
+      @courses = Course.all.order(course_name: :asc)
     end 
 
     private

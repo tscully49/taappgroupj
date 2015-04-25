@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424032405) do
+ActiveRecord::Schema.define(version: 20150425021356) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name",      limit: 60,  null: false
@@ -82,6 +82,12 @@ ActiveRecord::Schema.define(version: 20150424032405) do
     t.integer "professor_id"
     t.string  "course_name",  limit: 60, null: false
     t.integer "open_spots"
+  end
+
+  create_table "finalizeds", force: true do |t|
+    t.boolean  "finalized"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "professors", force: true do |t|

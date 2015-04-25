@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get   'admin/assign'
   post  'admin/select'
   get   'admin/success'
+  get   'taapp/status'
   
 
   resources :users

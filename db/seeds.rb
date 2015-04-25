@@ -30,9 +30,6 @@ Professor.create(prof_name: "TJ Oshie", miz_email: "Oshie@missouri.edu", passwor
 Professor.create(prof_name: "Bob Bobberstein", miz_email: "bob@missouri.edu", password: "test")
 Professor.create(prof_name: "Jim Jimbo", miz_email: "jim@missouri.edu", password: "test")
 
-
-
-
 Application.create(first_name: "Thomas", last_name: "Scully", student_id: 13242432, 
 	gpa: 4.0, phone_num: '324-523-4423', mizzou_email: "tps9tb@mail.missouri.edu", 
 	date_of_app: "2012-04-03", anticipated_graduation_date: "2012-03-03", 
