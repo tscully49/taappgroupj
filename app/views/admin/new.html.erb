@@ -1,4 +1,4 @@
-<%#<% provide(:title, 'Create Professor Account') %>
+<% provide(:title, 'Create/Remove Professor Account')%>
 
 
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -15,7 +15,7 @@
     </head>
     <body id ="main_body">
     
-    <div class="container">
+  <div class="container">
   
     <%= form_for @admins, :url => url_for(:controller => 'admin', :action => 'create') , :html => {:id => "signup"} do |f| %>
       <%#<%=render 'shared/professor_error_messages' %>
@@ -62,20 +62,19 @@
                   <%= f.submit "Create Professor account", class: "btn btn-primary" %>
                 </div>
         </div>
-
-        <div id="sepp"></div>
-
-      <% end %>
-      
-      
-
-        <h3 id="remove_prof">Remove a Professor</h3>
+ 
+       </div>
+        </div>
+<div class="container">
+  
+  
+        <h3 >Remove a Professor</h3>
 
         <%#<table id="this_table"> %>
         <head>
         <style>
         table  {
-            width: 90%; 
+            width: 110%; 
             border: 1px solid black;
             border-collapse: collapse;
            
@@ -103,8 +102,10 @@
         }
         </style>
         </head>
-        
+       
+    
          <table id="t01">
+           
           <tr>
           <th> Professor Name </th>
           <th> Email </th>
@@ -122,7 +123,12 @@
            <% end %>
       
         </table>
+    
               </div> <!-- END form-horizontal center DIV -->
         </div>
+        <% end %>
+        </div>
+   </body>
+  </html>
         
         

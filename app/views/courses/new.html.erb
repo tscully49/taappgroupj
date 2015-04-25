@@ -1,17 +1,19 @@
 <% provide(:title, 'Create Course') %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>COMPUTER SCIENCE DEPARTMENT</title>
 
 
-<link rel="stylesheets" type="text/css" href="log.css.scss" media="all">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>COMPUTER SCIENCE DEPARTMENT</title>
 
-<script type="text/javascript" src="view.js"></script>
-<script type="text/javascript" src="calendar.js"></script>
 
-<style>
+    <link rel="stylesheets" type="text/css" href="log.css.scss" media="all">
+
+    <script type="text/javascript" src="view.js"></script>
+    <script type="text/javascript" src="calendar.js"></script>
+
+<%#<style>
 table #t01 {
     
     border: 1px solid black;
@@ -37,11 +39,11 @@ table#t01 th	{
     background-color: black;
     color: white;
 }
-</style>
-</head>
-<body id ="main_body">
+</style>%>
+    </head>
+    <body id ="main_body">
 
-<div class="container" id="fixed_container">
+    <div class="container" id="fixed_container">
 
     <%= form_for @course, :url => url_for(:controller => 'courses', :action => 'create'), :html => {:id => "signup"} do |f| %>
       
@@ -76,14 +78,55 @@ table#t01 th	{
             <%= f.submit "Create course", class: "btn btn-primary"  %>
           </div>
         </div>
-        </div>
+</div>
         
-       <!-- END form-horizontal center DIV -->
-      <% end %>
+      </body>
       
-      <h3>Remove a Course</h3>
-
-      <table id="this_table"> 
+       <!-- END form-horizontal center DIV -->
+<% end %>
+      
+       
+       
+       
+       
+       
+      <div class="header">
+      <h3 id="remove_courses">Remove a Course</h3>
+      </div>
+      
+      <head> 
+      <style>
+      table #t01 {
+        
+        border: 1px solid black;
+        border-collapse: collapse;
+         ; 
+       
+      }
+      th,td {
+        padding: 10px;
+      }
+      
+      
+      table#t01 tr:nth-child(even) {
+       
+        background-color: #eee;
+      }
+      table#t01 tr:nth-child(odd) {
+        
+       background-color:#fff;
+      }
+      table#t01 th	{
+        
+        background-color: black;
+        color: white;
+      }
+      </style>
+      </head>
+      
+      <body id ="main_body">
+      <table id="t01">
+      <%#<table id="this_table"> %>
       <tr>
       <th> Professor Name </th>
       <th> Course Name </th>
@@ -97,7 +140,7 @@ table#t01 th	{
       <td><%= course.professor_id %></td>
       <td><%= course.course_name %></td>
       <td><%= course.open_spots %></td>
-      <td> <%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => course.id }, method: :delete, class: "btn btn-primary" %> </td>
+      <td><%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => course.id }, method: :delete, class: "btn btn-primary" %> </td>
       </tr>
       
        <% end %>
