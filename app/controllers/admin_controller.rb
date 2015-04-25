@@ -8,6 +8,7 @@ class AdminController < ApplicationController
   end
   
   def home
+    @final = Finalized.first
   end
 
   def create
@@ -112,6 +113,16 @@ class AdminController < ApplicationController
     def assign
       @courses = Course.all.order(course_name: :asc)
     end 
+
+    def finalize
+      @final = Finalized.first
+      if @final.finalized == false 
+        @final.update(:finalized => true)
+      else 
+        @final.update(:finalized => false)
+      end
+      redirect_to "/admin/home"
+    end
 
     private
   

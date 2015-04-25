@@ -2,15 +2,20 @@
 	<h3> <%= @application.first_name %> <%= @application.last_name %>'s application</h3>
 	<h6> Submission Date: <%= @application.date_of_app%></h6>
 	<div class ="row" id="accepted">
+	<% if @finalized.finalized == true %>
 		<% if @application.accepted == false %>
-			<h4>Application Status pending...</h4>
+			<h4>You were not assigned to a class</h4>
 		<% end %>
 		<% if @application.accepted == true %>
-			<h4>Application accepted!!!</h4>
+			<% @assigned = Course.select(:course_name).find_by(:id => @application.course_id) %>
+			<h4>You were assigned to <%= @assigned.course_name %></h4>
 		<% end %>
+	<% else %>
+		<h4>Application status is pending...</h4>
+	<% end %>
 	</div>
 	<table class="table table-striped">
-	<tr><th><u>Attribute:</u></th><th><u>Values:</u></th></tr>
+		<tr><th><u>Attribute:</u></th><th><u>Values:</u></th></tr>
 		<tr><th>Student ID</th><td><%= @application.student_id %></td></tr>
 		<tr><th>Email</th><td><%= @application.mizzou_email %></td></tr>
 		<tr><th>Position Applying For</th><td><%= @application.position_applying_for %></td></tr>

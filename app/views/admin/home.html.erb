@@ -38,9 +38,13 @@
 			<%= link_to '<button type="button" class="btn btn-default">View/Edit Professor Accounts</button>'.html_safe%>
 		</div>
 	</div>
-	<div class = "row">
+	<div class = "row" id="final_row">
 		<div class = "col-md-12">
-			<%= link_to '<button type="button" class="btn btn-default">Open/Close Application</button>'.html_safe%>
+		<% if @final.finalized == false %>
+			<%= link_to '<button type="button" id="finalize_button" class="btn btn-default">Finalize TA Assignments</button>'.html_safe, controller: "admin", action: "finalize"  %>
+		<% else %>
+			<%= link_to '<button type="button" id="finalize_button" class="btn btn-default">Reopen TA Assignments</button>'.html_safe, controller: "admin", action: "finalize"  %>
+		<% end %>
 		</div>
 	</div>
 </div>

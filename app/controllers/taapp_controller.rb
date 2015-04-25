@@ -37,6 +37,7 @@ class TaappController < ApplicationController
     @user=User.find_by(id: session[:id])
     @application=Application.find_by(student_id: @user.student_id)
     @applied = ApplicationCourse.where(:application_id => @application.id, :taught_teach_take_want => "want")
+    @finalized = Finalized.first
   end
 
   def show

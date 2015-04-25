@@ -10,13 +10,15 @@
     </div>
 
 	<% @courses.each do |course| %>
-		<div class="col-md-6" id="scroll-bar"> 
+		<div class="col-md-4" id="scroll-bar"> 
 			<h4><%= link_to course.course_name, "/courses/#{course.id}", :id => "assign_button", :class => "btn btn-default", :method => :get %></h4>
 
 			<% @apps=ApplicationCourse.joins(:application).select(:application_id).where(:course_id => course.id, :taught_teach_take_want => 'want')%>
-			<% @apps.each do |person| %>
-				<% @this=Application.select(:first_name, :last_name).where(:id => person.application_id)%>
-				<h6><%= @this.first.first_name %>  <%= @this.first.last_name %></h6>
+			<% @this=Application.select(:first_name, :last_name).where(:course_id => course.id)%>
+
+			<h7><u>Open spots:</u> <%= course.open_spots %></h7>
+			<% @this.each do |person| %>
+				<h6><%= person.first_name %>  <%= person.last_name %></h6>
 			<% end %>
 		</div>
 	<% end %>

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post  'admin/select'
   get   'admin/success'
   get   'taapp/status'
+  get   'admin/finalize'
   
 
   resources :users
