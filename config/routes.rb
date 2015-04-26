@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get   '/form', to: 'taapp#form'
   get   'admin/refresh', to: 'courses#show'
   get   'taapp/show_applicants'
+  get   'taapp/application_closed'
   get   'admin/index'
   get   'admin/edit'
   get   'admin/_admin'

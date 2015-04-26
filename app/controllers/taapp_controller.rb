@@ -19,9 +19,12 @@ class TaappController < ApplicationController
     @appcourse3 = ApplicationCourse.new
     @courses = Course.all
     #@selected = (params[:app_courses].present?(app_courses) ? params[:app_courses] : [])
-
-
-    if session[:accounttype].present? && session[:accounttype] == "student"
+    
+    closed = CloseApplication.first
+    
+    if closed.closed
+      redirect_to "/taapp/application_closed"
+    elsif session[:accounttype].present? && session[:accounttype] == "student"
       user = User.find_by(id: session[:id])
       if Application.find_by(mizzou_email: user.email) != nil
         redirect_to "/taapp/status"
@@ -143,6 +146,10 @@ class TaappController < ApplicationController
   def test_applicant
     @test_apps=Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct
   end
+  
+  def application_closed
+  end
+  
   private
 
     def application_params
