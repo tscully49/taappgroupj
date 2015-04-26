@@ -1,5 +1,6 @@
 class Application < ActiveRecord::Base
   belongs_to :user
+  has_one :course
   has_many :application_courses
   has_many :courses, through: :application_courses
 	before_save { self.mizzou_email = mizzou_email.downcase }
@@ -7,7 +8,7 @@ class Application < ActiveRecord::Base
 	validates :last_name,  presence: true, length: { maximum: 50 }
 	validates :student_id,  presence: true, length: { maximum: 8, minimum: 8 }
 	validates :gpa,  presence: true, numericality: {less_than_or_equal_to: 4.00} #Make sure you validate that it is #.### three decimal places
-	VALID_PHONE_REGEX = /\A\d\d\d\d\d\d\d\d\d\d\z/i
+	VALID_PHONE_REGEX = /\A\d\d\d\-\d\d\d\-\d\d\d\d\z/i
 	validates :phone_num, presence: true, 
 					format: { with: VALID_PHONE_REGEX }
 	VALID_EMAIL_REGEX = /\A[\w]+@[mail]+\.[missouri]+\.[edu]+\z/i

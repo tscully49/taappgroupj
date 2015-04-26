@@ -23,11 +23,45 @@
 
 body
 {
-	background: #F1B82D ;
+	background: -webkit-linear-gradient(left top, #F1B82D , black 250%); /* For Safari 5.1 to 6.0 */
+  	background: -o-linear-gradient(bottom right, #F1B82D, black 250%); /* For Opera 11.1 to 12.0 */
+  	background: -moz-linear-gradient(bottom right, #F1B82D, black 250%); /* For Firefox 3.6 to 15 */
+  	background: linear-gradient(to bottom right, #F1B82F , black 200%); /* Standard syntax */
 	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
 	font-size:small;
 	margin:8px 0 16px;
 	text-align:center;
+	background-attachment: fixed;
+}
+
+#fixed_container {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+#home_button {
+	margin: 0em auto;
+	margin-bottom: 2em;
+}
+
+#assign.container {
+    padding: 0px 25px 25px;
+    background: #fff;
+    box-shadow: 
+        0px 0px 0px 5px grey, 
+        0px 4px 20px black;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: table;
+    position: static;
+    width: 40%;
+    max-width: 40%;
+}
+
+#scroll-bar.col-md-4 {
+	overflow-y: auto;
+	height: 20em;
 }
 
 #form_container
@@ -954,6 +988,102 @@ hr {
 	margin-left: 2em;
 }
 
-div #midle_button{
-	margin: 0px auto;
+#midle_button{
+	margin: 0em auto;
+}
+
+#this_table{
+	clear:both;
+	margin: 0em auto;
+	width: 100%;
+}
+
+tbody {
+	margin: 0em auto;
+}
+
+#signup .row{
+	margin-top: 2em;
+}
+
+.row .col-md-12 .btn, #logout{
+	margin-top: 1em;
+	color: black;
+	background-color: #F1B82D;
+	border: outset rgb(142, 142, 142) 1px;
+	box-shadow: 0.1em 0.1em #888888;
+}
+
+.row .col-md-12 .btn:hover, #logout:hover {
+	background-color: #EDC666;
+}
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+#remove_prof {
+	margin-top: 1em;
+	font-weight: bold;
+	font-size: 24px;
+	margin-bottom: 1em;
+}
+
+th {
+	text-align: center;
+}
+
+#assign_button{
+	margin-top: 1em;
+	color: black;
+	background-color: #F1B82D;
+	border: outset rgb(142, 142, 142) 1px;
+	box-shadow: 5em, 5em, 5em;
+	clear: both;
+}
+
+#assign_button:hover {
+	background-color: #EDC666;
+}
+
+#status {
+	padding: 0px 25px 25px;
+    background: #fff;
+    box-shadow: 
+        0px 0px 0px 5px grey, 
+        0px 4px 20px black;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: table;
+    position: static;
+    width: 40%;
+    max-width: 40%;
+}
+
+#accepted {
+	background-color: #F1B82F;
+	color: black;
+	border-radius: 2em;
+	border: solid black 1px;
+	margin: 2em 0;
+}
+
+#final_row.row {
+	margin-top: 4em;
+}
+
+#finalize_button {
+	height: 3em;
+	background-color: rgb(89, 228, 59);
+	box-shadow: 0em 0em 1em #7E7D7D;
+}
+
+div#remove_column.sep {
+	margin-top: 6em;
+}
+
+#remove_course {
+	font-weight: bold;
 }

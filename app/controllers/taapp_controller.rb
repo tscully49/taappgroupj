@@ -7,7 +7,7 @@ class TaappController < ApplicationController
       elsif session[:accounttype] == "professor"
         redirect_to action: 'professor'
       elsif session[:accounttype] == "admin"
-        redirect_to action: 'admin'
+        redirect_to "/admin/home"
       end
     end
   end
@@ -19,18 +19,28 @@ class TaappController < ApplicationController
     @appcourse3 = ApplicationCourse.new
     @courses = Course.all
     #@selected = (params[:app_courses].present?(app_courses) ? params[:app_courses] : [])
-
-
-    if session[:accounttype].present? && session[:accounttype] == "student"
+    
+    closed = CloseApplication.first
+    
+    if closed.closed
+      redirect_to "/taapp/application_closed"
+    elsif session[:accounttype].present? && session[:accounttype] == "student"
       user = User.find_by(id: session[:id])
-      if Application.find_by(mizzou_email: user.email)
-        render "successpage"
+      if Application.find_by(mizzou_email: user.email) != nil
+        redirect_to "/taapp/status"
       else
         render "form"
       end
     else
-      render "formerror"
+      redirect_to "formerror"
     end
+  end
+
+  def status
+    @user=User.find_by(id: session[:id])
+    @application=Application.find_by(student_id: @user.student_id)
+    @applied = ApplicationCourse.where(:application_id => @application.id, :taught_teach_take_want => "want")
+    @finalized = Finalized.first
   end
 
   def show
@@ -136,6 +146,10 @@ class TaappController < ApplicationController
   def test_applicant
     @test_apps=Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct
   end
+  
+  def application_closed
+  end
+  
   private
 
     def application_params

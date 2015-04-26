@@ -1,6 +1,8 @@
 class Course < ActiveRecord::Base
-	validates :prof_id,  presence: true
+	validates :professor_id,  presence: true
 	has_many :application_courses
+	has_many :users, through: :select_ta
 	has_many :applications, through: :application_courses
-	belongs_to :professor
+	has_one :professor
+	has_many :applications
 end

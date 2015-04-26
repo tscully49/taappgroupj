@@ -1,24 +1,54 @@
 <% provide(:title, 'Create Course') %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>COMPUTER SCIENCE DEPARTMENT</title>
 
 
-<link rel="stylesheets" type="text/css" href="log.css.scss" media="all">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>COMPUTER SCIENCE DEPARTMENT</title>
 
-<script type="text/javascript" src="view.js"></script>
-<script type="text/javascript" src="calendar.js"></script>
-</head>
-<body id ="main_body">
 
-<div class="container">
+    <link rel="stylesheets" type="text/css" href="log.css.scss" media="all">
+
+    <script type="text/javascript" src="view.js"></script>
+    <script type="text/javascript" src="calendar.js"></script>
+
+<%#<style>
+table #t01 {
+    
+    border: 1px solid black;
+    border-collapse: collapse;
+     ; 
+   
+}
+th,td {
+    padding: 10px;
+}
+
+
+table#t01 tr:nth-child(even) {
+   
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+    
+   background-color:#fff;
+}
+table#t01 th	{
+    
+    background-color: black;
+    color: white;
+}
+</style>%>
+    </head>
+    <body id ="main_body">
+
+    <div class="container" id="fixed_container">
 
     <%= form_for @course, :url => url_for(:controller => 'courses', :action => 'create'), :html => {:id => "signup"} do |f| %>
       
       <div class="header">
-        <h3>Create a course</h3>
+        <h3><u>Create a course</u></h3>
       </div>
       <div class="sep"></div>
 
@@ -26,13 +56,13 @@
         <div class="form-group">
           <%= f.label :course_name, :class => 'control-label' %>
           <!--<div class="col-md-12">-->
-          <%= f.text_field :course_name, :class => "form-control"%>
+          <%= f.text_field :course_name, :class => "form-control", :value => ""%>
           <!--</div>-->
         </div>
 
         <div class="form-group">
           <%= f.label 'Select a Professor', :class => 'control-label' %>
-          <%= collection_select(:professor, :prof_id, Professor.all,:id,:prof_name, {:include_blank => true}) %>
+          <%= collection_select(:professor, :professor_id, Professor.all,:id,:prof_name, {:include_blank => true}) %>
         </div>
         
         <div class="form-group">
@@ -40,13 +70,96 @@
           <%= f.select :open_spots, options_for_select(%w[0 1 2 3 4 5 6 7 8 9 10],) %>
         </div>
         
-        <div id="midle_button" class="center col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4">
-          <%= f.submit "Create course", class: "btn btn-primary"  %>
+        <div id="midle_button" class="col-md-12 form-inline">
+          <div class = "col-md-6">
+            <%= link_to "Home Page", "/admin/home", :class => "btn btn-default", :method => :get %>
+          </div>
+          <div class = "col-md-6">
+            <%= f.submit "Create course", class: "btn btn-primary"  %>
+          </div>
         </div>
-        </div>
-      </div> <!-- END form-horizontal center DIV -->
+
+</div>
+
+        
+      </body>
+      
+       <!-- END form-horizontal center DIV -->
+<% end %>
+      
+
+      <div class="sep" id="remove_column"></div>
+      <h3 id  ="remove_course"><u>Remove a Course</u></h3>
+
+      <table id="this_table"> 
+
+       
+       
+       
+       
+       
+      <div class="header">
+      <h3 id="remove_courses">Remove a Course</h3>
+      </div>
+      
+      <head> 
+      <style>
+      table #t01 {
+        
+        border: 1px solid black;
+        border-collapse: collapse;
+         ; 
+       
+      }
+      th,td {
+        padding: 10px;
+      }
+      
+      
+      table#t01 tr:nth-child(even) {
+       
+        background-color: #eee;
+      }
+      table#t01 tr:nth-child(odd) {
+        
+       background-color:#fff;
+      }
+      table#t01 th	{
+        
+        background-color: black;
+        color: white;
+      }
+      </style>
+      </head>
+      
+      <body id ="main_body">
+      <table id="t01">
+      <%#<table id="this_table"> %>
+
+      <tr>
+      <th> Professor Name </th>
+      <th> Course Name </th>
+      <th> Open Spots for TA position </th>
+      <th> Delete Course</th>
+      </tr>
+      
+      <% @courses.each do |course| %>
+    
+      <tr>
+      <td><%= course.professor_id %></td>
+      <td nowrap><%= course.course_name %></td>
+      <td><%= course.open_spots %></td>
+
+      <td> <%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => course.id }, method: :delete,  data: { confirm: "Are you sure?" }, class: "btn btn-primary" %> </td>
+
+      <td><%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => course.id }, method: :delete, class: "btn btn-primary" %> </td>
+
+      </tr>
+      </div>
+       <% end %>
+      </table>
       <%= debug(params) if Rails.env.development? %>
-    <% end %>
+    </div>
 
 </body>
 </html>

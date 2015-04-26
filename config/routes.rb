@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   get 'courses/new'
-  get 'admin/new'
 
-  get 'addmin/home'
+  get 'admin/home'
 
   get 'addmin/help'
 
@@ -24,7 +23,21 @@ Rails.application.routes.draw do
   get  'taapp/adminerror'
   get  'taapp/successpage'
   get   '/form', to: 'taapp#form'
+  get   'admin/refresh', to: 'courses#show'
   get   'taapp/show_applicants'
+  get   'taapp/application_closed'
+  get   'admin/index'
+  get   'admin/edit'
+  get   'admin/_admin'
+  get   'admin/show'
+  get   'admin/successpage'
+  get   'admin/assign'
+  post  'admin/select'
+  get   'admin/success'
+  get   'taapp/status'
+  get   'admin/finalize'
+  get   'admin/close'
+  
 
   resources :users
   resources :admin
@@ -34,6 +47,9 @@ Rails.application.routes.draw do
   get    'signup'  => 'admin#new'
   post   'login'   => 'sessions#create'
   post   'logout'  => 'sessions#destroy'
+ # get    'edit'    =>  'admin#edit'
+ 
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
