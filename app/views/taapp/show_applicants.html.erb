@@ -5,7 +5,7 @@
 <head>
 <style>
 table  {
-    width: 90%; 
+    width: 100%; 
     border: 1px solid black;
     border-collapse: collapse;
    
@@ -18,11 +18,11 @@ th,td {
 
 
 table#t01 tr:nth-child(even) {
-   
+  
     background-color: #eee;
 }
 table#t01 tr:nth-child(odd) {
-    
+   
    background-color:#fff;
 }
 table#t01 th	{
@@ -44,6 +44,16 @@ table#t01 th	{
     
     <th> StudentID </th>
     
+    <th> Phone Number </th>
+    <th> GPA </th>
+    <th> Email </th>
+    <th> anticipated graduation date </th>
+    <th> advisor </th>
+    <%#<th>graduation status</th>%>
+    <th> Speak Score </th>
+    <th> Orientation Met </th>
+    <th> GATO requirement </th>
+    <th> Position </th>
     <th> Score </th>
    
     </tr>
@@ -57,6 +67,18 @@ table#t01 th	{
       <td><%= link_to application.first_name %></td>
       <td><%= link_to application.last_name %></td>
       <td><%= link_to application.student_id %></td>
+      <td><%= link_to application.phone_num %></td>
+      <td><%= link_to application.gpa %></td>
+      <td><%= link_to application.mizzou_email %></td>
+      <td><%= link_to application.anticipated_graduation_date %></td>
+      <td><%= link_to application.advisor %></td>
+      <%#<td><%= link_to application.grad_status%><%#</td>%>
+      <td><%= link_to application.speak_score%></td>
+      <td><%= link_to application.orientation_met%></td>
+      <td><%= link_to application.GATO_requirement%></td>
+      <td><%= link_to application.position_applying_for%></td>
+      <td><%= link_to application.speak_score%></td>
+      
       <td><%#= link_to ratings.find_or_create_by(first_name: 'application.first_name') %></td>
       </tr>
    
