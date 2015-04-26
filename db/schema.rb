@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425021356) do
+ActiveRecord::Schema.define(version: 20150426193733) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name",      limit: 60,  null: false
@@ -56,6 +56,12 @@ ActiveRecord::Schema.define(version: 20150425021356) do
   end
 
   add_index "applications", ["student_id"], name: "index_applications_on_student_id"
+
+  create_table "close_applications", force: true do |t|
+    t.boolean  "closed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.integer  "stu_id",                     null: false
@@ -102,6 +108,23 @@ ActiveRecord::Schema.define(version: 20150425021356) do
     t.integer "stu_id",            null: false
     t.integer "co_id",             null: false
     t.integer "rating",  limit: 2, null: false
+  end
+
+  create_table "students", id: false, force: true do |t|
+    t.integer "stu_id",                     null: false
+    t.string  "stu_first_name", limit: 60,  null: false
+    t.string  "stu_last_name",  limit: 60,  null: false
+    t.string  "password",       limit: 40,  null: false
+    t.string  "miz_email",      limit: 100, null: false
+    t.integer "avg_rating",     limit: 2
+    t.string  "student_type",   limit: 10,  null: false
+  end
+
+  create_table "user_auths", id: false, force: true do |t|
+    t.string   "miz_email",          limit: 100, null: false
+    t.string   "encrypted_password", limit: 40,  null: false
+    t.string   "salt",               limit: 40,  null: false
+    t.datetime "registration_date",              null: false
   end
 
   create_table "users", force: true do |t|

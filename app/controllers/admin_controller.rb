@@ -9,6 +9,7 @@ class AdminController < ApplicationController
   
   def home
     @final = Finalized.first
+    @closed = CloseApplication.first
   end
 
   def create
@@ -122,6 +123,16 @@ class AdminController < ApplicationController
         @final.update(:finalized => true)
       else 
         @final.update(:finalized => false)
+      end
+      redirect_to "/admin/home"
+    end
+    
+    def close
+      @closed = CloseApplication.first
+      if @closed.closed
+        @closed.update(:closed => false)
+      else
+        @closed.update(:closed => true)
       end
       redirect_to "/admin/home"
     end

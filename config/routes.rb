@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get   'admin/success'
   get   'taapp/status'
   get   'admin/finalize'
+  get   'admin/close'
   
 
   resources :users
