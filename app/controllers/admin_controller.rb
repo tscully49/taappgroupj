@@ -29,8 +29,10 @@ class AdminController < ApplicationController
       flash[:notice] = "Professor account is edited successfully"
       flash[:color]= "valid"
       redirect_to '/admin/successpage'
+      redirect_to(:back)
     else
       render '/admin/edit'
+      redirect_to(:back)
     end
   end
 
