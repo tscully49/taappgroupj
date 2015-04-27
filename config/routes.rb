@@ -41,8 +41,14 @@ Rails.application.routes.draw do
   get   'admin/close'
 =======
   post  'admin/:id/edit' => 'admin#edit'
+<<<<<<< HEAD
 >>>>>>> ylt5b
   
+=======
+  post  'admin/home' => 'admin#home'
+  get 'admin/:id/update' => 'admin#update'
+  patch 'admin/:id/edit' => 'admin#edit'
+>>>>>>> ylt5b
 
   resources :users
   resources :admin
