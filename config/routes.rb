@@ -45,14 +45,15 @@ Rails.application.routes.draw do
 
   
 
-  get   'comments/new'
-  post  'comments/:id/new' => 'comments#new'
+  get   'coments/new'
+  #post  'comments/:id/new' => 'comments#new'
 
 
   resources :users
   resources :admin
   resources :taapp
   resources :comments
+  resources :courses
   resources :coursesgi
   get    'login'   => 'sessions#new'
   get    'signup'  => 'admin#new'

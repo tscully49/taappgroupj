@@ -1,13 +1,17 @@
 class CommentsController < ApplicationController
 def new
-  
+
   @comment = Comment.new
+  @student_id = params[:id]
     
 end
   
   def create
     
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new
+    @comment.stu_id = @student_id
+    @comment.rating = params[:comment][:rating]
+    @comment.comment = params[:comment][:comment]
     if @comment.save
       flash[:notice] = "You Comment successfully"
       flash[:color]= "valid"
