@@ -27,11 +27,9 @@ class TaappController < ApplicationController
         redirect_to "/taapp/status"
       elsif closed.closed
         redirect_to "/taapp/application_closed"
-      else
-        render "form"
       end
     else
-      redirect_to "formerror"
+      redirect_to "/taapp/formerror"
     end
   end
 

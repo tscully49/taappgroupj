@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
   
-  #before_action :logged_in_admin, only: [:edit, :update]
+  before_action :logged_in_admin
   
   def new
     @admins = Professor.new
@@ -146,10 +146,11 @@ class AdminController < ApplicationController
         params.require(:professor).permit(:prof_name, :password, :miz_email)
       end
       
-      #def logged_in_admin
-      #unless logged_in?
-        #flash[:danger] = "Please log in."
-        #redirect_to login_url
-      #end
-      #end
-  end
+      def logged_in_admin
+        unless session[:accounttype].present? && session[:accounttype] == "admin"
+          reset_session
+          flash[:notice] = "This area is only accessible by administrators. Please log in as an administrator to proceed."
+          redirect_to '/'
+        end
+      end
+end
