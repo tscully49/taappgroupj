@@ -34,21 +34,15 @@ Rails.application.routes.draw do
   get   'admin/successpage'
   get   'admin/assign'
   post  'admin/select'
-<<<<<<< HEAD
   get   'admin/success'
   get   'taapp/status'
   get   'admin/finalize'
   get   'admin/close'
-=======
   post  'admin/:id/edit' => 'admin#edit'
-<<<<<<< HEAD
->>>>>>> ylt5b
   
-=======
   post  'admin/home' => 'admin#home'
   get 'admin/:id/update' => 'admin#update'
   patch 'admin/:id/edit' => 'admin#edit'
->>>>>>> ylt5b
 
   resources :users
   resources :admin
