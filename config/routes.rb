@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   get   'admin/assign'
   post  'admin/select'
   post  'admin/:id/edit' => 'admin#edit'
-  
+  post  'admin/home' => 'admin#home'
+  get 'admin/:id/update' => 'admin#update'
+  patch 'admin/:id/edit' => 'admin#edit'
 
   resources :users
   resources :admin

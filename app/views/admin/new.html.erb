@@ -117,7 +117,7 @@
           <tr>
           <td><%= link_to prof.prof_name %></td>
           <td><%= link_to prof.miz_email %></td>
-          <td> <%= button_to "Delete", {:controller => :admin, :action => 'destroy', :id => prof.id }, method: :delete, class: "btn btn-primary" %> </td>
+          <td> <%= button_to "Delete", {:controller => :admin, :action => 'home', :id => prof.id }, method: :delete, class: "btn btn-primary" %> </td>
           </tr>
           
            <% end %>

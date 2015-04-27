@@ -8,6 +8,7 @@ class AdminController < ApplicationController
   end
   
   def home
+    render "home"
   end
 
   def create
@@ -24,28 +25,20 @@ class AdminController < ApplicationController
 
   def edit
     @admins = Professor.find(params[:id])
-   # @all_profs = Professor.all
-    render "edit"
-     #if @admins.update_attributes(user_params)
-        #@admins.save
-        #flash[:notice] = "Professor account is edited successfully"
-        #flash[:color]= "valid"
-        #redirect_to(:back)
-    #else
-        #flash[:notice] = "Edit failed"
-       # redirect_to(:back)
-    #end
+    #if @admins.update_attributes(name: params[:prof_name], miz_email: params[:miz_email], password: params[:password]) 
+    if @admins.update_attributes(professor_params)
+        flash[:notice] = "Professor account is edited successfully"
+        redirect_to(:back)
+    else
+        flash[:notice] = "Edit failed"
+        redirect_to(:back)
+    end
   end
 
   def update
-      @admins= Professor.find(params[:id])
-      if @admins.update_attributes(user_params)
-        flash[:notice] = "Professor account is updated successfully"
-        redirect_to @admins
-      else
-        flash[:notice] = "Edit failed"
-        render '/admin/edit'
-      end
+    @admins = Professor.find(params[:id])
+    @all_profs = Professor.all
+    render "update"
   end
   
 
@@ -87,7 +80,7 @@ class AdminController < ApplicationController
       end
       
       def professor_params
-        params.require(:professor).permit(:prof_name, :password, :miz_email, :password_confirmation)
+        params.require(:professor).permit(:prof_name, :password, :miz_email)
       end
       
       #def logged_in_admin
