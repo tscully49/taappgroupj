@@ -35,8 +35,10 @@ Rails.application.routes.draw do
   get   'admin/success'
   get   'taapp/status'
   get   'admin/finalize'
+  get   'assignment/view_apps'
   
-
+  
+  resources :assignment
   resources :users
   resources :admin
   resources :taapp
