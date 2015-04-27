@@ -55,8 +55,9 @@
 	<hr>
 	<br>
 	<p id="info"> Use the links below to start reviewing and rating applicants. </p>
-	
-	<button type="button" class="btn btn-primary btn-lg btn-block">VIEW ALL APPLICANTS </button>
+	<%= link_to '<button type="button" class="btn btn-primary btn-lg btn-block">VIEW ALL APPLICANTS</button>'.html_safe, controller: "taapp", action: "show_applicants" %>
+    <%= link_to '<button type="button" class="btn btn-primary btn-lg btn-block">RATE PREVIOUS APPLICANTS</button>'.html_safe, controller: "taapp", action: "show_applicants" %>
+	<%#<button type="button" class="btn btn-primary btn-lg btn-block">VIEW ALL APPLICANTS </button>%>
 	<button type="button" class="btn btn-primary btn-lg btn-block">RATE PREVIOUS APPLICANTS </button>
 	
 	
