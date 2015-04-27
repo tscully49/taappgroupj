@@ -40,11 +40,13 @@ Rails.application.routes.draw do
   get   'taapp/rate_applicant'
   get   'rating/rating'
   post  'rating/:id/rating' => 'rating#rating'
-  post  'comments/:id/comments' => 'comments#comments'
+  get   'comments/new'
+  post  'comments/:id/new' => 'comments#new'
 
   resources :users
   resources :admin
   resources :taapp
+  resources :comments
   resources :coursesgi
   get    'login'   => 'sessions#new'
   get    'signup'  => 'admin#new'

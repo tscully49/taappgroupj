@@ -1,24 +1,25 @@
 class CommentsController < ApplicationController
 def new
-  @comments = Comments.new
+  
+  @comment = Comment.new
     
 end
   
   def create
     
-    @comments = Comments.new(user_params)
+    @comment = Comment.new(comment_params)
     if @comment.save
       flash[:notice] = "You Comment successfully"
       flash[:color]= "valid"
       redirect_to '/'
       
     else
-      render 'rating/rating'
+      render 'new'
     end
   end
 
 def show
-  @comments=Comments.find(params[:id])
+  @comment=Comment.find(params[:id])
 end
 
   def edit

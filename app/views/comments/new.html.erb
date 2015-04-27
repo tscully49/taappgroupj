@@ -18,8 +18,9 @@
     <body id ="main_body">
 
     <div class="container" id="fixed_container">
+    <%#= form_for @course, :url => url_for(:controller => 'courses', :action => 'create'), :html => {:id => "signup"} do |f| %>
 
-    <%= form_for @comment, :url => url_for(:controller => 'comments', :action => 'create'), :html => {:id => "rate"} do |f| %>
+    <%= form_for @comment, :url => url_for(:controller => 'comments', :action => 'create'), :html => {:id => "signup"} do |f| %>
      <%#= form_for @admins, :url => url_for(:controller => 'admin', :action => 'edit') , :html => {:id => " edit_user_1"} do |f| %> 
       <div class="header">
         <h3><u>Create comments</u></h3>
@@ -33,16 +34,10 @@
           <%= f.text_field :comment, :class => "form-control", :value => ""%>
           <!--</div>-->
         </div>
-
-        <div class="form-group">
-          <%= f.label 'Select a Professor', :class => 'control-label' %>
-          <%= collection_select(:professor, :professor_id, Professor.all,:id,:prof_name, {:include_blank => true}) %>
-        </div>
         
         <div class="form-group">
           <%= f.label 'Number of Raing', :class => 'control-label' %>
-          <%= f.select :open_spots, options_for_select(%w[0 1 2 3 4 5 6 7 8 9 10],) %>
-          <%#= collection_select(:rating, :rate, Professor.all,:id,:prof_name, {:include_blank => true}) %>
+          <%= f.text_field :rating, :class => "form-control", :value => ""%>
         </div>
         
         <div id="midle_button" class="col-md-12 form-inline">
