@@ -1,4 +1,5 @@
 
+
 <% provide(:title, "Edit Professors Account ") %>
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,11 +19,11 @@
     <input name="_method" type="hidden" value="patch" />
     </form>%>
     <div class="container">
-<<<<<<< HEAD
+
     <%= form_for @admins, :url => url_for(:controller => 'admin', :action => 'edit') , :html => {:id => " edit_user_1"} do |f| %>
-=======
+
     <%= form_for @admins, :url => url_for(:controller => 'admin', :action => 'edit') , :html => {:id => " signup"} do |f| %>
->>>>>>> ylt5b
+
      <div class="header">
         <h3>Update Professors Account</h3>
       </div>
@@ -49,11 +50,11 @@
           <%= f.text_field :password_digest , :class => "form-control"%>
          <!--</div>-->
         </div>
-<<<<<<< HEAD
+
 </div>
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
-=======
+
 
       <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="col-md-4 col-sm-12 col-xs-12">
@@ -65,7 +66,7 @@
         </div>
       
     
->>>>>>> ylt5b
+
 
     
       </div>
@@ -74,3 +75,4 @@
     <% end %>
     
    
+

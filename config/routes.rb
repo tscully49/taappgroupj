@@ -35,15 +35,23 @@ Rails.application.routes.draw do
   get   'admin/assign'
   post  'admin/select'
 
+
   get   'admin/success'
   get   'taapp/status'
   get   'admin/finalize'
   get   'admin/close'
 
 
+
   post  'admin/:id/edit' => 'admin#edit'
 
+
+  #post  'admin/:id/edit' => 'admin#edit'
+
   
+  post  'admin/home' => 'admin#home'
+  get 'admin/:id/update' => 'admin#update'
+  patch 'admin/:id/edit' => 'admin#edit'
 
   get   'coments/new'
   #post  'comments/:id/new' => 'comments#new'
