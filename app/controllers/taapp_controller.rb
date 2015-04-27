@@ -47,7 +47,6 @@ class TaappController < ApplicationController
     @user=User.find(params[:id])
   end
 
-
   def create
     @application = Application.new(application_params)
     @courses = Course.all
@@ -126,6 +125,8 @@ class TaappController < ApplicationController
   
   def professor
     if session[:accounttype].present? && session[:accounttype] == "professor"
+      @professor = Professor.find_by(:id => session[:id])
+      @courses = Course.where(id: session[:id])
       render "professor"
     else
       render "proferror"
