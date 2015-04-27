@@ -5,7 +5,7 @@
 <head>
 <style>
 table  {
-    width: 90%; 
+    width: 110%; 
     border: 1px solid black;
     border-collapse: collapse;
    
@@ -42,6 +42,7 @@ table#t01 th	{
   <tr>                          
     <th> Professor Name </th>
     <th> Professor Email </th>
+    <th> Edit Professor</th>
   </tr>
   
   <% @admins.each do |professor| %>
@@ -49,6 +50,8 @@ table#t01 th	{
      <tr>
       <td><%= link_to professor.prof_name %></td>
       <td><%= link_to professor.miz_email %></td>
+      <td><%= link_to "edit", {:controller => :admin, :action => 'edit', :id => professor.id }, class: "btn btn-primary" %></td>
+     <%# <td><%= link_to professor.password_digest%>
     </tr>
     
   <% end %>

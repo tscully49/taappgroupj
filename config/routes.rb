@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get   'admin/successpage'
   get   'admin/assign'
   post  'admin/select'
+  post  'admin/:id/edit' => 'admin#edit'
   
 
   resources :users
