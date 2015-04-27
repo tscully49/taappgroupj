@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   get   'taapp/status'
   get   'admin/finalize'
   get   'admin/close'
+  get   'taapp/rate_applicant'
+  get   'rating/rating'
   
 
   resources :users
