@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get   'admin/close'
   get   'taapp/rate_applicant'
   get   'rating/rating'
-  
+  post  'rating/:id/rating' => 'rating#rating'
 
   resources :users
   resources :admin

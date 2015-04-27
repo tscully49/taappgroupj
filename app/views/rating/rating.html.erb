@@ -19,8 +19,8 @@
 
     <div class="container" id="fixed_container">
 
-    <%= form_for @comment, :url => url_for(:controller => 'rating', :action => 'create'), :html => {:id => "signup"} do |f| %>
-      
+    <%= form_for @comment, :url => url_for(:controller => 'rating', :action => 'create'), :html => {:id => "rate"} do |f| %>
+     <%#= form_for @admins, :url => url_for(:controller => 'admin', :action => 'edit') , :html => {:id => " edit_user_1"} do |f| %> 
       <div class="header">
         <h3><u>Create comments</u></h3>
       </div>

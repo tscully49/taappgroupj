@@ -1,8 +1,8 @@
-class RatingController < ApplicationController
-  def new
+class CommentsController < ApplicationController
+def new
   @comments = Comments.new
     
-  end
+end
   
   def create
     
@@ -47,10 +47,9 @@ end
       end
   end
 
-
-
-
-
-
-
+    
+    
+    
+    
+    
 end
