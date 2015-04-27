@@ -57,6 +57,7 @@ Application.create(first_name: "Hank", last_name: "Smith", student_id: 22242432,
 
 Comment.create(stu_id: 13242432, prof_id: 1, comment: "Great", date_commented: "2012-04-03", rating: 5 )
 Comment.create(stu_id: 13342432, prof_id: 1, comment: "Great", date_commented: "2012-04-03", rating: 4 )
+Comment.create(stu_id: 13245532, prof_id: 1, comment: "Great", date_commented: "2012-04-03", rating: 3 )
 
 
 Course.create(course_name: "CS 4320", professor_id: 3, open_spots: 4)
