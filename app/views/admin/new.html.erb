@@ -132,8 +132,6 @@
 
           <td> <%= button_to "Delete", {:controller => :admin, :action => 'destroy', :id => prof.id }, method: :delete,  data: { confirm: "Are you sure?" }, class: "btn btn-primary" %> </td>
 
-          <td> <%= button_to "Delete", {:controller => :admin, :action => 'home', :id => prof.id }, method: :delete, class: "btn btn-primary" %> </td>
-
           </tr>
           
            <% end %>

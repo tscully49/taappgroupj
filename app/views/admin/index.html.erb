@@ -55,10 +55,6 @@ table#t01 th	{
       <td><%= link_to professor.prof_name %></td>
       <td><%= link_to professor.miz_email %></td>
 
-
-      <td><%= link_to "edit", {:controller => :admin, :action => 'edit', :id => professor.id }, class: "btn btn-primary" %></td>
-
-
       <td><%= link_to "update", {:controller => :admin, :action => 'update', :id => professor.id }, class: "btn btn-primary" %></td>
 
      <%# <td><%= link_to professor.password_digest%>

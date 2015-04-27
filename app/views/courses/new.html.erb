@@ -152,8 +152,6 @@ table#t01 th	{
 
       <td> <%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => course.id }, method: :delete,  data: { confirm: "Are you sure?" }, class: "btn btn-primary" %> </td>
 
-      <td><%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => course.id }, method: :delete, class: "btn btn-primary" %> </td>
-
       </tr>
       </div>
        <% end %>
