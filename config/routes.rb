@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get  'taapp/formerror'
   get  'taapp/professor'
   get  'taapp/proferror'
+  get  'tapp/rate_professor'
   get  'taapp/admin'
   get  'taapp/adminerror'
   get  'taapp/successpage'
