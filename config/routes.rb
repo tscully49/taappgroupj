@@ -34,10 +34,14 @@ Rails.application.routes.draw do
   get   'admin/successpage'
   get   'admin/assign'
   post  'admin/select'
+<<<<<<< HEAD
   get   'admin/success'
   get   'taapp/status'
   get   'admin/finalize'
   get   'admin/close'
+=======
+  post  'admin/:id/edit' => 'admin#edit'
+>>>>>>> ylt5b
   
 
   resources :users
