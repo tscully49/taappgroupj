@@ -20,19 +20,16 @@ class TaappController < ApplicationController
     @courses = Course.all
     #@selected = (params[:app_courses].present?(app_courses) ? params[:app_courses] : [])
     
-    closed = CloseApplication.first
-    
-    if closed.closed
-      redirect_to "/taapp/application_closed"
-    elsif session[:accounttype].present? && session[:accounttype] == "student"
+    if session[:accounttype].present? && session[:accounttype] == "student"
       user = User.find_by(id: session[:id])
+      closed = CloseApplication.first
       if Application.find_by(mizzou_email: user.email) != nil
         redirect_to "/taapp/status"
-      else
-        render "form"
+      elsif closed.closed
+        redirect_to "/taapp/application_closed"
       end
     else
-      redirect_to "formerror"
+      redirect_to "/taapp/formerror"
     end
   end
 
@@ -50,7 +47,6 @@ class TaappController < ApplicationController
   def rate_applicant
     
   end
-
 
 
   def create
@@ -131,6 +127,8 @@ class TaappController < ApplicationController
   
   def professor
     if session[:accounttype].present? && session[:accounttype] == "professor"
+      @professor = Professor.find_by(:id => session[:id])
+      @courses = Course.where(id: session[:id])
       render "professor"
     else
       render "proferror"
