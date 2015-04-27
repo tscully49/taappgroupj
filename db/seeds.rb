@@ -80,3 +80,5 @@ ApplicationCourse.create(application_id: 1, course_id: 4, taught_teach_take_want
 ApplicationCourse.create(application_id: 1, course_id: 1, taught_teach_take_want: "take")
 
 Finalized.create(finalized: false)
+
+CloseApplication.create(closed: false)

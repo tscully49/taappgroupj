@@ -1,5 +1,7 @@
 class TaappController < ApplicationController
   
+  before_action :logged_in_prof, only: [:professor]
+  
   def index
     if session[:accounttype].present?
       if session[:accounttype] == "student"
@@ -19,17 +21,17 @@ class TaappController < ApplicationController
     @appcourse3 = ApplicationCourse.new
     @courses = Course.all
     #@selected = (params[:app_courses].present?(app_courses) ? params[:app_courses] : [])
-
-
+    
     if session[:accounttype].present? && session[:accounttype] == "student"
       user = User.find_by(id: session[:id])
+      closed = CloseApplication.first
       if Application.find_by(mizzou_email: user.email) != nil
         redirect_to "/taapp/status"
-      else
-        render "form"
+      elsif closed.closed
+        redirect_to "/taapp/application_closed"
       end
     else
-      redirect_to "formerror"
+      redirect_to "/taapp/formerror"
     end
   end
 
@@ -43,7 +45,6 @@ class TaappController < ApplicationController
   def show
     @user=User.find(params[:id])
   end
-
 
   def create
     @application = Application.new(application_params)
@@ -123,6 +124,8 @@ class TaappController < ApplicationController
   
   def professor
     if session[:accounttype].present? && session[:accounttype] == "professor"
+      @professor = Professor.find_by(:id => session[:id])
+      @courses = Course.where(id: session[:id])
       render "professor"
     else
       render "proferror"
@@ -143,11 +146,23 @@ class TaappController < ApplicationController
   def test_applicant
     @test_apps=Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct
   end
+  
+  def application_closed
+  end
+  
   private
 
     def application_params
       params.require(:application).permit(:position_applying_for, :first_name, :last_name, :student_id, :gpa, :undergrad_status, 
         :grad_status, :advisor, :phone_num, :mizzou_email, :anticipated_graduation_date, :other_work, :speak_score, :semester_of_test, 
         :language_assessment, :GATO_requirement, :orientation_met)
+    end
+    
+    def logged_in_prof
+      unless session[:accounttype].present? && session[:accounttype] == "professor"
+        reset_session
+        flash[:notice] = "This area is only accessible by professors. Please log in as a professor to proceed."
+        redirect_to '/'
+      end
     end
 end

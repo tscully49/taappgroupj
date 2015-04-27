@@ -19,12 +19,14 @@ Rails.application.routes.draw do
   get  'taapp/formerror'
   get  'taapp/professor'
   get  'taapp/proferror'
+  get  'tapp/rate_professor'
   get  'taapp/admin'
   get  'taapp/adminerror'
   get  'taapp/successpage'
   get   '/form', to: 'taapp#form'
   get   'admin/refresh', to: 'courses#show'
   get   'taapp/show_applicants'
+  get   'taapp/application_closed'
   get   'admin/index'
   get   'admin/edit'
   get   'admin/_admin'
@@ -35,10 +37,19 @@ Rails.application.routes.draw do
   get   'admin/success'
   get   'taapp/status'
   get   'admin/finalize'
+
   get   'assignment/view_apps'
   
-  
   resources :assignment
+
+  get   'admin/close'
+  post  'admin/:id/edit' => 'admin#edit'
+  
+  post  'admin/home' => 'admin#home'
+  get 'admin/:id/update' => 'admin#update'
+  patch 'admin/:id/edit' => 'admin#edit'
+
+
   resources :users
   resources :admin
   resources :taapp

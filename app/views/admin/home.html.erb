@@ -1,13 +1,9 @@
-<%#<h1>Addmin#home</h1>
-<p>Find me in app/views/addmin/home.html.erb</p>%>
-
 <% provide(:title, "Admin Home Page ") %>
 
 
 <div class="container" id="signup">
 <h2> Admin Home Page</h2>
 <h4> <u>Logged in as:</u> <%= session[:first_name]%> </h4>
-<%#<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 
 	<div class = "row">	
 		<div class = "col-md-12">
@@ -40,11 +36,20 @@
 		</div>
 	</div>
 	<div class = "row" id="final_row">
+ 		<div class = "col-md-12">
+ 			<% if @closed.closed %>
+				<%= link_to '<button type="button" id="finalize_button_red" class="btn btn-default">Open Application Window</button>'.html_safe, controller: "admin", action: "close" %>
+			<% else %>
+				<%= link_to '<button type="button" id="finalize_button" class="btn btn-default">Close Application Window</button>'.html_safe, controller: "admin", action: "close" %>
+			<% end %>
+		</div>
+	</div>
+	<div class = "row" id="last_row">
 		<div class = "col-md-12">
 		<% if @final.finalized == false %>
 			<%= link_to '<button type="button" id="finalize_button" class="btn btn-default">Finalize TA Assignments</button>'.html_safe, controller: "admin", action: "finalize"  %>
 		<% else %>
-			<%= link_to '<button type="button" id="finalize_button" class="btn btn-default">Reopen TA Assignments</button>'.html_safe, controller: "admin", action: "finalize"  %>
+			<%= link_to '<button type="button" id="finalize_button_red" class="btn btn-default">Reopen TA Assignments</button>'.html_safe, controller: "admin", action: "finalize"  %>
 		<% end %>
 		</div>
 	</div>

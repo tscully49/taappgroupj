@@ -1071,12 +1071,23 @@ th {
 }
 
 #final_row.row {
-	margin-top: 4em;
+	margin-top: 5em;
+	margin-bottom: 0em;
+}
+
+#signup #last_row {
+	margin-top: 0;
 }
 
 #finalize_button {
 	height: 3em;
 	background-color: rgb(89, 228, 59);
+	box-shadow: 0em 0em 1em #7E7D7D;
+}
+
+#finalize_button_red {
+	height: 3em;
+	background-color: #E30821;
 	box-shadow: 0em 0em 1em #7E7D7D;
 }
 
