@@ -20,14 +20,13 @@ class TaappController < ApplicationController
     @courses = Course.all
     #@selected = (params[:app_courses].present?(app_courses) ? params[:app_courses] : [])
     
-    closed = CloseApplication.first
-    
-    if closed.closed
-      redirect_to "/taapp/application_closed"
-    elsif session[:accounttype].present? && session[:accounttype] == "student"
+    if session[:accounttype].present? && session[:accounttype] == "student"
       user = User.find_by(id: session[:id])
+      closed = CloseApplication.first
       if Application.find_by(mizzou_email: user.email) != nil
         redirect_to "/taapp/status"
+      elsif closed.closed
+        redirect_to "/taapp/application_closed"
       else
         render "form"
       end
