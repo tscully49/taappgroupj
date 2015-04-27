@@ -110,23 +110,6 @@ ActiveRecord::Schema.define(version: 20150426193733) do
     t.integer "rating",  limit: 2, null: false
   end
 
-  create_table "students", id: false, force: true do |t|
-    t.integer "stu_id",                     null: false
-    t.string  "stu_first_name", limit: 60,  null: false
-    t.string  "stu_last_name",  limit: 60,  null: false
-    t.string  "password",       limit: 40,  null: false
-    t.string  "miz_email",      limit: 100, null: false
-    t.integer "avg_rating",     limit: 2
-    t.string  "student_type",   limit: 10,  null: false
-  end
-
-  create_table "user_auths", id: false, force: true do |t|
-    t.string   "miz_email",          limit: 100, null: false
-    t.string   "encrypted_password", limit: 40,  null: false
-    t.string   "salt",               limit: 40,  null: false
-    t.datetime "registration_date",              null: false
-  end
-
   create_table "users", force: true do |t|
     t.string   "email"
     t.datetime "created_at"

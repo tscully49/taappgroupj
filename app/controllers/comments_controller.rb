@@ -1,24 +1,25 @@
-class RatingController < ApplicationController
-  def new
-  @comments = Comment.new
+class CommentsController < ApplicationController
+def new
+  
+  @comment = Comment.new
     
-  end
+end
   
   def create
     
-    @comments = Comment.new(user_params)
+    @comment = Comment.new(comment_params)
     if @comment.save
       flash[:notice] = "You Comment successfully"
       flash[:color]= "valid"
       redirect_to '/'
       
     else
-      render 'rating/rating'
+      render 'new'
     end
   end
 
 def show
-  @comments=Comment.find(params[:id])
+  @comment=Comment.find(params[:id])
 end
 
   def edit
@@ -47,10 +48,9 @@ end
       end
   end
 
-
-
-
-
-
-
+    
+    
+    
+    
+    
 end
