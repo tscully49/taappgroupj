@@ -97,7 +97,7 @@ table#t01 th	{
             <% end %> 
         <% else %>
             <% if @application %>
-                <% @application = Application.find_by(:id => @app_ids.application_id) %> 
+                <% @application = Application.find_by(:id => @app_ids.first.application_id) %> 
                     
                 <% if @application != nil %>
                         <ul class="users" id="assign_table">
@@ -215,7 +215,7 @@ table#t01 th	{
             <% end %> 
         <% else %> 
             <% if @application %>
-                <% @application = Application.find_by(:id => @app_ids.application_id) %> 
+                <% @application = Application.find_by(:id => @app_ids.first.application_id) %> 
                     
                 <% if @application != nil %>
                         <ul class="users" id="assign_table">

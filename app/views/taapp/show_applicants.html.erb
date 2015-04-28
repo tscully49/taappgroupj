@@ -43,7 +43,7 @@ table#t01 th	{
   
     <table id="t01">
     <tr>                          
-    <th> FisrtName </th>
+    <th> FirstName </th>
     
     <th> LastName </th>
     
@@ -67,41 +67,72 @@ table#t01 th	{
     </tr>
 
       <%#Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct>%>
+      <% if @applications.count > 1 %>
+        <% @applications.each do |application| %>
+        <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
 
-      <% @applications.each do |application| %>
-      <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
+        <tr>
+        <td><%= application.first_name %></td>
+        <td><%= application.last_name %></td>
+        <td><%= application.student_id %></td>
+        <td><%= application.phone_num %></td>
+        <td><%= application.gpa %></td>
+        <td><%= application.mizzou_email %></td>
+        <td><%= application.anticipated_graduation_date %></td>
+        <td><%= application.advisor %></td>
+        <%#<td><%= link_to application.grad_status%><%#</td>%>
 
-      <tr>
-      <td><%= application.first_name %></td>
-      <td><%= application.last_name %></td>
-      <td><%= application.student_id %></td>
-      <td><%= application.phone_num %></td>
-      <td><%= application.gpa %></td>
-      <td><%= application.mizzou_email %></td>
-      <td><%= application.anticipated_graduation_date %></td>
-      <td><%= application.advisor %></td>
-      <%#<td><%= link_to application.grad_status%><%#</td>%>
+        <td><%= application.speak_score%></td>
+        <td><%= application.orientation_met%></td>
+        <td><%= application.GATO_requirement%></td>
+        <td><%= application.position_applying_for%></td>
 
-      <td><%= application.speak_score%></td>
-      <td><%= application.orientation_met%></td>
-      <td><%= application.GATO_requirement%></td>
-      <td><%= application.position_applying_for%></td>
+        <td><%= application.speak_score%></td>
 
-      <td><%= application.speak_score%></td>
+       
 
-     
+        <% if @ratenumber != nil %> 
+            <td><%= @ratenumber %></td>
+        <% else %>
+            <td> N/A </td>
+        <% end %>
 
-      <% if @ratenumber != nil %> 
-          <td><%= @ratenumber %></td>
-      <% else %>
-          <td> N/A </td>
-      <% end %>
+        <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
 
-      <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
-
-      </tr>
-   
-  <% end %>
+        </tr>
+    <% end %>
     </table> 
+  <% else %>
+        <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
+        <% @application = @applications.first %>
+        <tr>
+        <td><%= @application.first_name %></td>
+        <td><%= @application.last_name %></td>
+        <td><%= @application.student_id %></td>
+        <td><%= @application.phone_num %></td>
+        <td><%= @application.gpa %></td>
+        <td><%= @application.mizzou_email %></td>
+        <td><%= @application.anticipated_graduation_date %></td>
+        <td><%= @application.advisor %></td>
+        <%#<td><%= link_to application.grad_status%><%#</td>%>
+
+        <td><%= @application.speak_score%></td>
+        <td><%= @application.orientation_met%></td>
+        <td><%= @application.GATO_requirement%></td>
+        <td><%= @application.position_applying_for%></td>
+
+        <td><%= @application.speak_score%></td>
+
+       
+
+        <% if @ratenumber != nil %> 
+            <td><%= @ratenumber %></td>
+        <% else %>
+            <td> N/A </td>
+        <% end %>
+
+        <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
+    </table> 
+  <% end %>
 
 
