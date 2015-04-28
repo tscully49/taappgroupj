@@ -141,6 +141,11 @@ class TaappController < ApplicationController
   end
   
   def show_applicants
+    unless session[:accounttype].present? && ( session[:accounttype] == "professor" || session[:accounttype] == "admin")
+      reset_session
+      flash[:notice] = "This area only accessible by professors and administrators. Please log in as a professor or administrator to proceed."
+      redirect_to '/'
+    end
     @applications = Application.all
   end
   def test_applicant

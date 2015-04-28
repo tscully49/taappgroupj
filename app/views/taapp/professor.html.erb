@@ -27,7 +27,7 @@
 	<p id="info"> Use the links below to start reviewing and rating applicants. </p>
 	
 	<div class="row">
-		<%= link_to '<button type="button" class="btn btn-default">View All Applicants</button>'.html_safe %>
+		<%= link_to '<button type="button" class="btn btn-default">View All Applicants</button>'.html_safe, controller: "taapp", action: "show_applicants" %>
 	</div>
 	<div class="row">
 		<%= link_to '<button type="button" class="btn btn-default">Rate Previous Applicants</button>'.html_safe%>
