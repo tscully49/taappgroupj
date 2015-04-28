@@ -11,5 +11,5 @@ class AssignmentController < ApplicationController
     def view_apps
         @courses= Course.where(professor_id: session[:id])
     end 
-
+    
 end
