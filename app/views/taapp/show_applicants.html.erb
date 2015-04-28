@@ -69,8 +69,8 @@ table#t01 th	{
       <%#Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct>%>
       <% if @applications.count > 1 %>
         <% @applications.each do |application| %>
-        <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
-
+        <% @ratenumber = Rating.where("stu_id LIKE ?", "%#{@applications.first.student_id}%").average(:rating)%>
+        
         <tr>
         <td><%= application.first_name %></td>
         <td><%= application.last_name %></td>
@@ -103,8 +103,8 @@ table#t01 th	{
         <% end %>
         </table> 
       <% else %>
-        <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
-        <% @application = @applications %>
+        <% @ratenumber = Rating.where("stu_id LIKE ?", "%#{@applications.first.student_id}%").average(:rating)%>
+        <% @application = @applications.first %>
         <tr>
         <td><%= @application.first_name %></td>
         <td><%= @application.last_name %></td>
