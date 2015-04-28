@@ -1109,6 +1109,7 @@ div#remove_column.sep {
 
 #go_back {
 	margin-top: 1em;
+	margin-bottom: 2em;
 	color: black;
 	background-color: #F1B82D;
 	border: outset rgb(142, 142, 142) 1px;

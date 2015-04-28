@@ -2,6 +2,7 @@
 
 
 <h2>All Professors Account</h2>
+<%= link_to "Go Back", :back, :class => "btn", :id => "go_back" %>
 <head>
 <style>
 table  {
@@ -46,7 +47,6 @@ table#t01 th	{
     <%#<th> Professor Passwrod</th>%>
 
     <th> Edit Professor</th>
-
   </tr>
   
   <% @admins.each do |professor| %>
