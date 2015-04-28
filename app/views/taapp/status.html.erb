@@ -36,8 +36,8 @@
 	<h4><u>Classes applied for:</u></h4>
 	<table class="table table-striped">
 		<% @applied.each do |course| %>
-			<% @course_name = Course.find(course)%>
-			<tr> <%= @course_name.course_name %></tr>
+			<% @course_name = Course.find(course.course_id)%>
+			<tr> <td><%= @course_name.course_name %></td></tr>
 		<% end %>
 	</table>
 </div>

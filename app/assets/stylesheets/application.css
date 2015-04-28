@@ -1099,6 +1099,14 @@ div#remove_column.sep {
 	font-weight: bold;
 }
 
+#email_form {
+	width:80%;
+}
+
+#dual\20 email_form {
+	width: 80%;
+}
+
 #go_back {
 	margin-top: 1em;
 	color: black;
