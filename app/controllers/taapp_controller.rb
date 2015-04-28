@@ -45,6 +45,11 @@ class TaappController < ApplicationController
   def show
     @user=User.find(params[:id])
   end
+  
+  def rate_applicant
+    
+  end
+
 
   def create
     @application = Application.new(application_params)

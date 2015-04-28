@@ -1106,3 +1106,15 @@ div#remove_column.sep {
 #dual\20 email_form {
 	width: 80%;
 }
+
+#go_back {
+	margin-top: 1em;
+	color: black;
+	background-color: #F1B82D;
+	border: outset rgb(142, 142, 142) 1px;
+	box-shadow: 0.1em 0.1em #888888;
+}
+
+#go_back:hover {
+	background-color: #EDC666;
+}
