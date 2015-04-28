@@ -36,7 +36,7 @@ table#t01 th	{
 <% if @courses.count > 1 %>
     <% @courses.each do |course| %>
         <h4> <%= course.course_name %></h4>
-        <% @app_ids=ApplicationCourse.where(:course_id => course.id) %> 
+        <% @app_ids=ApplicationCourse.where(:course_id => course.id, :taught_teach_take_want => 'want') %> 
         <% if @app_ids.count > 1 %> 
             <% @app_ids.each do |app| %>
                 <% @application = Application.find_by(:id => app.application_id) %> 
