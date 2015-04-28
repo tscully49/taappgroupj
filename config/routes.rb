@@ -38,9 +38,8 @@ Rails.application.routes.draw do
   get   'admin/finalize'
   get   'admin/close'
   get   'taapp/rate_applicant'
-
   
-  post  'comments/:id/new' => 'comments#new'
+  get  'comments/:id/new' => 'comments#new'
 
   resources :users
   resources :admin
