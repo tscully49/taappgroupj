@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get   'admin/successpage'
   get   'admin/assign'
   post  'admin/select'
+
+
   get   'admin/success'
   get   'taapp/status'
   get   'admin/finalize'
@@ -43,17 +45,35 @@ Rails.application.routes.draw do
   resources :assignment
 
   get   'admin/close'
+
+
+
+
   post  'admin/:id/edit' => 'admin#edit'
+
+
+  #post  'admin/:id/edit' => 'admin#edit'
+
   
   post  'admin/home' => 'admin#home'
   get 'admin/:id/update' => 'admin#update'
   patch 'admin/:id/edit' => 'admin#edit'
 
+  get   'coments/new'
+  #post  'comments/:id/new' => 'comments#new'
+
+
+  get   'taapp/rate_applicant'
+  
+  get  'comments/:id/new' => 'comments#new'
+
 
   resources :users
   resources :admin
   resources :taapp
+  resources :comments
   resources :courses
+  resources :coursesgi
   get    'login'   => 'sessions#new'
   get    'signup'  => 'admin#new'
   post   'login'   => 'sessions#create'

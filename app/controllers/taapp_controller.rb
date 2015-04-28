@@ -45,6 +45,11 @@ class TaappController < ApplicationController
   def show
     @user=User.find(params[:id])
   end
+  
+  def rate_applicant
+    
+  end
+
 
   def create
     @application = Application.new(application_params)
@@ -112,7 +117,7 @@ class TaappController < ApplicationController
           @appcourse4.save
         end
       end
-        redirect_to '/taapp/successpage'
+        redirect_to '/taapp/status'
     else
         render 'form'
     end

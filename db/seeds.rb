@@ -54,6 +54,12 @@ Application.create(first_name: "Hank", last_name: "Smith", student_id: 22242432,
 	speak_score: "0", orientation_met: "yes", accepted: false, 
 	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
 
+
+Comment.create(stu_id: 13242432, prof_id: 1, comment: "Great", date_commented: "2012-04-03", rating: 5 )
+Comment.create(stu_id: 13342432, prof_id: 1, comment: "Great", date_commented: "2012-04-03", rating: 4 )
+Comment.create(stu_id: 13245532, prof_id: 1, comment: "Great", date_commented: "2012-04-03", rating: 3 )
+
+
 Course.create(course_name: "CS 4320", professor_id: 3, open_spots: 4)
 Course.create(course_name: "CS 1050", professor_id: 2, open_spots: 3)
 Course.create(course_name: "CS 2050", professor_id: 5, open_spots: 1)
@@ -78,6 +84,21 @@ ApplicationCourse.create(application_id: 3, course_id: 2, taught_teach_take_want
 ApplicationCourse.create(application_id: 1, course_id: 3, taught_teach_take_want: "take")
 ApplicationCourse.create(application_id: 1, course_id: 4, taught_teach_take_want: "take")
 ApplicationCourse.create(application_id: 1, course_id: 1, taught_teach_take_want: "take")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Finalized.create(finalized: false)
 

@@ -25,12 +25,36 @@
 	<div class="sep"></div>
 	<br>
 	<p id="info"> Use the links below to start reviewing and rating applicants. </p>
+
+
 	
 	<div class="row">
-		<%= link_to '<button type="button" class="btn btn-default">View All Applicants</button>'.html_safe, controller: "taapp", action: "show_applicants" %>
-	</div>
+
+	<%= link_to '<button type="button" class="btn btn-primary btn-lg btn-block">VIEW ALL APPLICANTS</button>'.html_safe, controller: "taapp", action: "show_applicants" %>
+    </div>
+    <div class="row">
+    <%= link_to '<button type="button" class="btn btn-primary btn-lg btn-block">VIEW COURSE APPLICANTS</button>'.html_safe, controller: "taapp", action: "show_applicants" %>
+   	</div>
+   	<div class="row">
+   	<%= link_to '<button type="button" class="btn btn-primary btn-lg btn-block">ASSIGN TA</button>'.html_safe, controller: "taapp", action: "show_applicants" %>
+    </div>
+    
+
+	</main>
+<<<<<<< HEAD
+	
+	
+	
+
+	<%#<div class="row">
+		<%= link_to '<button type="button" class="btn btn-default">View All Applicants</button>'.html_safe %>
+	<%#</div>
 	<div class="row">
 		<%= link_to '<button type="button" class="btn btn-default">Rate Previous Applicants</button>'.html_safe%>
-	</div>	
+	<%#</div>	%>
+=======
+
+>>>>>>> rbync_sprint4
+
 </div>
 
