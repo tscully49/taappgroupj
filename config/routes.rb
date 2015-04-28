@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get   'taapp/status'
   get   'admin/finalize'
   get   'admin/close'
+<<<<<<< HEAD
 
 
 
@@ -56,6 +57,11 @@ Rails.application.routes.draw do
   get   'coments/new'
   #post  'comments/:id/new' => 'comments#new'
 
+=======
+  get   'taapp/rate_applicant'
+  
+  get  'comments/:id/new' => 'comments#new'
+>>>>>>> rbync_sprint4
 
   resources :users
   resources :admin

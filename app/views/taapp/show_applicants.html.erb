@@ -75,6 +75,7 @@ table#t01 th	{
       <td><%= application.anticipated_graduation_date %></td>
       <td><%= application.advisor %></td>
       <%#<td><%= link_to application.grad_status%><%#</td>%>
+<<<<<<< HEAD
       <td><%= application.speak_score%></td>
       <td><%= application.orientation_met%></td>
       <td><%= application.GATO_requirement%></td>
@@ -82,6 +83,15 @@ table#t01 th	{
       <td><%= application.speak_score%></td>
       <td><%= application.speak_score%></td>
       <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
+=======
+      <td><%= link_to application.speak_score%></td>
+      <td><%= link_to application.orientation_met%></td>
+      <td><%= link_to application.GATO_requirement%></td>
+      <td><%= link_to application.position_applying_for%></td>
+      <td><%= link_to application.speak_score%></td>
+      <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
+
+>>>>>>> rbync_sprint4
       </tr>
    
   <% end %>
