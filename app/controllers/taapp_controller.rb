@@ -136,7 +136,7 @@ class TaappController < ApplicationController
   def professor
     if session[:accounttype].present? && session[:accounttype] == "professor"
       @professor = Professor.find_by(:id => session[:id])
-      @courses = Course.where(id: session[:id]).order(course_name: :asc)
+      @courses = Course.where(professor_id: session[:id]).order(course_name: :asc)
       render "professor"
     else
       render "proferror"
