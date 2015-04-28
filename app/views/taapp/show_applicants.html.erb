@@ -35,7 +35,9 @@ table#t01 th	{
 </style>
 </head>
 
-<%= link_to '<button type="button" class="btn" id="go_back">GoBack</button>'.html_safe, controller: "taapp", action: "professor" %>
+<%= link_to '<button type="button" class="btn" id="go_back">Go Back</button>'.html_safe, controller: "taapp", action: "professor" %>
+
+<br />
 
 <ul class="users">
   
@@ -94,7 +96,5 @@ table#t01 th	{
    
   <% end %>
     </table> 
-    <br />
-    <%= link_to "Go Back", "/", :class => "btn btn-default", :method => :get %>
 
 
