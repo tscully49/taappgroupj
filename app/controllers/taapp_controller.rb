@@ -1,5 +1,7 @@
 class TaappController < ApplicationController
   
+  before_action :logged_in_prof, only: [:professor]
+  
   def index
     if session[:accounttype].present?
       if session[:accounttype] == "student"
@@ -144,6 +146,11 @@ class TaappController < ApplicationController
   end
   
   def show_applicants
+    unless session[:accounttype].present? && ( session[:accounttype] == "professor" || session[:accounttype] == "admin")
+      reset_session
+      flash[:notice] = "This area only accessible by professors and administrators. Please log in as a professor or administrator to proceed."
+      redirect_to '/'
+    end
     @applications = Application.all
   end
   def test_applicant
@@ -159,5 +166,13 @@ class TaappController < ApplicationController
       params.require(:application).permit(:position_applying_for, :first_name, :last_name, :student_id, :gpa, :undergrad_status, 
         :grad_status, :advisor, :phone_num, :mizzou_email, :anticipated_graduation_date, :other_work, :speak_score, :semester_of_test, 
         :language_assessment, :GATO_requirement, :orientation_met)
+    end
+    
+    def logged_in_prof
+      unless session[:accounttype].present? && session[:accounttype] == "professor"
+        reset_session
+        flash[:notice] = "This area is only accessible by professors. Please log in as a professor to proceed."
+        redirect_to '/'
+      end
     end
 end

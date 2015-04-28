@@ -41,8 +41,14 @@ Rails.application.routes.draw do
   get   'admin/finalize'
   get   'admin/close'
 
+<<<<<<< HEAD
 
 
+=======
+  get   'taapp/rate_applicant'
+  
+  get  'comments/:id/new' => 'comments#new'
+>>>>>>> rbync_sprint4
 
   post  'admin/:id/edit' => 'admin#edit'
 
@@ -54,6 +60,7 @@ Rails.application.routes.draw do
   get 'admin/:id/update' => 'admin#update'
   patch 'admin/:id/edit' => 'admin#edit'
 
+<<<<<<< HEAD
   get   'coments/new'
   #post  'comments/:id/new' => 'comments#new'
 
@@ -62,6 +69,8 @@ Rails.application.routes.draw do
   
   get  'comments/:id/new' => 'comments#new'
 
+=======
+>>>>>>> rbync_sprint4
 
   resources :users
   resources :admin
