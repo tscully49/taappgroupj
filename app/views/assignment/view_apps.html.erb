@@ -1,3 +1,4 @@
+<% provide(:title, "Applicants Applied To My Courses ") %>
 <head>
 <style>
 table  {
@@ -156,7 +157,7 @@ table#t01 th	{
     <h4> No classes </h4>
 <% else %> 
     <h4> <%= @courses.first.course_name %></h4>
-        <% @app_ids=ApplicationCourse.where(:course_id => course.id) %> 
+        <% @app_ids=ApplicationCourse.where(:course_id =>@courses.first.id) %> 
         <% if @app_ids.count > 1 %> 
             <% @app_ids.each do |app| %>
                 <% @application = Application.find_by(:id => app) %> 
