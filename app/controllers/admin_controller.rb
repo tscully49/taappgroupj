@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
   
-  #before_action :logged_in_admin, only: [:edit, :update]
+  before_action :logged_in_admin
   
   def new
     @admins = Professor.new
@@ -8,8 +8,12 @@ class AdminController < ApplicationController
   end
   
   def home
+
     @final = Finalized.first
     @closed = CloseApplication.first
+
+    render "home"
+
   end
 
   def create
@@ -29,25 +33,20 @@ class AdminController < ApplicationController
 
   def edit
     @admins = Professor.find(params[:id])
-    if @admins.save
-        
-      flash[:notice] = "Professor account is edited successfully"
-      flash[:color]= "valid"
-      redirect_to '/admin/successpage'
-      redirect_to(:back)
+    #if @admins.update_attributes(name: params[:prof_name], miz_email: params[:miz_email], password: params[:password]) 
+    if @admins.update_attributes(professor_params)
+        flash[:notice] = "Professor account is edited successfully"
+        redirect_to(:back)
     else
-      render '/admin/edit'
-      redirect_to(:back)
+        flash[:notice] = "Edit failed"
+        redirect_to(:back)
     end
   end
 
   def update
-      @admins= Professor.find(params[:id])
-      if @admins.update_attributes(user_params)
-        redirect_to '/taapp/successpage'
-      else
-        render '/admin/edit'
-      end
+    @admins = Professor.find(params[:id])
+    @all_profs = Professor.all
+    render "update"
   end
   
 
@@ -144,13 +143,14 @@ class AdminController < ApplicationController
       end
       
       def professor_params
-        params.require(:professor).permit(:prof_name, :password, :miz_email, :password_confirmation)
+        params.require(:professor).permit(:prof_name, :password, :miz_email)
       end
       
-      #def logged_in_admin
-      #unless logged_in?
-        #flash[:danger] = "Please log in."
-        #redirect_to login_url
-      #end
-      #end
-  end
+      def logged_in_admin
+        unless session[:accounttype].present? && session[:accounttype] == "admin"
+          reset_session
+          flash[:notice] = "This area is only accessible by administrators. Please log in as an administrator to proceed."
+          redirect_to '/'
+        end
+      end
+end

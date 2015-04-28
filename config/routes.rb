@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get  'taapp/formerror'
   get  'taapp/professor'
   get  'taapp/proferror'
+  get  'tapp/rate_professor'
   get  'taapp/admin'
   get  'taapp/adminerror'
   get  'taapp/successpage'
@@ -37,9 +38,17 @@ Rails.application.routes.draw do
   get   'taapp/status'
   get   'admin/finalize'
   get   'admin/close'
+
   get   'taapp/rate_applicant'
   
   get  'comments/:id/new' => 'comments#new'
+
+  post  'admin/:id/edit' => 'admin#edit'
+  
+  post  'admin/home' => 'admin#home'
+  get 'admin/:id/update' => 'admin#update'
+  patch 'admin/:id/edit' => 'admin#edit'
+
 
   resources :users
   resources :admin

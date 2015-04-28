@@ -1,5 +1,7 @@
 class TaappController < ApplicationController
   
+  before_action :logged_in_prof, only: [:professor]
+  
   def index
     if session[:accounttype].present?
       if session[:accounttype] == "student"
@@ -20,19 +22,16 @@ class TaappController < ApplicationController
     @courses = Course.all
     #@selected = (params[:app_courses].present?(app_courses) ? params[:app_courses] : [])
     
-    closed = CloseApplication.first
-    
-    if closed.closed
-      redirect_to "/taapp/application_closed"
-    elsif session[:accounttype].present? && session[:accounttype] == "student"
+    if session[:accounttype].present? && session[:accounttype] == "student"
       user = User.find_by(id: session[:id])
+      closed = CloseApplication.first
       if Application.find_by(mizzou_email: user.email) != nil
         redirect_to "/taapp/status"
-      else
-        render "form"
+      elsif closed.closed
+        redirect_to "/taapp/application_closed"
       end
     else
-      redirect_to "formerror"
+      redirect_to "/taapp/formerror"
     end
   end
 
@@ -50,7 +49,6 @@ class TaappController < ApplicationController
   def rate_applicant
     
   end
-
 
 
   def create
@@ -131,6 +129,8 @@ class TaappController < ApplicationController
   
   def professor
     if session[:accounttype].present? && session[:accounttype] == "professor"
+      @professor = Professor.find_by(:id => session[:id])
+      @courses = Course.where(id: session[:id])
       render "professor"
     else
       render "proferror"
@@ -146,6 +146,11 @@ class TaappController < ApplicationController
   end
   
   def show_applicants
+    unless session[:accounttype].present? && ( session[:accounttype] == "professor" || session[:accounttype] == "admin")
+      reset_session
+      flash[:notice] = "This area only accessible by professors and administrators. Please log in as a professor or administrator to proceed."
+      redirect_to '/'
+    end
     @applications = Application.all
   end
   def test_applicant
@@ -161,5 +166,13 @@ class TaappController < ApplicationController
       params.require(:application).permit(:position_applying_for, :first_name, :last_name, :student_id, :gpa, :undergrad_status, 
         :grad_status, :advisor, :phone_num, :mizzou_email, :anticipated_graduation_date, :other_work, :speak_score, :semester_of_test, 
         :language_assessment, :GATO_requirement, :orientation_met)
+    end
+    
+    def logged_in_prof
+      unless session[:accounttype].present? && session[:accounttype] == "professor"
+        reset_session
+        flash[:notice] = "This area is only accessible by professors. Please log in as a professor to proceed."
+        redirect_to '/'
+      end
     end
 end
