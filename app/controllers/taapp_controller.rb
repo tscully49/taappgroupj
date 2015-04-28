@@ -117,7 +117,7 @@ class TaappController < ApplicationController
           @appcourse4.save
         end
       end
-        redirect_to '/taapp/successpage'
+        redirect_to '/taapp/status'
     else
         render 'form'
     end
