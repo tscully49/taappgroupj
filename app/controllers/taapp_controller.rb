@@ -1,6 +1,6 @@
 class TaappController < ApplicationController
   
-  before_action :logged_in_prof, only: [:professor]
+  before_action :logged_in_prof, only: [:professor, :rate_applicant]
   
   def index
     if session[:accounttype].present?
