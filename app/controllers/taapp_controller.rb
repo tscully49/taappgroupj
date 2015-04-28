@@ -1,6 +1,7 @@
 class TaappController < ApplicationController
   
-  before_action :logged_in_prof, only: [:professor]
+  before_action :logged_in_prof, only: [:professor, :rate_applicant]
+  before_action :logged_in_student, only: [:form, :status]
   
   def index
     if session[:accounttype].present?
@@ -22,20 +23,20 @@ class TaappController < ApplicationController
     @courses = Course.all
     #@selected = (params[:app_courses].present?(app_courses) ? params[:app_courses] : [])
     
-    if session[:accounttype].present? && session[:accounttype] == "student"
-      user = User.find_by(id: session[:id])
-      closed = CloseApplication.first
-      if Application.find_by(mizzou_email: user.email) != nil
-        redirect_to "/taapp/status"
-      elsif closed.closed
-        redirect_to "/taapp/application_closed"
-      end
-    else
-      redirect_to "/taapp/formerror"
+    user = User.find_by(id: session[:id])
+    closed = CloseApplication.first
+    if Application.find_by(mizzou_email: user.email) != nil
+      redirect_to "/taapp/status"
+    elsif closed.closed
+      redirect_to "/taapp/application_closed"
     end
   end
 
   def status
+    user = User.find_by(id: session[:id])
+    if Application.find_by(mizzou_email: user.email) == nil
+      redirect_to "/taapp/form" and return
+    end
     @user=User.find_by(id: session[:id])
     @application=Application.find_by(student_id: @user.student_id)
     @applied = ApplicationCourse.where(:application_id => @application.id, :taught_teach_take_want => "want")
@@ -177,6 +178,14 @@ class TaappController < ApplicationController
       unless session[:accounttype].present? && session[:accounttype] == "professor"
         reset_session
         flash[:notice] = "This area is only accessible by professors. Please log in as a professor to proceed."
+        redirect_to '/'
+      end
+    end
+    
+    def logged_in_student
+      unless session[:accounttype].present? && session[:accounttype] == "student"
+        reset_session
+        flash[:notice] = "This area is only accessible by student applicants. Please log in as a student to proceed."
         redirect_to '/'
       end
     end
