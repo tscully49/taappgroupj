@@ -41,17 +41,11 @@ Rails.application.routes.draw do
   get   'admin/finalize'
 
   get   'assignment/view_apps'
+  get   'assignment/assigned_tas'
   
-  resources :assignment
 
   get   'admin/close'
-
-
-
-
   post  'admin/:id/edit' => 'admin#edit'
-
-
   #post  'admin/:id/edit' => 'admin#edit'
 
   
@@ -65,9 +59,7 @@ Rails.application.routes.draw do
 
   get   'taapp/rate_applicant'
   
-  get  'comments/:id/new' => 'comments#new'
-  
-  get 'assignment/assigned_ta'
+  get   'comments/:id/new' => 'comments#new'
 
   resources :users
   resources :admin
@@ -75,6 +67,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :courses
   resources :coursesgi
+  resources :assignment
   get    'login'   => 'sessions#new'
   get    'signup'  => 'admin#new'
   post   'login'   => 'sessions#create'

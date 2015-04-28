@@ -1118,3 +1118,9 @@ div#remove_column.sep {
 #go_back:hover {
 	background-color: #EDC666;
 }
+
+#assign_table.users {
+	margin: 1em auto;
+	padding: 0;
+	width: 80%;
+}

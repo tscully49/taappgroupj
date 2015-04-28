@@ -1,0 +1,138 @@
+<% provide(:title, 'TAs in class') %>
+<head>
+<style>
+table  {
+    width: 100%; 
+    border: 1px solid black;
+    border-collapse: collapse;
+   
+}
+th,td {
+    
+    padding: 10px;
+}
+
+
+
+table#t01 tr:nth-child(even) {
+   
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+    
+   background-color:#fff;
+}
+table#t01 th	{
+    
+    background-color: black;
+    color: white;
+    text-align:center;
+}
+</style>
+</head>
+<%= link_to '<button type="button" class="btn" id="go_back">Go Back</button>'.html_safe, controller: "taapp", action: "professor" %>
+<% if @finalized.finalized == true %>
+    <% if @courses.count > 1 %>
+        <% @courses.each do |course| %>
+            <h4> <%= course.course_name %></h4>
+            <% @application=Application.where(:course_id => course.id) %> 
+            <% if @application.count > 1 %> 
+                <% @application.each do |app| %>
+                    
+                    <% if @application.count != 0 %>
+                    
+                        <ul class="users" id="assign_table">
+                        <table id="t01">
+                        <tr> 
+                        <th> First Name </th>
+                        <th> Last Name </th>
+                        <th> StudentID </th>
+                        </tr>
+                         <tr>
+                               
+    
+                        <td> <%= app.first_name %></h6>
+                        <td> <%= app.last_name %></h6>
+                        <td><%= app.student_id %> </h6>
+                        </tr>
+                        </table>
+                        </ul>
+                    <% end %>
+    
+                <% end %> 
+            <% else %>
+                <% if @application %>
+                        
+                    <% if @application.count != 0 %>
+                            <ul class="users" id="assign_table">
+                        <table id="t01">
+                         <tr> 
+                         <th> First Name </th>
+                         <th> Last Name </th>
+                         <th> StudentID </th>
+                          </tr>
+                          
+                           <tr>
+                               
+    
+                        <td> <%= @application.first_name %></h6>
+                        <td> <%= @application.last_name %></h6>
+                        <td><%= @application.student_id %> </h6>
+                        </tr>
+                        </table>
+                        </ul>
+                        <% end %>
+                <% end %> 
+            <% end %> 
+        <% end %>
+    <% elsif @courses.count == 0 %>
+        <h4> No classes </h4>
+    <% else %> 
+        <h4> <%= @courses.first.course_name %></h4>
+            <% @application=Application.where(:course_id => @courses.first.id) %> 
+            <% if @application.count > 1 %> 
+                <% @application.each do |app| %>
+                    <% if @application.count != 0 %>
+                        <ul class="users" id="assign_table">
+                        <table id="t01">
+                         <tr> 
+                         <th> First Name </th>
+                         <th> Last Name </th>
+                         <th> StudentID </th>
+                         </tr>
+                          
+                        <tr>
+                        <td> <%= app.first_name %></h6>
+                        <td> <%= app.last_name %></h6>
+                        <td><%= app.student_id %> </h6>
+                        </tr>
+                        </table>
+                        </ul>
+                    <% end %>
+                <% end %> 
+            <% else %> 
+                <% if @application %>
+                        
+                    <% if @application.count != 0 %>
+                            <ul class="users" id="assign_table">
+                        <table id="t01">
+                         <tr> 
+                         <th> First Name </th>
+                         <th> Last Name </th>
+                         <th> StudentID </th>
+                         </tr>
+                          
+                        <tr>
+                        <td> <%= @application.first_name %></h6>
+                        <td> <%= @application.last_name %></h6>
+                        <td><%= @application.student_id %> </h6>
+                        </tr>
+                        </table>
+                        </ul>
+                        <% end %>
+                <% end %> 
+            <% end %> 
+    <% end %>
+<% else %>
+    <h4>Applications are still under review...</h4>
+<% end %>

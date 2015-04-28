@@ -42,7 +42,7 @@ table#t01 th	{
                 
                 <% if @application != nil %>
                 
-                    <ul class="users">
+                    <ul class="users" id = "assign_table">
                     <table id="t01">
                      <tr> 
                      <th> First Name </th>
@@ -99,7 +99,7 @@ table#t01 th	{
                 <% @application = Application.find_by(:id => @app_ids.application_id) %> 
                     
                 <% if @application != nil %>
-                        <ul class="users">
+                        <ul class="users" id="assign_table">
                     <table id="t01">
                      <tr> 
                      <th> First Name </th>
@@ -161,7 +161,7 @@ table#t01 th	{
             <% @app_ids.each do |app| %>
                 <% @application = Application.find_by(:id => app) %> 
                 <% if @application != nil %>
-                    <ul class="users">
+                    <ul class="users" id="assign_table">
                     <table id="t01">
                      <tr> 
                      <th> First Name </th>
@@ -217,7 +217,7 @@ table#t01 th	{
                 <% @application = Application.find_by(:id => @app_ids.application_id) %> 
                     
                 <% if @application != nil %>
-                        <ul class="users">
+                        <ul class="users" id="assign_table">
                     <table id="t01">
                      <tr> 
                      <th> First Name </th>
