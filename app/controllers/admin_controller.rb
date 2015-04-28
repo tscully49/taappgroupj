@@ -61,50 +61,47 @@ class AdminController < ApplicationController
     def error
     end
 
-    def select
-      @test = params[:select_tas]
+def select
+  @test = params[:select_tas]
 
-      if @test != nil
-        @open_spots_in_class = Course.find(params[:course_id])
-        if @open_spots_in_class < 1
-          @number = params[:select_tas].count
-          if ((@open_spots_in_class - @number) < 0)
-            params[:select_tas].each do |ta|
-              @name = Application.select(:first_name, :last_name).where(:id => ta)
-              @selection = Application.find_by(:id => ta)
-              if @selection.update(:course_id => params[:course_id])
-                @remove_app = Application.find_by(:id => ta, accepted: false)
-                @remove_app.update(accepted: true)
-                @remove_column = ApplicationCourse.where(:application_id => ta, :taught_teach_take_want => 'want')
-                @remove_column.each do |remove|
-                  remove.destroy
-                  @open_spots_in_class.decrement!(:open_spots)
-                  if @open_spots_in_class < 1
-                    redirect_to :back
-                  end
-                end
-                flash[:notice] = "TA's Added Successfully"
-              else 
-                flash[:notice] = "TA... FIX THIS " + @name.first.first_name + "  "+@name.first.last_name+" could NOT be added"
-                #flash[:notice] = params
-              end
-            else
-              flash[:notice] = "There aren't enough open spots for all selected TA's"
-              redirect_to :back
+  if @test != nil
+    @open_spots_in_class = Course.find(params[:course_id])
+    if @open_spots_in_class.open_spots > 0
+      @number = params[:select_tas].count
+      if (@open_spots_in_class.open_spots - @number >= 0)
+        params[:select_tas].each do |ta|
+          @name = Application.select(:first_name, :last_name).where(:id => ta)
+          @selection = Application.find_by(:id => ta)
+          if @selection.update(:course_id => params[:course_id])
+            @remove_app = Application.find_by(:id => ta, accepted: false)
+            @remove_app.update(accepted: true)
+            @open_spots_in_class.decrement!(:open_spots)
+            @remove_column = ApplicationCourse.where(:application_id => ta, :taught_teach_take_want => 'want')
+            @remove_column.each do |remove|
+              remove.destroy
             end
+            if @open_spots_in_class.open_spots > 0
+            else
+              flash[:notice] = "All spots are full"
+              break
+            end
+          else 
+            flash[:notice] = "TA... FIX THIS " + @name.first.first_name + "  "+@name.first.last_name+" could NOT be added"
+            break
           end
-          redirect_to :back
-        else
-          flash[:notice] = "There are no more available spots in this class"
-          redirect_to :back
         end
-      else 
-        flash[:notice] = "No Ta's were selected"
-        redirect_to :back
+        flash[:notice] = "TA's Added Successfully"
+      else
+        flash[:notice] = "There aren't enough open spots for all selected TA's"
       end
-
-
+    else
+      flash[:notice] = "There are no more available spots in this class"
     end
+  else 
+    flash[:notice] = "No Ta's were selected"
+  end
+  redirect_to :back
+end
 
     def destroy
       @profs=Professor.all
