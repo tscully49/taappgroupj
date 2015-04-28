@@ -30,7 +30,7 @@ table#t01 th	{
 </style>
 </head>
 
-
+<%= link_to '<button type="button" class="btn" id="go_back">Go Back</button>'.html_safe, controller: "taapp", action: "professor" %>
 
 <% if @courses.count > 1 %>
     <% @courses.each do |course| %>
@@ -152,8 +152,10 @@ table#t01 th	{
             <% end %> 
         <% end %> 
     <% end %>
+<% elsif @courses.count == 0 %>
+    <h4> No classes </h4>
 <% else %> 
-    <h4> <%= course.course_name %></h4>
+    <h4> <%= @courses.first.course_name %></h4>
         <% @app_ids=ApplicationCourse.where(:course_id => course.id) %> 
         <% if @app_ids.count > 1 %> 
             <% @app_ids.each do |app| %>

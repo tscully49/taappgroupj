@@ -12,4 +12,5 @@ class AssignmentController < ApplicationController
         @courses= Course.where(professor_id: session[:id])
     end 
     
+
 end

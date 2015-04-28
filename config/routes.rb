@@ -66,7 +66,8 @@ Rails.application.routes.draw do
   get   'taapp/rate_applicant'
   
   get  'comments/:id/new' => 'comments#new'
-
+  
+  get 'assignment/assigned_ta'
 
   resources :users
   resources :admin
