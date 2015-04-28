@@ -1,35 +1,20 @@
 class CommentsController < ApplicationController
 def new
-<<<<<<< HEAD
 
   @comment = Comment.new
   @student_id = params[:id]
-=======
-  @comment = Comment.new
-  @student_id = params[:id]
-  
->>>>>>> rbync_sprint4
+
+
     
 end
   
   def create
-    
-<<<<<<< HEAD
-    @comment = Comment.new
-    @comment.stu_id = @student_id
-    @comment.rating = params[:comment][:rating]
-    @comment.comment = params[:comment][:comment]
-    if @comment.save
-      flash[:notice] = "You Comment successfully"
-      flash[:color]= "valid"
-      redirect_to '/'
-=======
-    @comment = Comment.new(comments_param)
+
+      @comment = Comment.new(comments_param)
       @comment.prof_id = session[:id]
       @comment.date_commented = Date.today.to_s
       @comment.time_stamp = DateTime.now
       @comment.stu_id = params[:stu_id]
->>>>>>> rbync_sprint4
       
     if @comment.save
       @rating=Rating.new(:stu_id => @comment.stu_id, :prof_id => @comment.prof_id, :rating => @comment.rating)
