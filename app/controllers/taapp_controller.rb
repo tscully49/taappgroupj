@@ -158,6 +158,17 @@ class TaappController < ApplicationController
     end
     @applications = Application.all
   end
+  
+   def admin_view_applicants
+    unless session[:accounttype].present? && ( session[:accounttype] == "admin")
+      reset_session
+      flash[:notice] = "This area only accessible by administrators. Please log in as a administrator to proceed."
+      redirect_to '/'
+    end
+    @applications = Application.all
+  end
+  
+  
   def test_applicant
     @test_apps=Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct
   end

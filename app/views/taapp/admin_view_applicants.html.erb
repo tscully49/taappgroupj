@@ -1,0 +1,78 @@
+<% provide(:title, 'All applications') %>
+
+
+<h2>All Applicants</h2>
+<head>
+<style>
+table  {
+    width: 90%; 
+    border: 1px solid black;
+    border-collapse: collapse;
+   margin: 0 auto;
+}
+th,td {
+    
+    padding: 10px;
+}
+
+
+
+table#t01 tr:nth-child(even) {
+  
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   
+   background-color:#fff;
+}
+table#t01 th	{
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align:center;
+    margin: 0;
+}
+</style>
+</head>
+
+
+<ul class="users">
+  
+    <table id="t01">
+    <tr>                          
+    <th> FisrtName </th>
+    
+    <th> LastName </th>
+    
+    <th> StudentID </th>
+    
+    <th> Phone Number </th>
+    <th> GPA </th>
+    <th> Email </th>
+    
+   
+    </tr>
+
+      <%#Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct>%>
+
+      <% @applications.each do |application| %>
+
+      <tr>
+      <td><%= application.first_name %></td>
+      <td><%= application.last_name %></td>
+      <td><%= application.student_id %></td>
+      <td><%= application.phone_num %></td>
+      
+      <td><%= application.mizzou_email %></td>
+     
+     
+
+     
+      </tr>
+   
+  <% end %>
+    </table> 
+    <br />
+    <%= link_to "Go Back", "/", :class => "btn btn-default", :method => :get %>
+
+
