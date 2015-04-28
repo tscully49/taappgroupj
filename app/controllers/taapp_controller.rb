@@ -130,7 +130,6 @@ class TaappController < ApplicationController
   end
 
   def successpage
-
   end
   
   def professor
