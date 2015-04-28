@@ -5,10 +5,10 @@
 <head>
 <style>
 table  {
-    width: 100%; 
+    width: 90%; 
     border: 1px solid black;
     border-collapse: collapse;
-   
+   margin: 0 auto;
 }
 th,td {
     
@@ -26,10 +26,11 @@ table#t01 tr:nth-child(odd) {
    background-color:#fff;
 }
 table#t01 th	{
-    
+    width: 100%;
     background-color: black;
     color: white;
     text-align:center;
+    margin: 0;
 }
 </style>
 </head>
@@ -96,12 +97,11 @@ table#t01 th	{
 
       <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
 
-     
       </tr>
    
   <% end %>
     </table> 
+    <br />
+    <%= link_to "Go Back", "/", :class => "btn btn-default", :method => :get %>
 
-
-</ul>
 

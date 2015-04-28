@@ -1,6 +1,6 @@
 class TaappController < ApplicationController
   
-  before_action :logged_in_prof, only: [:professor]
+  before_action :logged_in_prof, only: [:professor, :rate_applicant]
   
   def index
     if session[:accounttype].present?
@@ -59,7 +59,12 @@ class TaappController < ApplicationController
     @test3 = params[:app_courses3]
     @test4 = params[:app_courses4]
     @selected = (params[:app_courses].present? ? params[:app_courses] : [])
-
+  
+    @application.first_name = session[:first_name]
+    @application.last_name = session[:last_name]
+    @application.student_id = session[:student_id]
+    @application.mizzou_email = session[:email]
+    
     if @application.position_applying_for == "(select one)"
       @application.position_applying_for = nil
     end
