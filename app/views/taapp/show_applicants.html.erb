@@ -100,11 +100,11 @@ table#t01 th	{
         <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
 
         </tr>
-    <% end %>
-    </table> 
-  <% else %>
+        <% end %>
+        </table> 
+      <% else %>
         <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
-        <% @application = @applications.first %>
+        <% @application = @applications %>
         <tr>
         <td><%= @application.first_name %></td>
         <td><%= @application.last_name %></td>
@@ -131,7 +131,7 @@ table#t01 th	{
             <td> N/A </td>
         <% end %>
 
-        <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
+        <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => @application.student_id }, class: "btn btn-primary" %></td>
     </table> 
   <% end %>
 
