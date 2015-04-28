@@ -39,6 +39,11 @@ Rails.application.routes.draw do
   get   'admin/success'
   get   'taapp/status'
   get   'admin/finalize'
+
+  get   'assignment/view_apps'
+  
+  resources :assignment
+
   get   'admin/close'
 
 
@@ -61,7 +66,8 @@ Rails.application.routes.draw do
   get   'taapp/rate_applicant'
   
   get  'comments/:id/new' => 'comments#new'
-
+  
+  get 'assignment/assigned_ta'
 
   resources :users
   resources :admin
