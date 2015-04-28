@@ -64,20 +64,20 @@ table#t01 th	{
      
 
       <tr>
-      <td><%= link_to application.first_name %></td>
-      <td><%= link_to application.last_name %></td>
-      <td><%= link_to application.student_id %></td>
-      <td><%= link_to application.phone_num %></td>
-      <td><%= link_to application.gpa %></td>
-      <td><%= link_to application.mizzou_email %></td>
-      <td><%= link_to application.anticipated_graduation_date %></td>
-      <td><%= link_to application.advisor %></td>
+      <td><%= application.first_name %></td>
+      <td><%= application.last_name %></td>
+      <td><%= application.student_id %></td>
+      <td><%= application.phone_num %></td>
+      <td><%= application.gpa %></td>
+      <td><%= application.mizzou_email %></td>
+      <td><%= application.anticipated_graduation_date %></td>
+      <td><%= application.advisor %></td>
       <%#<td><%= link_to application.grad_status%><%#</td>%>
-      <td><%= link_to application.speak_score%></td>
-      <td><%= link_to application.orientation_met%></td>
-      <td><%= link_to application.GATO_requirement%></td>
-      <td><%= link_to application.position_applying_for%></td>
-      <td><%= link_to application.speak_score%></td>
+      <td><%= application.speak_score%></td>
+      <td><%= application.orientation_met%></td>
+      <td><%= application.GATO_requirement%></td>
+      <td><%= application.position_applying_for%></td>
+      <td><%= application.speak_score%></td>
       <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
 
       </tr>
