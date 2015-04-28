@@ -5,10 +5,10 @@
 <head>
 <style>
 table  {
-    width: 100%; 
+    width: 90%; 
     border: 1px solid black;
     border-collapse: collapse;
-   
+   margin: 0 auto;
 }
 th,td {
     
@@ -26,15 +26,15 @@ table#t01 tr:nth-child(odd) {
    background-color:#fff;
 }
 table#t01 th	{
-    
+    width: 100%;
     background-color: black;
     color: white;
     text-align:center;
+    margin: 0;
 }
 </style>
 </head>
 
-<ul class="users">
   
     <table id="t01">
     <tr>                          
@@ -79,12 +79,12 @@ table#t01 th	{
       <td><%= link_to application.position_applying_for%></td>
       <td><%= link_to application.speak_score%></td>
       
-      <td><%#= link_to ratings.find_or_create_by(first_name: 'application.first_name') %></td>
+      <!--<td><%#= link_to ratings.find_or_create_by(first_name: 'application.first_name') %></td>-->
       </tr>
    
   <% end %>
     </table> 
+    <br />
+    <%= link_to "Go Back", "/", :class => "btn btn-default", :method => :get %>
 
-
-</ul>
 
