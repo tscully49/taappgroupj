@@ -20,7 +20,7 @@ class TaappController < ApplicationController
     @appcourse = ApplicationCourse.new
     @appcourse2 = ApplicationCourse.new
     @appcourse3 = ApplicationCourse.new
-    @courses = Course.all
+    @courses = Course.all.order(course_name: :asc)
     #@selected = (params[:app_courses].present?(app_courses) ? params[:app_courses] : [])
     
     user = User.find_by(id: session[:id])
@@ -39,7 +39,7 @@ class TaappController < ApplicationController
     end
     @user=User.find_by(id: session[:id])
     @application=Application.find_by(student_id: @user.student_id)
-    @applied = ApplicationCourse.where(:application_id => @application.id, :taught_teach_take_want => "want")
+    @applied = ApplicationCourse.where(:application_id => @application.id, :taught_teach_take_want => "want").order(course_id: :asc)
     @finalized = Finalized.first
   end
 
@@ -136,7 +136,7 @@ class TaappController < ApplicationController
   def professor
     if session[:accounttype].present? && session[:accounttype] == "professor"
       @professor = Professor.find_by(:id => session[:id])
-      @courses = Course.where(id: session[:id])
+      @courses = Course.where(id: session[:id]).order(course_name: :asc)
       render "professor"
     else
       render "proferror"
