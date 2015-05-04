@@ -14,9 +14,6 @@ th,td {
     
     padding: 10px;
 }
-
-
-
 table#t01 tr:nth-child(even) {
   
     background-color: #eee;
@@ -35,15 +32,12 @@ table#t01 th	{
 </style>
 </head>
 
-<%= link_to "Go Back", :back, :class => "btn", :id => "go_back" %>
-
-<br />
 
 <ul class="users">
   
     <table id="t01">
     <tr>                          
-    <th> FirstName </th>
+    <th> FisrtName </th>
     
     <th> LastName </th>
     
@@ -67,72 +61,41 @@ table#t01 th	{
     </tr>
 
       <%#Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct>%>
-      <% if @applications.count > 1 %>
-        <% @applications.each do |application| %>
-        <% @ratenumber = Rating.where("stu_id LIKE ?", "%#{@applications.first.student_id}%").average(:rating)%>
-        
-        <tr>
-        <td><%= application.first_name %></td>
-        <td><%= application.last_name %></td>
-        <td><%= application.student_id %></td>
-        <td><%= application.phone_num %></td>
-        <td><%= application.gpa %></td>
-        <td><%= application.mizzou_email %></td>
-        <td><%= application.anticipated_graduation_date %></td>
-        <td><%= application.advisor %></td>
-        <%#<td><%= link_to application.grad_status%><%#</td>%>
 
-        <td><%= application.speak_score%></td>
-        <td><%= application.orientation_met%></td>
-        <td><%= application.GATO_requirement%></td>
-        <td><%= application.position_applying_for%></td>
+      <% @applications.each do |application| %>
+      <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
 
-        <td><%= application.speak_score%></td>
+      <tr>
+      <td><%= application.first_name %></td>
+      <td><%= application.last_name %></td>
+      <td><%= application.student_id %></td>
+      <td><%= application.phone_num %></td>
+      <td><%= application.gpa %></td>
+      <td><%= application.mizzou_email %></td>
+      <td><%= application.anticipated_graduation_date %></td>
+      <td><%= application.advisor %></td>
+      <%#<td><%= link_to application.grad_status%><%#</td>%>
 
-       
+      <td><%= application.speak_score%></td>
+      <td><%= application.orientation_met%></td>
+      <td><%= application.GATO_requirement%></td>
+      <td><%= application.position_applying_for%></td>
 
-        <% if @ratenumber != nil %> 
-            <td><%= @ratenumber %></td>
-        <% else %>
-            <td> N/A </td>
-        <% end %>
+      <td><%= application.speak_score%></td>
 
-        <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
+     
 
-        </tr>
-        <% end %>
-        </table> 
+      <% if @ratenumber != nil %> 
+          <td><%= @ratenumber %></td>
       <% else %>
-        <% @ratenumber = Rating.where("stu_id LIKE ?", "%#{@applications.first.student_id}%").average(:rating)%>
-        <% @application = @applications.first %>
-        <tr>
-        <td><%= @application.first_name %></td>
-        <td><%= @application.last_name %></td>
-        <td><%= @application.student_id %></td>
-        <td><%= @application.phone_num %></td>
-        <td><%= @application.gpa %></td>
-        <td><%= @application.mizzou_email %></td>
-        <td><%= @application.anticipated_graduation_date %></td>
-        <td><%= @application.advisor %></td>
-        <%#<td><%= link_to application.grad_status%><%#</td>%>
+          <td> N/A </td>
+      <% end %>
 
-        <td><%= @application.speak_score%></td>
-        <td><%= @application.orientation_met%></td>
-        <td><%= @application.GATO_requirement%></td>
-        <td><%= @application.position_applying_for%></td>
+      <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
 
-        <td><%= @application.speak_score%></td>
-
-       
-
-        <% if @ratenumber != nil %> 
-            <td><%= @ratenumber %></td>
-        <% else %>
-            <td> N/A </td>
-        <% end %>
-
-        <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => @application.student_id }, class: "btn btn-primary" %></td>
-    </table> 
+      </tr>
+   
   <% end %>
-
-
+    </table> 
+    <br />
+    <%= link_to "Go Back", "/", :class => "btn btn-default", :method => :get %>
