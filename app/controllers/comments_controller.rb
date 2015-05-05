@@ -35,6 +35,10 @@ def show
   @comment=Comment.find(params[:id])
 end
 
+def view_comments
+  @comments=Comment.where(:stu_id => params[:id])
+end
+
   def edit
     @admins = Professor.find(params[:id])
    # @all_profs = Professor.all

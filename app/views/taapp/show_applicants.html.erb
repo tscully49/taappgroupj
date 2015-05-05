@@ -55,7 +55,7 @@ table#t01 th	{
     <th> Position </th>
     <th> Speak Score </th>
     <th> Rate </th>
-
+    <th> View Comments </th>
     <th> Comments </th>
    
     </tr>
@@ -64,6 +64,7 @@ table#t01 th	{
 
       <% @applications.each do |application| %>
       <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
+      <% @commentshow = Comment.where(:stu_id => application.student_id)%>
 
       <tr>
       <td><%= application.first_name %></td>
@@ -90,6 +91,12 @@ table#t01 th	{
       <% else %>
           <td> N/A </td>
       <% end %>
+      <%# if @commentshow.last.comment != nil %> 
+         <%# <td><%#= @commentshow.last.comment%></td>
+      <%#<% else %>
+      <%#   <td> N/A </td>
+      <% end %>
+      <td><%= link_to "view_comments", {:controller => :comments, :action => 'view_comments', :id => application.student_id }, class: "btn btn-primary" %></td>
 
       <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
 
