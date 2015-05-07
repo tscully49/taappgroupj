@@ -59,6 +59,9 @@ Comment.create(stu_id: 13242432, comment: "Great", date_commented: "2012-04-03",
 Comment.create(stu_id: 13342432, comment: "Great", date_commented: "2012-04-03", rating: 4, time_stamp: DateTime.now, professor_id: 3)
 Comment.create(stu_id: 13245532, comment: "Great", date_commented: "2012-04-03", rating: 3, time_stamp: DateTime.now, professor_id: 1)
 
+Rating.create(stu_id: 13242432, rating: 5, prof_id: 2)
+Rating.create(stu_id: 13342432, rating: 4, prof_id: 3)
+Rating.create(stu_id: 13245532, rating: 3, prof_id: 1)
 
 Course.create(course_name: "CS 4320", professor_id: 3, open_spots: 4)
 Course.create(course_name: "CS 1050", professor_id: 2, open_spots: 3)

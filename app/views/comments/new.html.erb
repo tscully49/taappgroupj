@@ -67,7 +67,7 @@
     
     <h4 id="table_h">Other Comments</h4>
     <table id="t01">
-    <% if @other_comments != nil %>
+    <% if @other_comments.size > 0 %>
       <tr><th>Professor Name</th><th>Comment</th><th>Rating</th></tr>
       <% @other_comments.each do |comment| %>
         <% @p_name = Professor.find(comment.professor_id) %>
