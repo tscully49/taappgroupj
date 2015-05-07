@@ -1125,3 +1125,37 @@ div#remove_column.sep {
 	padding: 0;
 	width: 80%;
 }
+
+table {
+	width: 100%; 
+	border: 1px solid black;
+	border-collapse: collapse;
+
+}
+th,td {
+    
+    padding: 10px;
+}
+
+table#t01 {
+  margin: 0 auto;
+}
+
+table#t01 tr:nth-child(even) {
+   
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+    
+   background-color:#fff;
+}
+table#t01 th	{
+    
+    background-color: black;
+    color: white;
+    text-align:center;
+}
+
+#table_h {
+	margin-top: 3em;
+}

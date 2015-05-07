@@ -3,6 +3,7 @@ def new
 
   @comment = Comment.new
   @student_id = params[:id]
+  @other_comments = Comment.where(stu_id: params[:id])
 
 
     
@@ -11,13 +12,13 @@ end
   def create
 
       @comment = Comment.new(comments_param)
-      @comment.prof_id = session[:id]
+      @comment.professor_id = session[:id]
       @comment.date_commented = Date.today.to_s
       @comment.time_stamp = DateTime.now
       @comment.stu_id = params[:stu_id]
       
     if @comment.save
-      @rating=Rating.new(:stu_id => @comment.stu_id, :prof_id => @comment.prof_id, :rating => @comment.rating)
+      @rating=Rating.new(:stu_id => @comment.stu_id, :prof_id => @comment.professor_id, :rating => @comment.rating)
       if @rating.save 
         flash[:notice] = "Comment and Rating successfully saved"
         redirect_to '/taapp/show_applicants'
