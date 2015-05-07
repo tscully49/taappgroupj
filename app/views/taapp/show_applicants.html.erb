@@ -37,22 +37,21 @@ table#t01 th	{
   
     <table id="t01">
     <tr>                          
-    <th> FirstName </th>
+    <th> First Name </th>
     
-    <th> LastName </th>
+    <th> Last Name </th>
     
-    <th> StudentID </th>
+    <th> Student ID </th>
     
     <th> Phone Number </th>
     <th> GPA </th>
     <th> Email </th>
-    <th> anticipated graduation date </th>
-    <th> advisor </th>
-    <%#<th>graduation status</th>%>
+    <th> Anticipated Graduation Date </th>
+    <th> Advisor </th>
     <th> Speak Score </th>
     <th> Orientation Met </th>
     <th> GATO requirement </th>
-    <th> Position </th>
+    <th> Position Applied For </th>
     <th> Speak Score </th>
     <th> Rate </th>
     <th> View Comments </th>
@@ -60,7 +59,7 @@ table#t01 th	{
    
     </tr>
 
-      <%#Application.joins(:application_courses).where("taught_teach_take_want = 'want' AND course_id = ?", params[course_select]).distinct>%>
+      
 
       <% @applications.each do |application| %>
       <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
@@ -75,8 +74,6 @@ table#t01 th	{
       <td><%= application.mizzou_email %></td>
       <td><%= application.anticipated_graduation_date %></td>
       <td><%= application.advisor %></td>
-      <%#<td><%= link_to application.grad_status%><%#</td>%>
-
       <td><%= application.speak_score%></td>
       <td><%= application.orientation_met%></td>
       <td><%= application.GATO_requirement%></td>
@@ -97,8 +94,6 @@ table#t01 th	{
         <td> N/A </td>
       <% end %>
       
-      <%#<td><%#= link_to "view_comments", {:controller => :comments, :action => 'view_comments', :id => application.student_id }, class: "btn btn-primary" %></td>
-
       <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
 
       </tr>
