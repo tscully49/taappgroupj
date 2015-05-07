@@ -49,13 +49,13 @@ table#t01 th	{
                      <th>Last Name </th>
                      <th>StudentID </th>
                      <th>Phone Number</th>
+                     <th> GPA</th>
                      <th>Mizzou Email </th>
                      <th>Date of app</th>
                      <th>Anticipated Graduation Date</th>
                      <th>Speak Score</th>
                      <th>Semester of test</th>
                      <th>Orientation Met</th>
-                     <th>Accepted</th>
                      <th>Undergrad Status</th>
                      <th>Graduate Status </th>
                      <th>Advisor</th>
@@ -73,13 +73,13 @@ table#t01 th	{
                     <td> <%= @application.last_name %></h6>
                     <td><%= @application.student_id %> </h6>
                     <td><%= @application.phone_num %> </h6>
+                    <td><%= @application.gpa %> </h6>
                     <td><%= @application.mizzou_email %> </h6>
                     <td><%= @application.date_of_app%> </h6>
                     <td><%= @application.anticipated_graduation_date%> </h6>
                     <td><%= @application.speak_score %> </h6>
                     <td><%= @application.semester_of_test%> </h6>
                     <td><%= @application.orientation_met %> </h6>
-                    <td><%= @application.accepted %> </h6>
                     <td><%= @application.undergrad_status %> </h6>
                     <td><%= @application.grad_status %> </h6>
                     <td><%= @application.advisor%> </h6>
@@ -106,13 +106,13 @@ table#t01 th	{
                      <th> Last Name </th>
                      <th> StudentID </th>
                      <th> Phone Number</th>
+                     <th> GPA</th>
                      <th>Mizzou Email </th>
                      <th>Date of app</th>
                      <th>Anticipated Graduation Date</th>
                      <th>Speak Score</th>
                      <th>Semester of test</th>
                      <th>Orientation Met</th>
-                     <th>Accepted</th>
                      <th>Undergrad Status</th>
                      <th>Graduate Status </th>
                      <th>Advisor</th>
@@ -120,9 +120,13 @@ table#t01 th	{
                      <th>Language Assessment</th>
                      <th>GATO Requirement</th>
                      <th>Position applied for</th>
+                     <th> Rate</th>
+                     <th>View Comments</th>
+                     <th> Comments</th>
                     
                       </tr>
-                      
+                      <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
+                      <% @commentshow = Comment.where(:stu_id => application.student_id, :professor_id => session[:id])%>
                        <tr>
                            
 
@@ -130,20 +134,33 @@ table#t01 th	{
                     <td> <%= @application.last_name %></h6>
                     <td><%= @application.student_id %> </h6>
                     <td><%= @application.phone_num %> </h6>
+                    <td><%= @application.gpa %> </h6>
                     <td><%= @application.mizzou_email %> </h6>
                     <td><%= @application.date_of_app%> </h6>
                     <td><%= @application.anticipated_graduation_date%> </h6>
                     <td><%= @application.speak_score %> </h6>
                     <td><%= @application.semester_of_test%> </h6>
                     <td><%= @application.orientation_met %> </h6>
-                    <td><%= @application.accepted %> </h6>
                     <td><%= @application.undergrad_status %> </h6>
                     <td><%= @application.grad_status %> </h6>
                     <td><%= @application.advisor%> </h6>
                     <td><%= @application.other_work %> </h6>
                     <td><%= @application.language_assessment %> </h6>
                     <td><%= @application.GATO_requirement %> </h6>
-                    <td><%= @application.position_applying_for %> </h6>
+                    <td><%= @application.position_applying_for %> </h6> 
+                    
+                     <% if @ratenumber != nil %> 
+                    <td><%= @ratenumber %></td>
+              <% else %>
+                  <td> N/A </td>
+              <% end %>
+              <% if @commentshow.last != nil %> 
+                   <td><%= @commentshow.last.comment%></td>
+                 <% else %>
+                    <td> N/A </td>
+                 <% end %>
+                   
+            <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
                   
                     </tr>
                     </table>
@@ -170,13 +187,13 @@ table#t01 th	{
                      <th> Last Name </th>
                      <th> StudentID </th>
                      <th> Phone Number</th>
+                     <th> GPA</th>
                      <th>Mizzou Email </th>
                      <th>Date of app</th>
                      <th>Anticipated Graduation Date</th>
                      <th>Speak Score</th>
                      <th>Semester of test</th>
                      <th>Orientation Met</th>
-                     <th>Accepted</th>
                      <th>Undergrad Status</th>
                      <th>Graduate Status </th>
                      <th>Advisor</th>
@@ -184,8 +201,13 @@ table#t01 th	{
                      <th>Language Assessment</th>
                      <th>GATO Requirement</th>
                      <th>Position applied for</th>
+                     <th> Rate</th>
+                     <th>View Comments</th>
+                     <th> Comments</th>
                     
                       </tr>
+                      <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
+                      <% @commentshow = Comment.where(:stu_id => application.student_id, :professor_id => session[:id])%>
                       
                        <tr>
                            
@@ -194,13 +216,13 @@ table#t01 th	{
                     <td> <%= @application.last_name %></h6>
                     <td><%= @application.student_id %> </h6>
                     <td><%= @application.phone_num %> </h6>
+                    <td> <%= @application.gpa %></h6>
                     <td><%= @application.mizzou_email %> </h6>
                     <td><%= @application.date_of_app%> </h6>
                     <td><%= @application.anticipated_graduation_date%> </h6>
                     <td><%= @application.speak_score %> </h6>
                     <td><%= @application.semester_of_test%> </h6>
                     <td><%= @application.orientation_met %> </h6>
-                    <td><%= @application.accepted %> </h6>
                     <td><%= @application.undergrad_status %> </h6>
                     <td><%= @application.grad_status %> </h6>
                     <td><%= @application.advisor%> </h6>
@@ -208,10 +230,24 @@ table#t01 th	{
                     <td><%= @application.language_assessment %> </h6>
                     <td><%= @application.GATO_requirement %> </h6>
                     <td><%= @application.position_applying_for %> </h6>
+                    
+                     <% if @ratenumber != nil %> 
+                    <td><%= @ratenumber %></td>
+              <% else %>
+                  <td> N/A </td>
+              <% end %>
+              <% if @commentshow.last != nil %> 
+                   <td><%= @commentshow.last.comment%></td>
+                 <% else %>
+                    <td> N/A </td>
+                 <% end %>
+                   
+            <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
                 
                     </tr>
                     </table>
                     </ul>
+                   
                 <% end %>
             <% end %> 
         <% else %> 
@@ -226,13 +262,13 @@ table#t01 th	{
                      <th> Last Name </th>
                      <th> StudentID </th>
                      <th> Phone Number</th>
+                     <th> GPA</th>
                      <th>Mizzou Email </th>
                      <th>Date of app</th>
                      <th>Anticipated Graduation Date</th>
                      <th>Speak Score</th>
                      <th>Semester of test</th>
                      <th>Orientation Met</th>
-                     <th>Accepted</th>
                      <th>Undergrad Status</th>
                      <th>Graduate Status </th>
                      <th>Advisor</th>
@@ -240,8 +276,13 @@ table#t01 th	{
                      <th>Language Assessment</th>
                      <th>GATO Requirement</th>
                      <th>Position applied for</th>
+                     <th> Rate</th>
+                     <th>View Comments</th>
+                     <th> Comments</th>
                     
                       </tr>
+                       <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
+                       <% @commentshow = Comment.where(:stu_id => application.student_id, :professor_id => session[:id])%>
                       
                        <tr>
                            
@@ -250,13 +291,13 @@ table#t01 th	{
                     <td> <%= @application.last_name %></h6>
                     <td><%= @application.student_id %> </h6>
                     <td><%= @application.phone_num %> </h6>
+                    <td><%= @application.gpa %></h6>
                     <td><%= @application.mizzou_email %> </h6>
                     <td><%= @application.date_of_app%> </h6>
                     <td><%= @application.anticipated_graduation_date%> </h6>
                     <td><%= @application.speak_score %> </h6>
                     <td><%= @application.semester_of_test%> </h6>
                     <td><%= @application.orientation_met %> </h6>
-                    <td><%= @application.accepted %> </h6>
                     <td><%= @application.undergrad_status %> </h6>
                     <td><%= @application.grad_status %> </h6>
                     <td><%= @application.advisor%> </h6>
@@ -264,7 +305,21 @@ table#t01 th	{
                     <td><%= @application.language_assessment %> </h6>
                     <td><%= @application.GATO_requirement %> </h6>
                     <td><%= @application.position_applying_for %> </h6>
-                  
+                    
+                    
+                 <% if @ratenumber != nil %> 
+                    <td><%= @ratenumber %></td>
+              <% else %>
+                  <td> N/A </td>
+              <% end %>
+              <% if @commentshow.last != nil %> 
+                   <td><%= @commentshow.last.comment%></td>
+                 <% else %>
+                    <td> N/A </td>
+                 <% end %>
+                   
+            <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
+
                     </tr>
                     </table>
                     </ul>
