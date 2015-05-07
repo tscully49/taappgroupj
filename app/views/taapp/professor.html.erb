@@ -29,6 +29,7 @@
 
 	
 	<div class="row">
+    <%= link_to "show_applicants", {:controller => :taapp, :action => 'show_applicants', :id => @professor.prof_name }, class: "btn btn-primary btn-lg btn-block" %></td>
 
 	<%= link_to '<button type="button" class="btn btn-primary btn-lg btn-block">VIEW ALL APPLICANTS</button>'.html_safe, controller: "taapp", action: "show_applicants" %>
     </div>

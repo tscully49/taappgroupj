@@ -91,12 +91,13 @@ table#t01 th	{
       <% else %>
           <td> N/A </td>
       <% end %>
-      <%# if @commentshow.last.comment != nil %> 
-         <%# <td><%#= @commentshow.last.comment%></td>
-      <%#<% else %>
-      <%#   <td> N/A </td>
+      <% if @commentshow != nil %> 
+       <td><%= @commentshow.last.comment%></td>
+      <% else %>
+        <td> N/A </td>
       <% end %>
-      <td><%= link_to "view_comments", {:controller => :comments, :action => 'view_comments', :id => application.student_id }, class: "btn btn-primary" %></td>
+      
+      <%#<td><%#= link_to "view_comments", {:controller => :comments, :action => 'view_comments', :id => application.student_id }, class: "btn btn-primary" %></td>
 
       <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
 
