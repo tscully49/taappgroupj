@@ -91,7 +91,7 @@ table#t01 th	{
       <% else %>
           <td> N/A </td>
       <% end %>
-      <% if @commentshow != nil %> 
+      <% if @commentshow.last != nil %> 
        <td><%= @commentshow.last.comment%></td>
       <% else %>
         <td> N/A </td>
