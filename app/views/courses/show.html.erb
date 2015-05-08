@@ -41,6 +41,10 @@
 				<% @this=Application.where(:id => @apps.first.application_id, :accepted => false)%>
 				<h5><%= @this.first.first_name %>  <%= @this.first.last_name %> <%#= person.application_id %>    <%= check_box_tag "select_tas[]", @apps.first.application_id %></h5>
 				<%= hidden_field_tag :course_id, @course.id%>
+				<div id="this_row" class="row"></div>
+			    <div class="button clearfix">
+		    		<%= f.submit "Add TA's to "+@course.course_name, id: "submission", class: "btn btn-primary" %>
+				</div>
 			<% else %>
 				<h5> No applicants </h5>
 			<% end %>
