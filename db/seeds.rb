@@ -9,14 +9,14 @@
 Admin.create(admin_name: "Thomas Scully", password: "test", miz_email: "thomas@missouri.edu")
 Admin.create(admin_name: "Test", password: "test", miz_email: "admin@missouri.edu")
 
-User.create(first_name: "Joe", last_name: "Toe", email: "joe@mail.missouri.edu", password: "test", student_id: 13245532)
-User.create(first_name: "Thomas", last_name: "Scully", email: "tps9tb@mail.missouri.edu", password: "test", student_id: 13242432)
-User.create(first_name: "Tim", last_name: "Burton", email: "burton@mail.missouri.edu", password: "test", student_id: 13342432)
-User.create(first_name: "Hank", last_name: "Smith", email: "Smith@mail.missouri.edu", password: "test", student_id: 22242432)
-User.create(first_name: "Jonathan", last_name: "Scully", email: "scully@mail.missouri.edu", password: "test", student_id: 98767898)
-User.create(first_name: "Dillon", last_name: "Byrne", email: "dillon@mail.missouri.edu", password: "test", student_id: 98372645)
-User.create(first_name: "Miley", last_name: "Tucker", email: "Tucker@mail.missouri.edu", password: "test", student_id: 98765432)
-User.create(first_name: "Earl", last_name: "Jonson", email: "Jonson@mail.missouri.edu", password: "test", student_id: 99999988)
+User.create(first_name: "Joe", last_name: "Toe", email: "joe@mail.missouri.edu", password: "test", student_id: '13245532')
+User.create(first_name: "Thomas", last_name: "Scully", email: "tps9tb@mail.missouri.edu", password: "test", student_id: '13242432')
+User.create(first_name: "Tim", last_name: "Burton", email: "burton@mail.missouri.edu", password: "test", student_id: '13342432')
+User.create(first_name: "Hank", last_name: "Smith", email: "Smith@mail.missouri.edu", password: "test", student_id: '22242432')
+User.create(first_name: "Jonathan", last_name: "Scully", email: "scully@mail.missouri.edu", password: "test", student_id: '98767898')
+User.create(first_name: "Dillon", last_name: "Byrne", email: "dillon@mail.missouri.edu", password: "test", student_id: '98372645')
+User.create(first_name: "Miley", last_name: "Tucker", email: "Tucker@mail.missouri.edu", password: "test", student_id: '98765432')
+User.create(first_name: "Earl", last_name: "Jonson", email: "Jonson@mail.missouri.edu", password: "test", student_id: '99999988')
 
 Professor.create(prof_name: "Joe Guillams", miz_email: "joee@missouri.edu", password: "test")
 Professor.create(prof_name: "Grant Scott", miz_email: "Scott@missouri.edu", password: "test")
@@ -55,13 +55,13 @@ Application.create(first_name: "Hank", last_name: "Smith", student_id: '22242432
 	language_assessment: "no", GATO_requirement: "done", position_applying_for: "TA")
 
 
-Comment.create(stu_id: 13242432, comment: "Great", date_commented: "2012-04-03", rating: 5, time_stamp: DateTime.now, professor_id: 2)
-Comment.create(stu_id: 13342432, comment: "Great", date_commented: "2012-04-03", rating: 4, time_stamp: DateTime.now, professor_id: 3)
-Comment.create(stu_id: 13245532, comment: "Great", date_commented: "2012-04-03", rating: 3, time_stamp: DateTime.now, professor_id: 1)
+Comment.create(stu_id: '13242432', comment: "Great", date_commented: "2012-04-03", rating: 5, time_stamp: DateTime.now, professor_id: 2)
+Comment.create(stu_id: '13342432', comment: "Great", date_commented: "2012-04-03", rating: 4, time_stamp: DateTime.now, professor_id: 3)
+Comment.create(stu_id: '13245532', comment: "Great", date_commented: "2012-04-03", rating: 3, time_stamp: DateTime.now, professor_id: 1)
 
-Rating.create(stu_id: 13242432, rating: 5, prof_id: 2)
-Rating.create(stu_id: 13342432, rating: 4, prof_id: 3)
-Rating.create(stu_id: 13245532, rating: 3, prof_id: 1)
+Rating.create(stu_id: '13242432', rating: 5, prof_id: 2)
+Rating.create(stu_id: '13342432', rating: 4, prof_id: 3)
+Rating.create(stu_id: '13245532', rating: 3, prof_id: 1)
 
 Course.create(course_name: "CS 4320", professor_id: 3, open_spots: 4)
 Course.create(course_name: "CS 1050", professor_id: 2, open_spots: 3)
