@@ -49,13 +49,14 @@ table#t01 th	{
                      <th>Last Name </th>
                      <th>StudentID </th>
                      <th>Phone Number</th>
-                     <th> GPA</th>
+                     <th>GPA</th>
                      <th>Mizzou Email </th>
                      <th>Date of app</th>
                      <th>Anticipated Graduation Date</th>
                      <th>Speak Score</th>
                      <th>Semester of test</th>
                      <th>Orientation Met</th>
+                     <th>Accepted</th>
                      <th>Undergrad Status</th>
                      <th>Graduate Status </th>
                      <th>Advisor</th>
@@ -73,13 +74,14 @@ table#t01 th	{
                     <td> <%= @application.last_name %></h6>
                     <td><%= @application.student_id %> </h6>
                     <td><%= @application.phone_num %> </h6>
-                    <td><%= @application.gpa %> </h6>
+                    <td><%= @application.gpa %></td>
                     <td><%= @application.mizzou_email %> </h6>
                     <td><%= @application.date_of_app%> </h6>
                     <td><%= @application.anticipated_graduation_date%> </h6>
                     <td><%= @application.speak_score %> </h6>
                     <td><%= @application.semester_of_test%> </h6>
                     <td><%= @application.orientation_met %> </h6>
+                    <td><%= @application.accepted %> </h6>
                     <td><%= @application.undergrad_status %> </h6>
                     <td><%= @application.grad_status %> </h6>
                     <td><%= @application.advisor%> </h6>
@@ -91,6 +93,7 @@ table#t01 th	{
                     </tr>
                     </table>
                     </ul>
+                     <%= link_to "Go Back", "professor", :class => "btn", :id => "go_back" %>
                 <% end %>
 
             <% end %> 
@@ -113,6 +116,7 @@ table#t01 th	{
                      <th>Speak Score</th>
                      <th>Semester of test</th>
                      <th>Orientation Met</th>
+                     <th>Accepted</th>
                      <th>Undergrad Status</th>
                      <th>Graduate Status </th>
                      <th>Advisor</th>
@@ -141,6 +145,7 @@ table#t01 th	{
                     <td><%= @application.speak_score %> </h6>
                     <td><%= @application.semester_of_test%> </h6>
                     <td><%= @application.orientation_met %> </h6>
+                    <td><%= @application.accepted %> </h6>
                     <td><%= @application.undergrad_status %> </h6>
                     <td><%= @application.grad_status %> </h6>
                     <td><%= @application.advisor%> </h6>
@@ -194,6 +199,7 @@ table#t01 th	{
                      <th>Speak Score</th>
                      <th>Semester of test</th>
                      <th>Orientation Met</th>
+                     <th>Accepted</th>
                      <th>Undergrad Status</th>
                      <th>Graduate Status </th>
                      <th>Advisor</th>
@@ -223,6 +229,7 @@ table#t01 th	{
                     <td><%= @application.speak_score %> </h6>
                     <td><%= @application.semester_of_test%> </h6>
                     <td><%= @application.orientation_met %> </h6>
+                    <td><%= @application.accepted %> </h6>
                     <td><%= @application.undergrad_status %> </h6>
                     <td><%= @application.grad_status %> </h6>
                     <td><%= @application.advisor%> </h6>
@@ -269,6 +276,7 @@ table#t01 th	{
                      <th>Speak Score</th>
                      <th>Semester of test</th>
                      <th>Orientation Met</th>
+                     <th>Accepted</th>
                      <th>Undergrad Status</th>
                      <th>Graduate Status </th>
                      <th>Advisor</th>
@@ -291,13 +299,14 @@ table#t01 th	{
                     <td> <%= @application.last_name %></h6>
                     <td><%= @application.student_id %> </h6>
                     <td><%= @application.phone_num %> </h6>
-                    <td><%= @application.gpa %></h6>
+                      <td> <%= @application.gpa %></h6>
                     <td><%= @application.mizzou_email %> </h6>
                     <td><%= @application.date_of_app%> </h6>
                     <td><%= @application.anticipated_graduation_date%> </h6>
                     <td><%= @application.speak_score %> </h6>
                     <td><%= @application.semester_of_test%> </h6>
                     <td><%= @application.orientation_met %> </h6>
+                    <td><%= @application.accepted %> </h6>
                     <td><%= @application.undergrad_status %> </h6>
                     <td><%= @application.grad_status %> </h6>
                     <td><%= @application.advisor%> </h6>
@@ -323,6 +332,7 @@ table#t01 th	{
                     </tr>
                     </table>
                     </ul>
+                     <%= link_to "Go Back", "professor", :class => "btn", :id => "go_back" %>
                     <% end %>
             <% end %> 
         <% end %> 

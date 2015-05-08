@@ -47,15 +47,16 @@ table#t01 th	{
     <th> GPA </th>
     <th> Email </th>
     <th> Anticipated Graduation Date </th>
+    <th> Undergrad Status</th>
+    <th>Graduate Status </th>
     <th> Advisor </th>
     <th> Speak Score </th>
     <th> Orientation Met </th>
     <th> GATO requirement </th>
     <th> Position Applied For </th>
-    <th> Speak Score </th>
     <th> Rate </th>
-    <th> View Comments </th>
-    <th> Comments </th>
+    <th> Most Recent Comment</th>
+    <th> View all /Add Comments </th>
    
     </tr>
 
@@ -73,13 +74,15 @@ table#t01 th	{
       <td><%= application.gpa %></td>
       <td><%= application.mizzou_email %></td>
       <td><%= application.anticipated_graduation_date %></td>
+      <td><%= application.undergrad_status %> </h6>
+      <td><%= application.grad_status %> </h6>
       <td><%= application.advisor %></td>
       <td><%= application.speak_score%></td>
       <td><%= application.orientation_met%></td>
       <td><%= application.GATO_requirement%></td>
       <td><%= application.position_applying_for%></td>
 
-      <td><%= application.speak_score%></td>
+
 
      
 
@@ -94,7 +97,7 @@ table#t01 th	{
         <td> N/A </td>
       <% end %>
       
-      <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
+      <td><%= link_to "View/Add Comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
 
       </tr>
    
