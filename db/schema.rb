@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507015425) do
+ActiveRecord::Schema.define(version: 20150508201706) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name",      limit: 60,  null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150507015425) do
   create_table "applications", force: true do |t|
     t.string   "first_name",                  limit: 60
     t.string   "last_name",                   limit: 60
-    t.integer  "student_id"
+    t.string   "student_id"
     t.decimal  "gpa",                                     precision: 4, scale: 3, null: false
     t.string   "phone_num",                                                       null: false
     t.string   "mizzou_email",                limit: 100

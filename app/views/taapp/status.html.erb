@@ -15,8 +15,7 @@
 		<h4>Application status is pending...</h4>
 	<% end %>
 	</div>
-	<table class="table table-striped">
-		<tr><th><u>Attribute:</u></th><th><u>Values:</u></th></tr>
+	<table class="table table-striped table-bordered table-responsive">
 		<tr><th>Student ID</th><td><%= @application.student_id %></td></tr>
 		<tr><th>Email</th><td><%= @application.mizzou_email %></td></tr>
 		<tr><th>Position Applying For</th><td><%= @application.position_applying_for %></td></tr>
@@ -34,7 +33,7 @@
 		<tr><th>Semester of last test</th><td><%= @application.semester_of_test %></td></tr>
 	</table>
 	<h4><u>Classes applied for:</u></h4>
-	<table class="table table-striped">
+	<table class="table table-striped table-bordered">
 		<% @applied.each do |course| %>
 			<% @course_name = Course.find(course.course_id)%>
 			<tr> <td><%= @course_name.course_name %></td></tr>
