@@ -64,9 +64,13 @@ table#t01 th	{
                      <th>Language Assessment</th>
                      <th>GATO Requirement</th>
                      <th>Position applied for</th>
+                     <th> Rate</th>
+                     <th>View Comments</th>
+                     <th> Comments</th>
                     
                       </tr>
-                      
+                      <% @ratenumber = Rating.where(:stu_id => @application.student_id).average(:rating)%>
+                      <% @commentshow = Comment.where(:stu_id => @application.student_id, :professor_id => session[:id])%>
                        <tr>
                            
 
@@ -89,6 +93,20 @@ table#t01 th	{
                     <td><%= @application.language_assessment %> </h6>
                     <td><%= @application.GATO_requirement %> </h6>
                     <td><%= @application.position_applying_for %> </h6>
+                  
+                    <% if @ratenumber != nil %> 
+                    <td><%= @ratenumber %></td>
+              <% else %>
+                  <td> N/A </td>
+              <% end %>
+              <% if @commentshow.last != nil %> 
+                   <td><%= @commentshow.last.comment%></td>
+                 <% else %>
+                    <td> N/A </td>
+                 <% end %>
+                   
+            <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => @application.student_id }, class: "btn btn-primary" %></td>
+                  
                   
                     </tr>
                     </table>
@@ -128,8 +146,8 @@ table#t01 th	{
                      <th> Comments</th>
                     
                       </tr>
-                      <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
-                      <% @commentshow = Comment.where(:stu_id => application.student_id, :professor_id => session[:id])%>
+                      <% @ratenumber = Rating.where(:stu_id => @application.student_id).average(:rating)%>
+                      <% @commentshow = Comment.where(:stu_id => @application.student_id, :professor_id => session[:id])%>
                        <tr>
                            
 
@@ -151,7 +169,8 @@ table#t01 th	{
                     <td><%= @application.other_work %> </h6>
                     <td><%= @application.language_assessment %> </h6>
                     <td><%= @application.GATO_requirement %> </h6>
-                    <td><%= @application.position_applying_for %> </h6> 
+                    <td><%= @application.position_applying_for %> </h6>
+                    
                     
                      <% if @ratenumber != nil %> 
                     <td><%= @ratenumber %></td>
@@ -164,7 +183,7 @@ table#t01 th	{
                     <td> N/A </td>
                  <% end %>
                    
-            <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
+            <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => @application.student_id }, class: "btn btn-primary" %></td>
                   
                     </tr>
                     </table>
@@ -211,8 +230,8 @@ table#t01 th	{
                      <th> Comments</th>
                     
                       </tr>
-                      <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
-                      <% @commentshow = Comment.where(:stu_id => application.student_id, :professor_id => session[:id])%>
+                      <% @ratenumber = Rating.where(:stu_id => @application.student_id).average(:rating)%>
+                      <% @commentshow = Comment.where(:stu_id => @application.student_id, :professor_id => session[:id])%>
                       
                        <tr>
                            
@@ -248,7 +267,7 @@ table#t01 th	{
                     <td> N/A </td>
                  <% end %>
                    
-            <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
+            <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => @application.student_id }, class: "btn btn-primary" %></td>
                 
                     </tr>
                     </table>
@@ -288,8 +307,8 @@ table#t01 th	{
                      <th> Comments</th>
                     
                       </tr>
-                       <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
-                       <% @commentshow = Comment.where(:stu_id => application.student_id, :professor_id => session[:id])%>
+                       <% @ratenumber = Rating.where(:stu_id => @application.student_id).average(:rating)%>
+                       <% @commentshow = Comment.where(:stu_id => @application.student_id, :professor_id => session[:id])%>
                       
                        <tr>
                            
@@ -326,7 +345,7 @@ table#t01 th	{
                     <td> N/A </td>
                  <% end %>
                    
-            <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => application.student_id }, class: "btn btn-primary" %></td>
+            <td><%= link_to "comments", {:controller => :comments, :action => 'new', :id => @application.student_id }, class: "btn btn-primary" %></td>
 
                     </tr>
                     </table>
