@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508201706) do
+ActiveRecord::Schema.define(version: 20150508210225) do
 
   create_table "admins", force: true do |t|
     t.string "admin_name",      limit: 60,  null: false
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20150508201706) do
 
   create_table "comments", force: true do |t|
     t.string   "stu_id",                     null: false
-    t.string   "professor_id",               null: false
+    t.integer  "professor_id",   limit: 255, null: false
     t.string   "comment",        limit: 500
     t.datetime "time_stamp",                 null: false
     t.date     "date_commented",             null: false
@@ -104,9 +104,9 @@ ActiveRecord::Schema.define(version: 20150508201706) do
   end
 
   create_table "ratings", id: false, force: true do |t|
-    t.string  "prof_id",           null: false
-    t.string  "stu_id",            null: false
-    t.integer "rating",  limit: 2, null: false
+    t.integer "prof_id", limit: 255, null: false
+    t.string  "stu_id",              null: false
+    t.integer "rating",  limit: 2,   null: false
   end
 
   create_table "users", force: true do |t|

@@ -64,8 +64,11 @@ table#t01 th	{
 
       <% @applications.each do |application| %>
       <% @ratenumber = Rating.where(:stu_id => application.student_id).average(:rating)%>
-      <% @commentshow = Comment.where(:stu_id => application.student_id, :professor_id => session[:id])%>
-
+      <% if session[:accounttype] == "professor" %>
+          <% @commentshow = Comment.where(:stu_id => application.student_id, :professor_id => session[:id])%>
+      <% else %>
+          <% @commentshow = Comment.where(:stu_id => application.student_id)%>
+      <% end %>
       <tr>
       <td><%= application.first_name %></td>
       <td><%= application.last_name %></td>
